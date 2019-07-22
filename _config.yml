@@ -51,6 +51,8 @@ comment:
   type: disqus
   shortname: crystal-ameba-github-io
 
+favicon: /favicon.png
+
 # Other plugins and their settings.
 plugins:
   mathjax: false
