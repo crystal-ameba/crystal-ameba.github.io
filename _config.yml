@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Crystal Ameba
 subtitle:
-description:
-keywords:
-author: John Doe
+description: A static code analysis tool for Crystal
+keywords: crystal linter
+author: Vitalii Elenhaupt
 language:
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://crystal-ameba.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -27,6 +27,49 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+
+article:
+  # Show word count and estimated reading time.
+  readtime: false
+  # Code highlight theme, please see https://highlightjs.org/static/demo/
+  highlight: atom-one-light
+
+menu:
+  Blog: /blog
+  Documentation: https://crystal-ameba.github.io/ameba/
+  Chat: https://gitter.im/veelenga/ameba
+
+# Search plugin settings.
+search:
+  type: insight
+
+# Navigation bar toc settings
+toc: false
+
+# Comment plugin settings.
+comment:
+  type: disqus
+  shortname: veelenga
+
+# Other plugins and their settings.
+plugins:
+  mathjax: false
+  katex: false
+  gallery: true
+  clipboard: true
+
+# Additional navigation bar links on the right.
+# Links can either be text or icon. The following link is set to be an icon link whose icon
+# is set to the class name of a FontAwesome 5 icon. The `footer_links` below also gives an
+# example of setting plain text links.
+navbar_links:
+  GitHub:
+    icon: fab fa-github
+    url: https://github.com/crystal-ameba
+
+# Links at the bottom of the page.
+footer_links:
+  GitHub: https://github.com/crystal-ameba
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -49,7 +92,7 @@ highlight:
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
+  path: '/blog'
   per_page: 10
   order_by: -date
   
@@ -75,7 +118,18 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: minos
 
+# Disqus
+disqus_shortname: veelenga
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repository: git@github.com:crystal-ameba/crystal-ameba.github.io.git
+  branch: master
+
+marked:
+  gfm: false
+
+githubEmojis:
+  className: not-gallery-item
