@@ -69,7 +69,7 @@ navbar_links:
 
 # Links at the bottom of the page.
 footer_links:
-  GitHub: https://github.com/crystal-ameba
+  GitHub: https://github.com/crystal-ameba/crystal-ameba.github.io
 
 # Writing
 new_post_name: :title.md # File name of new posts
