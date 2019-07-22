@@ -10,9 +10,6 @@ navbar_links:
   Edit on GitHub:
     icon: fas fa-edit
     url: https://github.com/crystal-ameba/crystal-ameba.github.io/edit/site/source/_posts/how-to-write-extension.md
-
-comment:
-  shorthand: veelenga
 ---
 
 It was [announced recently](https://github.com/crystal-ameba/ameba/pull/112) that Ameba
