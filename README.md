@@ -7,6 +7,7 @@ Source code for https://crystal-ameba.github.io
 ```sh
 git clone git@github.com:crystal-ameba/crystal-ameba.github.io.git && cd crystal-ameba.github.io
 git checkout site
+yarn install
 hexo server    # and go to http://localhost:4000
 ```
 
