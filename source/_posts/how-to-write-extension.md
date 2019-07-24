@@ -94,7 +94,7 @@ The extension is pretty much done. Let's try to use it.
 
 ### 3. Plug-in the extension
 
-Somewhere in a separate project we want to plug-in the ameba the extension we made.
+Somewhere in a separate project we want to plug-in the ameba engine and the extension we made.
 
 To do that, we need to add a development dependencies for both of this projects:
 
