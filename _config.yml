@@ -132,3 +132,7 @@ marked:
 
 githubEmojis:
   className: not-gallery-item
+
+# Social
+open_graph:
+  twitter_id: veelenga
