@@ -25,13 +25,13 @@ comment:
   <div class="column is-half-mobile">
     <p><b>Fast</b></p>
     <sup>
-      Written in Crystal. Utilizes AST parser and lexer. Takes milliseconds to process source files.
+      Written in Crystal. Utilizes AST parser and lexer. Takes milliseconds to process sources.
     </sup>
   </div>
   <div class="column is-half-mobile">
     <p><b>Modular</b></p>
     <sup>
-      Ships rules, categories and reporters. Third party modules supported.
+      Ships rules, categories and reporters. Third party modules are supported.
     </sup>
   </div>
   <div class="column is-half-mobile">
