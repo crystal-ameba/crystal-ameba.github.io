@@ -4,11 +4,11 @@
 
 # Site
 title: Crystal Ameba
-subtitle:
+subtitle: A static code analysis tool for Crystal
 description: A static code analysis tool for Crystal
 keywords: crystal linter
 author: Vitalii Elenhaupt
-language:
+language: en
 timezone:
 
 # URL
