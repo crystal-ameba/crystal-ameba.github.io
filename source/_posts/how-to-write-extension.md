@@ -19,6 +19,8 @@ with Ameba's engine.
 
 Here we will following through the steps on how to create such an extension and use it.
 
+<!-- more -->
+
 It is going to be `crystal-docs` extension, where a new rule will be implemented
 which will **enforce classes to have documentation**.
 
