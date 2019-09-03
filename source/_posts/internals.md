@@ -1,13 +1,13 @@
 ---
-title: Internal Ameba modules
-date: 2019-08-02 00:54:30
+title: Ameba's internals
+date: 2019-09-03 00:54:30
 tags:
   - parser
   - rule
   - formatter
   - modules
 category:
-  - Documentation
+  - Tutorial
 toc: true
 navbar_links:
   Edit on GitHub:
