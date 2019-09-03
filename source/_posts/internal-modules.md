@@ -57,7 +57,7 @@ source = Ameba::Source.new %(
       puts info
     end
   end
-)
+), "source.cr"
 
 source.issues # => []
 ```
@@ -105,7 +105,7 @@ A simple version of it could look like this:
 ```crystal
 module Ameba::Rule
   # A rule that disallows calls to `puts` method.
-  struct NoPuts ‹ Rule::Base
+  struct NoPuts ‹ Base
     def test(source)
       AST::NodeVisitor.new self, source
     end
@@ -128,6 +128,8 @@ if the node matches the expectations.
 So, in such a way a `Source` is passed to all the rules and can hold some issues on it:
 
 ```crystal
+rule = Ameba::Rule::NoPuts.new
+rule.catch(source)
 source.issues # =>
   # [
   #   Ameba::Issue(
@@ -145,4 +147,76 @@ source.issues # =>
 
 ```
 
+Now the source holds an issue. It's a time to report it.
+
 ### Format results
+
+Formatters are used to format the output reported by Ameba.
+
+For example, [`ExplainFormatter`](https://crystal-ameba.github.io/ameba/Ameba/Formatter/ExplainFormatter.html)
+is designed to show the detailed explanation of the issue in the source
+at a specific location.
+Another one is [`JSONFormatter`](https://crystal-ameba.github.io/ameba/Ameba/Formatter/JSONFormatter.html)
+which formats to JSON. Let's give it a try:
+
+```crystal
+formatter = Ameba::Formatter::JSONFormatter.new(STDOUT)
+formatter.started([source])
+formatter.source_finished(source)
+formatter.finished([source])
+```
+
+Formatters are designed to update its states using hooks, like
+
+* `started` - a hook to be called when inspection is started
+* `source_finished` - inspection of a single source is finished
+* `finished` - inspection is finished
+
+If we compile the source code above and run it, we will see:
+
+```json
+
+{
+    "metadata": {
+        "ameba_version": "0.10.0",
+        "crystal_version": "0.30.0"
+    },
+    "sources": [
+        {
+            "issues": [
+                {
+                    "end_location": {
+                        "column": 15,
+                        "line": 6
+                    },
+                    "location": {
+                        "column": 7,
+                        "line": 6
+                    },
+                    "message": "puts method is called",
+                    "rule_name": "NoPuts",
+                    "severity": "Convention"
+                }
+            ],
+            "path": "source.cr"
+        }
+    ],
+    "summary": {
+        "issues_count": 1,
+        "target_sources_count": 1
+    }
+}
+```
+
+Congratulations, we successfully made static analysis of our source code.
+
+## Wrap-up
+
+In this tutorial we went through the steps to programatically load source code,
+parse it into AST nodes, create a custom rule, create an issue and show results.
+It covers the full loop, which Ameba does while doing static analysis.
+So it can help to understand how it works internally.
+
+The code used above is available as a [gist](https://gist.github.com/veelenga/d05eb5a3b346748ed4ba309cf79c73e4).
+
+Hope you find it useful. Cheers!
