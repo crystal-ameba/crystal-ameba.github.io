@@ -17,7 +17,7 @@ is going to be extendable.
 That means any developer can create his own extension and use together
 with Ameba's engine.
 
-Here we will following through the steps on how to create such an extension and use it.
+Here we will be following through the steps on how to create such an extension and use it.
 
 <!-- more -->
 
