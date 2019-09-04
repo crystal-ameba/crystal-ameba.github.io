@@ -208,7 +208,7 @@ If we compile the source code above and run it, we will see:
 }
 ```
 
-Congratulations, we successfully made static analysis of our source code.
+Congratulations, we successfully analyzed our source code and reported an issue.
 
 ## Wrap-up
 
