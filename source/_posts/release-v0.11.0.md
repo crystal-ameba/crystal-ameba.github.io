@@ -1,10 +1,10 @@
 ---
-title: Ameba v0.11.0 - Lint in parallel, GitHub action, new rules and more.
+title: Ameba v0.11.0 - New rules, lint in parallel, GitHub actions and more.
 date: 2019-11-28 00:54:30
 tags:
-  - release notes
+  - releases
 category:
-  - Release
+  - Release announcement
 toc: true
 navbar_links:
   Edit on GitHub:
@@ -14,8 +14,9 @@ navbar_links:
 
 Ameba [v0.11.0](https://github.com/crystal-ameba/ameba/releases/tag/v0.11.0) has been released.
 Here we will go through the main **features and improvements** which are included to this
-release. Also, you will do **benchmarking** comparing parallel linting using
-Crystal's experimental parallelism. 
+release. Also, will do **benchmarking** comparing parallel linting using
+Crystal's experimental parallelism and will explain how to use Ameba together
+with **GitHub actions**. 
 
 <!-- more -->
 
@@ -129,7 +130,7 @@ $ time CRYSTAL_WORKERS=8 ameba --silent # 44.67s user 0.44s system 413% cpu 10.9
 
 If you look at the `total` part, you will find that the max time is `28.116`
 seconds and the min one is `10.900` seconds. So we were able to run it
-almost **3 times faster**.
+almost **3 times faster** on 8 workers.
 
 However, the results are
 not linear to the amount of workers. And that is expected, because our sources
@@ -145,3 +146,66 @@ At the end, we must say that this feature is fully functional and reliable on
 Ameba's side. It was well tested using different formatters, so the end user
 is free to try it to inspect his crystal code in parallel. We are looking for
 the best results, keep us posted!
+
+### GitHub Action
+
+Ameba GitHub action [has been released](https://github.com/crystal-ameba/github-action)
+and the first version [has been published](https://github.com/marketplace/actions/crystal-ameba-linter)
+to the GitHub marketplace.
+
+The easiest way to use it is to follow installation intructions:
+
+```yml
+# Copy and paste the following snippet into your .yml file.
+
+- name: Crystal Ameba Linter
+  uses: crystal-ameba/github-action@v0.1.1
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+And here is an example of the workflow with Ameba and Crystal specs:
+
+```yml
+# Create .github/workflows/crystal.yml in your repository
+
+name: Crystal CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    container:
+      image: crystallang/crystal
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Crystal Ameba Linter
+      id: crystal-ameba
+      uses: crystal-ameba/github-action@v0.1.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Install dependencies
+      run: shards install
+    - name: Run tests
+      run: crystal spec
+```
+
+Once this is added to GitHub action workflow, Ameba will start reporting
+annotations in pull requests:
+
+![](https://raw.githubusercontent.com/crystal-ameba/github-action/master/assets/sample.png)
+
+Keep in mind, that is very first release for this GitHub action and it misses a
+couple of required configuration options. However, it still uses
+`.ameba.yml` config in the repository root and properly configures rules before
+running the inspection. Hope you would enjoy it!
+
+### More
+
+This release also includes a couple of bug fixes and small improvements.
+Checkout the [release notes](https://github.com/crystal-ameba/ameba/releases/tag/v0.11.0)
+for more details.
