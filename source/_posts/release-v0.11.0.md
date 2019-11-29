@@ -78,9 +78,70 @@ Lint/RedundantWithObject:
 ### Parallel linting
 
 Crystal started to [support parallism](https://crystal-lang.org/2019/09/06/parallelism-in-crystal.html)
- as an experimental feature starting from 0.31.0. The main intention here is
- speed, which is achieved by doing several things in parallel. Ameba is a small set
- of rules and enforcements and in most cases, it take a couple of seconds to lint
- an average shard. However, we still find it useful to parallize the linting,
- especially on a large amount of sources.
+as an experimental feature starting from `0.31.0`. The main intention here is
+speed, which is achieved by doing several things in parallel. Ameba is a small set
+of rules and enforcements and in most cases, it takes a couple of seconds to lint
+an average shard. However, we still find it useful to parallize the linting,
+especially on a large amount of sources.
+
+We found that the easiest way to run linting in parallel is to spawn each
+source into it's own channel. And since issues are added to the sources, we don't
+have to care about thread safely, because a full set of rules will be running
+sequentially on each source in it's own thread. So the only thing which is
+needed is to wait the hole inspection on all sources at the end and gather results.
+
+At a high level, it looks similar to this:
+
+```crystal
+channels = sources.map { Channel(Nil).new }
+
+sources.each_with_index do |source, idx|
+  channel = channels[idx]
+  spawn do
+    inspect(source) # run full set of rules
+    channel.send(nil)
+  end
+end
+
+channels.each { |c| c.receive }
+```
+
+In reality, it is a bit more complex, because we need to send exceptions to
+the main thread. So it was simplified just to explain the concept.
+Let's do some benchmarking now.
+
+At first, we need to build Ameba using the `preview_mt` flag and install it manually:
+
+```sh
+$ crystal build src/cli.cr -Dpreview_mt -o bin/ameba
+$ sudo make install
+```
  
+And then we can try running it on Crystal repo (1449 files for the moment)
+using different amount of crystal workers:
+
+```sh
+$ time CRYSTAL_WORKERS=1 ameba --silent # 27.78s user 0.34s system 99% cpu 28.116 total
+$ time CRYSTAL_WORKERS=2 ameba --silent # 29.54s user 0.22s system 147% cpu 20.184 total
+$ time CRYSTAL_WORKERS=4 ameba --silent # 30.90s user 0.28s system 226% cpu 13.742 total
+$ time CRYSTAL_WORKERS=8 ameba --silent # 44.67s user 0.44s system 413% cpu 10.900 total
+```
+
+If you look at the `total` part, you will find that the max time is `28.116`
+seconds and the min one is `10.900` seconds. So we were able to run it
+almost **3 times faster**.
+
+However, the results are
+not linear to the amount of workers. And that is expected, because our sources
+(or more accurate, lines of code) are not divided evenly and some workers have
+to inspect bigger sources and other workers will have to wait until they finish.
+
+Of course, someone can say that we can pre-calculate the LoCs and divide the work
+more evenly. And it would be true. But that would complicate our implementation
+a lot. So here we decided to make it as simple as possible and keep the room
+opened for the future improvements.
+
+At the end, we must say that this feature is fully functional and reliable on 
+Ameba's side. It was well tested using different formatters, so the end user
+is free to try it to inspect his crystal code in parallel. We are looking for
+the best results, keep us posted!
