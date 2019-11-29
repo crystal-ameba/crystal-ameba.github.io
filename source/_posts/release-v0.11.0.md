@@ -1,5 +1,5 @@
 ---
-title: Ameba v0.11.0 - New rules, lint in parallel, GitHub actions and more.
+title: Ameba v0.11.0 - New rules, lint in parallel, GitHub action and more.
 date: 2019-11-28 00:54:30
 tags:
   - releases
@@ -107,8 +107,7 @@ end
 channels.each { |c| c.receive }
 ```
 
-In reality, it is a bit more complex, because we need to send exceptions to
-the main thread. So it was simplified just to explain the concept.
+In reality, it is a bit more complex and it was simplified just to explain the concept.
 Let's do some benchmarking now.
 
 At first, we need to build Ameba using the `preview_mt` flag and install it manually:
