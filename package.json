@@ -19,5 +19,8 @@
     "hexo-renderer-sass": "^0.4.0",
     "hexo-renderer-stylus": "^1.1.0",
     "hexo-server": "^1.0.0"
+  },
+  "resolutions": {
+    "minimist": "0.2.1"
   }
 }
