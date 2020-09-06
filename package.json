@@ -21,6 +21,7 @@
     "hexo-server": "^1.0.0"
   },
   "resolutions": {
-    "minimist": "0.2.1"
+    "minimist": "1.2.5",
+    "bl": "2.2.1"
   }
 }
