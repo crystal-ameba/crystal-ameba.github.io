@@ -12,7 +12,6 @@ navbar_links:
     url: https://github.com/crystal-ameba/crystal-ameba.github.io/edit/site/source/_posts/release-v0.14.0.md
 ---
 
-
 Checkout the [release notes](https://github.com/crystal-ameba/ameba/releases/tag/v0.14.0)
 to see a full scope of changes. Here we will go through the most important changes.
 
@@ -44,7 +43,6 @@ it "works", focus: true do
   # ...
 end
 ```
-
 
 ### New Performance Rules
 

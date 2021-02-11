@@ -95,8 +95,7 @@ Next, nodes are iterated by rules.
 ### Rules
 
 Rule is a basic abstraction that iterates over that or other representation of source code and
-report issues if such are detected. All rules inherit from [`Rule::Base`](https://crystal-ameba.github.io/ameba/Ameba/Rule/Base.html)
-and always are structs.
+report issues if such are detected. All rules inherit from [`Rule::Base`](https://crystal-ameba.github.io/ameba/Ameba/Rule/Base.html).
 
 Most rules *visit* AST nodes. There is a couple of different *visitors* which pass needed nodes
 to the handler. Let's say there is a rule that disallows calling `puts` in a code.
@@ -105,7 +104,7 @@ A simple version of it could look like this:
 ```crystal
 module Ameba::Rule
   # A rule that disallows calls to `puts` method.
-  struct NoPuts ‹ Base
+  class NoPuts ‹ Base
     def test(source)
       AST::NodeVisitor.new self, source
     end

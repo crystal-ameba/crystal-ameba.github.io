@@ -56,14 +56,14 @@ the end application to be dependent on a specific version of Ameba.
 
 ### 2. Creating a rule
 
-Ameba enforces rules to be extended from `Rule::Base` entity and to be a struct.
+Ameba enforces rules to be extended from `Rule::Base` entity and to be a class.
 Let's create one:
 
 ```crystal src/ameba-docs.cr
 module Ameba::Rule
   VERSION = "0.1.0"
 
-  struct Docs ‹ Base
+  class Docs ‹ Base
     properties do
       description "Enforces public classes to be documented"
     end
