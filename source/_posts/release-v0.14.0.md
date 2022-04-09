@@ -28,6 +28,8 @@ require "./stuff"
 require "./thing" # duplicated require
 ```
 
+<!-- more -->
+
 #### [`Lint/SpecFocus`](/ameba/Ameba/Rule/Lint/SpecFocus.html)
 
 In specs `focus: true` is mainly used to focus on a spec item locally during development.
