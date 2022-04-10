@@ -18,9 +18,8 @@ to see a full scope of changes.
 
 ### Crystal compatibility
 
-This release introduces [Crystal 1.4](https://crystal-lang.org/2022/04/06/1.4.0-released.html) compatibility and breaks compatibility of Crystal `< 1.4`.
-
-Checkout the latest Ameba bugfix release [0.14.4](https://github.com/crystal-ameba/ameba/releases/tag/v0.14.4)
+This release introduces [Crystal 1.4](https://crystal-lang.org/2022/04/06/1.4.0-released.html) compatibility and **breaks compatible of previous versions**.
+Use the latest Ameba bugfix release [0.14.4](https://github.com/crystal-ameba/ameba/releases/tag/v0.14.4)
 if you need a compatibility of Crystal `1.3.x` or below.
 
 ### Autocorrection
@@ -31,7 +30,7 @@ The feature was originally developed in [#248](https://github.com/crystal-ameba/
 
 <!-- more -->
 
-Now if Ameba finds an issue which can be corrected, it adds a `[Correctable]` notice:
+Now if Ameba reports an issue which can be corrected, it adds a `[Correctable]` notice:
 
 ```sh
 $ ameba --only Style/RedundantBegin src/file_utils.cr
@@ -42,8 +41,8 @@ src/file_utils.cr:428:5 [Correctable]
   ^---^
 ```
 
-meaning, if you append a new `--fix` cli flag to the command, it will automatically
-correct the issue, adding `[Corrected]` notice:
+meaning, if you append a new `--fix` command-line flag to the command it will automatically
+correct the issue adding another notice `[Corrected]`:
 
 ```sh
 ameba --only Style/RedundantBegin src/file_utils.cr --fix
@@ -54,8 +53,8 @@ src/file_utils.cr:428:5 [Corrected]
   ^---^
 ```
 
-using a git diff we can quickly find Ameba that removed a reported redundant begin block
-and used the exception handler as part of a method instead:
+using a git diff we can quickly check that Ameba removed a reported redundant begin block
+and used the exception handler as part of a method:
 
 ```diff
 diff --git a/src/file_utils.cr b/src/file_utils.cr
@@ -109,7 +108,6 @@ x != y # or x = !y
 #### [`Lint/DebugCalls`](/ameba/Ameba/Rule/Lint/DebugCalls.html)
 
 A rule that disallows calls to debug-related methods.
-
 This is because we don't want debug calls accidentally being committed into our codebase.
 
 ```crystal
@@ -117,10 +115,12 @@ a = 2
 pp! a # error: Possibly forgotten debug-related `pp!` call detected
 a = a + 1
 ```
+Checkout the [API doc](/ameba/Ameba/Rule/Lint/DebugCalls.html) to see a full list of supported debug-related calls.
+
 #### [`Style/GuardClause`](/ameba/Ameba/Rule/Style/GuardClause.html)
 
 A rule that enforces a guard clause instead of wrapping the code inside
-a conditional expression
+a conditional expression.
 
 <div class="compare">
 {% example bad %}
@@ -185,3 +185,6 @@ Some explanation:
 * `^^^` - tracks location of the reported node
 * `error` - severity of the issue
 * `Shared variable 'foo' is used in fiber` - the reported error message
+
+These new matchers are used internally and of course can be used by Ameba extensions.
+Checkout the [doc](/ameba/Ameba/Spec/ExpectIssue.html) for more details.
