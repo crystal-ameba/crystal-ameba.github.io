@@ -12,7 +12,7 @@ comment:
     </sup>
   </p>
   <p align="center">
-    <a class='badge' href="https://github.com/crystal-ameba/ameba/actions?query=workflow%3ACI"><img src="https://github.com/crystal-ameba/ameba/workflows/CI/badge.svg"></a>
+    <a class='badge' href="https://github.com/crystal-ameba/ameba/actions/workflows/ci.yml"><img src="https://github.com/crystal-ameba/ameba/actions/workflows/ci.yml/badge.svg"></a>
     <a class='badge' href="https://github.com/crystal-ameba/ameba/releases"><img src="https://img.shields.io/github/release/crystal-ameba/ameba.svg?maxAge=360"></a>
     <a class='badge' href="https://github.com/crystal-ameba/ameba/blob/master/LICENSE"><img src="https://img.shields.io/github/license/crystal-ameba/ameba.svg"></a>
     <a class='badge' href="https://gitter.im/veelenga/ameba?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img src="https://badges.gitter.im/veelenga/ameba.svg"></a>
