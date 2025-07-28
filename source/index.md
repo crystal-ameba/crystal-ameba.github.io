@@ -43,7 +43,7 @@ comment:
   <div class="column is-half-mobile">
     <p><b>Recessed</b></p>
     <sup>
-      Reach editor support and available through third party code quality services.
+      Rich editor support and available through third party code quality services.
     </sup>
   </div>
 </div>
