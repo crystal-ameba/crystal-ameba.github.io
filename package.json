@@ -9,7 +9,7 @@
     "hexo": "~6.3.0",
     "hexo-all-minifier": "^0.5.7",
     "hexo-deployer-git": "^4.0.0",
-    "hexo-filter-github-emojis": "^3.0.4",
+    "hexo-filter-github-emojis": "^3.0.5",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
     "hexo-generator-index": "^3.0.0",
