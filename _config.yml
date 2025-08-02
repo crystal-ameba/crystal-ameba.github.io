@@ -37,7 +37,6 @@ article:
 menu:
   Blog: /blog
   Documentation: https://crystal-ameba.github.io/ameba/
-  Chat: https://gitter.im/veelenga/ameba
 
 # Search plugin settings.
 search:
