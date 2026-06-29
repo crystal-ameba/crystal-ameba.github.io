@@ -1,0 +1,121 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  tags?: string[];
+  category?: string;
+  slug: string;
+}
+
+const { title, description, pubDate, updatedDate, tags = [], category, slug } = Astro.props;
+
+const EDIT_BASE = 'https://github.com/crystal-ameba/crystal-ameba.github.io/edit/site/src/content/blog';
+const editUrl = `${EDIT_BASE}/${slug}.md`;
+
+const dateFormat = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="post-page" data-pagefind-body>
+    <div class="wrap">
+      <a class="back" href="/blog">← All posts</a>
+
+      <header class="post-header">
+        <div class="post-meta">
+          {category && <span class="cat" data-pagefind-filter="category">{category}</span>}
+          <time datetime={pubDate.toISOString()}>{dateFormat.format(pubDate)}</time>
+          {updatedDate && <span class="updated">Updated {dateFormat.format(updatedDate)}</span>}
+        </div>
+        <h1>{title}</h1>
+      </header>
+
+      <div class="prose">
+        <slot />
+      </div>
+
+      <footer class="post-foot">
+        <div class="tags">
+          {tags.map((tag) => <span class="tag">#{tag}</span>)}
+        </div>
+        <a class="edit" href={editUrl}>Edit this page on GitHub ↗</a>
+      </footer>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .post-page {
+    padding: 56px 0 40px;
+  }
+  .back {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .back:hover {
+    color: var(--ink);
+  }
+  .post-header {
+    max-width: var(--reading);
+    margin: 28px auto 40px;
+  }
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  .post-meta .cat {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 3px 10px;
+  }
+  .post-header h1 {
+    font-size: clamp(28px, 4.5vw, 42px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .post-foot {
+    max-width: var(--reading);
+    margin: 48px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .edit {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .edit:hover {
+    color: var(--ink);
+  }
+</style>

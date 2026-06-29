@@ -1,15 +1,10 @@
 ---
-title: Ameba v0.14.0 has been released 
-date: 2021-02-12 12:54:30
+title: "Ameba v0.14.0 has been released"
+description: "Checkout the release notes to see a full scope of changes. Here we will go through the most important changes."
+pubDate: 2021-02-12T12:54:30
+category: "Release announcement"
 tags:
   - releases
-category:
-  - Release announcement
-toc: true
-navbar_links:
-  Edit on GitHub:
-    icon: fas fa-edit
-    url: https://github.com/crystal-ameba/crystal-ameba.github.io/edit/site/source/_posts/release-v0.14.0.md
 ---
 
 Checkout the [release notes](https://github.com/crystal-ameba/ameba/releases/tag/v0.14.0)
@@ -27,8 +22,6 @@ require "./thing"
 require "./stuff"
 require "./thing" # duplicated require
 ```
-
-<!-- more -->
 
 #### [`Lint/SpecFocus`](/ameba/Ameba/Rule/Lint/SpecFocus.html)
 
@@ -172,7 +165,6 @@ matches.any?(&.is_a?(Regex::MatchData))
 ```
 
 And it should be written as this:
-
 
 ```crystal
 matches.any?(Regex::MatchData)

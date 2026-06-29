@@ -1,0 +1,69 @@
+---
+// Search is powered by Pagefind, which indexes the site at build time.
+// Results are available in `astro preview` and in production, not in `astro dev`.
+---
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search blog posts">
+  <div class="search-panel">
+    <div id="search-ui"></div>
+    <div class="hint">
+      <span>Search the blog</span>
+      <span>Esc to close</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  const overlay = document.getElementById('search-overlay');
+  const openBtn = document.getElementById('search-open');
+  let loaded = false;
+
+  function loadPagefind() {
+    if (loaded || !overlay) return;
+    loaded = true;
+
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = '/pagefind/pagefind-ui.css';
+    document.head.appendChild(css);
+
+    const script = document.createElement('script');
+    script.src = '/pagefind/pagefind-ui.js';
+    script.onload = () => {
+      new window.PagefindUI({ element: '#search-ui', showSubResults: true, showImages: false });
+      focusInput();
+    };
+    document.body.appendChild(script);
+  }
+
+  function focusInput() {
+    const input = overlay?.querySelector('input');
+    if (input instanceof HTMLInputElement) input.focus();
+  }
+
+  function open() {
+    if (!overlay) return;
+    overlay.setAttribute('open', '');
+    loadPagefind();
+    setTimeout(focusInput, 60);
+  }
+
+  function close() {
+    overlay?.removeAttribute('open');
+  }
+
+  openBtn?.addEventListener('click', open);
+  overlay?.addEventListener('click', (event) => {
+    if (event.target === overlay) close();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    const active = document.activeElement;
+    const typing = active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA');
+    if (event.key === 'Escape') close();
+    if (event.key === '/' && !typing) {
+      event.preventDefault();
+      open();
+    }
+  });
+</script>

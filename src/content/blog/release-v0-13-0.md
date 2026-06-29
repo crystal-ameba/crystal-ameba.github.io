@@ -1,15 +1,10 @@
 ---
-title: Ameba v0.13.0 has been released 
-date: 2020-06-22 12:54:30
+title: "Ameba v0.13.0 has been released"
+description: "A very small release that supports Crystal 0.35.0 and eliminates the deprecation messages which are related to yaml serialization."
+pubDate: 2020-06-22T12:54:30
+category: "Release announcement"
 tags:
   - releases
-category:
-  - Release announcement
-toc: true
-navbar_links:
-  Edit on GitHub:
-    icon: fas fa-edit
-    url: https://github.com/crystal-ameba/crystal-ameba.github.io/edit/site/source/_posts/release-v0.13.0.md
 ---
 
 A very small release that supports [Crystal 0.35.0](https://github.com/crystal-lang/crystal/releases/tag/0.35.0)
@@ -17,8 +12,6 @@ and eliminates the deprecation messages which are related to yaml serialization.
 
 Checkout the [release notes](https://github.com/crystal-ameba/ameba/releases/tag/v0.13.0)
 to see a full scope of changes.
-
-<!-- more -->
 
 ### Move to `YAML::Serializable`
 
@@ -36,7 +29,6 @@ of Ameba still works with Crystal `0.35.0` however, users might see the
 deprecation warning while compiling the binary.
 
 ### New Rules
-
 
 #### [`Lint/BadDirective`](/ameba/Ameba/Rule/Lint/BadDirective.html)
 

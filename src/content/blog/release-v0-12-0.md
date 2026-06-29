@@ -1,21 +1,14 @@
 ---
-title: Ameba v0.12.0 has been released 
-date: 2020-03-27 12:54:30
+title: "Ameba v0.12.0 has been released"
+description: "Checkout the release notes to see a full scope of changes. Here we will go through the most important changes."
+pubDate: 2020-03-27T12:54:30
+category: "Release announcement"
 tags:
   - releases
-category:
-  - Release announcement
-toc: true
-navbar_links:
-  Edit on GitHub:
-    icon: fas fa-edit
-    url: https://github.com/crystal-ameba/crystal-ameba.github.io/edit/site/source/_posts/release-v0.12.0.md
 ---
 
 Checkout the [release notes](https://github.com/crystal-ameba/ameba/releases/tag/v0.12.0)
 to see a full scope of changes. Here we will go through the most important changes.
-
-<!-- more -->
 
 ### Globs and Excluded configuration options
 

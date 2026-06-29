@@ -1,0 +1,68 @@
+---
+const DOCS_URL = 'https://crystal-ameba.github.io/ameba/';
+const GITHUB_URL = 'https://github.com/crystal-ameba/ameba';
+
+const links = [
+  { label: 'Features', href: '/#features', hideSm: true },
+  { label: 'Docs', href: DOCS_URL, ext: true },
+  { label: 'Blog', href: '/blog' },
+  { label: 'GitHub', href: GITHUB_URL, ext: true },
+];
+
+const path = Astro.url.pathname;
+const isCurrent = (href: string) => href === '/blog' && path.startsWith('/blog');
+---
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Ameba home">
+      <img src="/ameba-logo.png" alt="ameba" width="49" height="20" />
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class:list={[{ ext: link.ext, 'hide-sm': link.hideSm }]}
+            aria-current={isCurrent(link.href) ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <button class="icon-btn" id="search-open" aria-label="Search blog">⌕</button>
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">◐</button>
+    </nav>
+  </div>
+</header>
+
+<style>
+  @media (max-width: 620px) {
+    .hide-sm {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+
+  const syncGlyph = () => {
+    if (toggle) {
+      toggle.textContent = root.getAttribute('data-theme') === 'dark' ? '◑' : '◐';
+    }
+  };
+  syncGlyph();
+
+  toggle?.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try {
+      localStorage.setItem('theme', next);
+    } catch (e) {
+      /* storage unavailable — theme still applies for the session */
+    }
+    syncGlyph();
+  });
+</script>
