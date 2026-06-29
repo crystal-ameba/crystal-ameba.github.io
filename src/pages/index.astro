@@ -49,33 +49,37 @@ const dateFormat = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 's
 
 <BaseLayout>
   <section class="hero wrap">
-    <p class="eyebrow fade">Static code analysis · Crystal</p>
-    <img class="logo-mark fade d1" src="/ameba-logo.png" alt="ameba" width="520" height="210" />
-    <h1 class="fade d2">Keep your Crystal code clean.</h1>
-    <p class="lede fade d2">
-      A fast, modular linter for the Crystal programming language. Hundreds of rules, built-in
-      autocorrection, and editor support — shipped as a single binary.
-    </p>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow fade">Static code analysis · Crystal</p>
+        <img class="logo-mark fade d1" src="/ameba-logo.png" alt="ameba" width="300" height="121" />
+        <h1 class="fade d2">Keep your Crystal code clean.</h1>
+        <p class="lede fade d2">
+          A fast, modular linter for Crystal — hundreds of rules, autocorrection and editor
+          support, shipped as a single binary.
+        </p>
 
-    <div class="install fade d3">
-      <div class="install-head">
-        <span class="install-file">shard.yml</span>
-        <button class="copy-btn" id="copy-install" data-copy={SHARD_SNIPPET}>Copy</button>
+        <div class="install fade d3">
+          <div class="install-head">
+            <span class="install-file">shard.yml</span>
+            <button class="copy-btn" id="copy-install" data-copy={SHARD_SNIPPET}>Copy</button>
+          </div>
+          <pre><code>{SHARD_SNIPPET}</code></pre>
+        </div>
+        <p class="install-note fade d3">
+          Then <code>shards install &amp;&amp; bin/ameba</code>. Also on Homebrew, Docker and from source.
+        </p>
+
+        <div class="cta-row fade d4">
+          <a class="btn btn-primary" href={DOCS_URL}>Read the docs →</a>
+          <a class="btn btn-ghost" href={GITHUB_URL}>★ Star on GitHub</a>
+        </div>
       </div>
-      <pre><code>{SHARD_SNIPPET}</code></pre>
-    </div>
-    <p class="install-note fade d3">
-      Then <code>shards install &amp;&amp; bin/ameba</code>. Also on Homebrew, Docker and from source.
-    </p>
 
-    <div class="cta-row fade d4">
-      <a class="btn btn-primary" href={DOCS_URL}>Read the docs →</a>
-      <a class="btn btn-ghost" href={GITHUB_URL}>★ Star on GitHub</a>
+      <div class="hero-demo fade d4">
+        <Terminal />
+      </div>
     </div>
-  </section>
-
-  <section class="stage wrap">
-    <Terminal />
   </section>
 
   <section class="section" id="features">
@@ -135,35 +139,47 @@ const dateFormat = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 's
 
 <style>
   .hero {
-    padding: 92px 0 40px;
+    padding: 48px 0 60px;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 38px;
+    align-items: center;
+  }
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    min-width: 0;
   }
   .logo-mark {
-    width: min(480px, 80%);
+    width: min(300px, 72%);
     height: auto;
-    margin: 22px auto 30px;
+    margin: 4px 0 22px;
     filter: var(--logo-filter, none);
   }
   .hero h1 {
-    font-size: clamp(30px, 5vw, 50px);
-    line-height: 1.05;
+    font-size: clamp(28px, 4.4vw, 40px);
+    line-height: 1.06;
     letter-spacing: -0.02em;
     font-weight: 700;
-    margin: 0 auto 18px;
-    max-width: 16ch;
+    margin: 0 0 16px;
+    max-width: 18ch;
     text-wrap: balance;
   }
   .lede {
-    font-size: clamp(16px, 2.2vw, 19px);
+    font-size: clamp(15.5px, 1.6vw, 18px);
     color: var(--muted);
-    max-width: 56ch;
-    margin: 0 auto 30px;
+    max-width: 46ch;
+    margin: 0 0 26px;
     text-wrap: balance;
   }
 
   .install {
+    width: 100%;
     max-width: 360px;
-    margin: 0 auto;
     text-align: left;
     border: 1px solid var(--line);
     border-radius: 12px;
@@ -206,7 +222,7 @@ const dateFormat = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 's
   .install-note {
     font-size: 13.5px;
     color: var(--muted);
-    margin: 16px auto 0;
+    margin: 14px 0 0;
   }
   .install-note code {
     font-family: var(--mono);
@@ -218,11 +234,31 @@ const dateFormat = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 's
     gap: 12px;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 28px;
+    margin-top: 26px;
   }
 
-  .stage {
-    padding: 36px 0 80px;
+  .hero-demo {
+    min-width: 0;
+  }
+
+  @media (min-width: 920px) {
+    .hero {
+      padding: 60px 0 76px;
+    }
+    .hero-grid {
+      grid-template-columns: 1.04fr 1fr;
+      gap: 56px;
+    }
+    .hero-copy {
+      align-items: flex-start;
+      text-align: left;
+    }
+    .logo-mark {
+      margin: 2px 0 20px;
+    }
+    .cta-row {
+      justify-content: flex-start;
+    }
   }
 
   .grid {
@@ -327,6 +363,17 @@ const dateFormat = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 's
     .grid,
     .stats {
       grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 520px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+    .post {
+      gap: 16px;
+    }
+    .post .date {
+      min-width: 74px;
     }
   }
 </style>
