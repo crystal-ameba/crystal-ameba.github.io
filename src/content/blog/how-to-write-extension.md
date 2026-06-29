@@ -56,7 +56,7 @@ Let's create one:
 module Ameba::Rule
   VERSION = "0.1.0"
 
-  class Docs ‹ Base
+  class Docs < Base
     properties do
       description "Enforces public classes to be documented"
     end

@@ -80,7 +80,7 @@ iterations. For example:
 n = 0
 channel = Channel(Int32).new
 
-while n ‹ 3
+while n < 3
   n = n + 1
   spawn { channel.send n }
 end
@@ -98,7 +98,7 @@ To solve it, the code above can be written to the following:
 n = 0
 channel = Channel(Int32).new
 
-while n ‹ 3
+while n < 3
   n = n + 1
 + m = n
 - spawn do { channel.send n }
@@ -143,7 +143,7 @@ And these samples are valid and not reported:
 
 ```crystal
 a = 1
-while a ‹ 10
+while a < 10
   a += 1
 end
 

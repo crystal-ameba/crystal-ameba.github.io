@@ -97,7 +97,7 @@ A simple version of it could look like this:
 ```crystal
 module Ameba::Rule
   # A rule that disallows calls to `puts` method.
-  class NoPuts ‹ Base
+  class NoPuts < Base
     def test(source)
       AST::NodeVisitor.new self, source
     end
