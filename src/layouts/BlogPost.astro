@@ -1,5 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import { EDIT_BASE_URL } from '../consts';
+import { formatDate } from '../lib/date';
 
 interface Props {
   title: string;
@@ -13,10 +15,7 @@ interface Props {
 
 const { title, description, pubDate, updatedDate, tags = [], category, slug } = Astro.props;
 
-const EDIT_BASE = 'https://github.com/crystal-ameba/crystal-ameba.github.io/edit/site/src/content/blog';
-const editUrl = `${EDIT_BASE}/${slug}.md`;
-
-const dateFormat = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+const editUrl = `${EDIT_BASE_URL}/${slug}.md`;
 ---
 
 <BaseLayout title={title} description={description} ogType="article">
@@ -27,8 +26,8 @@ const dateFormat = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'l
       <header class="post-header">
         <div class="post-meta">
           {category && <span class="cat" data-pagefind-filter="category">{category}</span>}
-          <time datetime={pubDate.toISOString()}>{dateFormat.format(pubDate)}</time>
-          {updatedDate && <span class="updated">Updated {dateFormat.format(updatedDate)}</span>}
+          <time datetime={pubDate.toISOString()}>{formatDate(pubDate, 'long')}</time>
+          {updatedDate && <span class="updated">Updated {formatDate(updatedDate, 'long')}</span>}
         </div>
         <h1>{title}</h1>
       </header>

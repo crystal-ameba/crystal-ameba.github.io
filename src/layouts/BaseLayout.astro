@@ -3,9 +3,7 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import SearchModal from '../components/SearchModal.astro';
-
-const SITE_NAME = 'Ameba';
-const DEFAULT_DESC = 'A static code analysis tool for the Crystal programming language.';
+import { SITE_NAME, SITE_TITLE, SITE_DESCRIPTION, BLOG_TITLE } from '../consts';
 
 interface Props {
   title?: string;
@@ -13,8 +11,8 @@ interface Props {
   ogType?: string;
 }
 
-const { title, description = DEFAULT_DESC, ogType = 'website' } = Astro.props;
-const pageTitle = title ? `${title} · ${SITE_NAME}` : `${SITE_NAME} — Crystal code linter`;
+const { title, description = SITE_DESCRIPTION, ogType = 'website' } = Astro.props;
+const pageTitle = title ? `${title} · ${SITE_NAME}` : SITE_TITLE;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -36,7 +34,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="alternate" type="application/rss+xml" title="Ameba blog" href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title={BLOG_TITLE} href="/rss.xml" />
 
     <script is:inline>
       (function () {

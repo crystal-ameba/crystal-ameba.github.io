@@ -1,17 +1,25 @@
 ---
+import {
+  SITE_DESCRIPTION,
+  DOCS_URL,
+  GITHUB_URL,
+  GITHUB_RELEASES_URL,
+  CONTRIBUTING_URL,
+} from '../consts';
+
 const project = [
-  { label: 'Documentation', href: 'https://crystal-ameba.github.io/ameba/' },
-  { label: 'Rules reference', href: 'https://crystal-ameba.github.io/ameba/' },
-  { label: 'Releases', href: 'https://github.com/crystal-ameba/ameba/releases' },
+  { label: 'Documentation', href: DOCS_URL },
+  { label: 'Rules reference', href: DOCS_URL },
+  { label: 'Releases', href: GITHUB_RELEASES_URL },
 ];
 
 const community = [
-  { label: 'GitHub', href: 'https://github.com/crystal-ameba/ameba' },
+  { label: 'GitHub', href: GITHUB_URL },
   { label: 'Blog', href: '/blog' },
-  { label: 'Contributing', href: 'https://github.com/crystal-ameba/ameba/blob/master/CONTRIBUTING.md' },
+  { label: 'Contributing', href: CONTRIBUTING_URL },
 ];
 
-const year = 2026;
+const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
@@ -19,7 +27,7 @@ const year = 2026;
     <div class="foot">
       <div class="col brand-col">
         <img src="/ameba-logo.png" alt="ameba" width="54" height="22" />
-        <p>A static code analysis tool for the Crystal programming language.</p>
+        <p>{SITE_DESCRIPTION}</p>
       </div>
       <div class="col">
         <h4>Project</h4>

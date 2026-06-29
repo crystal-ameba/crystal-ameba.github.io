@@ -1,10 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Terminal from '../components/Terminal.astro';
-
-const DOCS_URL = 'https://crystal-ameba.github.io/ameba/';
-const GITHUB_URL = 'https://github.com/crystal-ameba/ameba';
+import { DOCS_URL, GITHUB_URL } from '../consts';
+import { getSortedPosts } from '../lib/posts';
+import { formatDate } from '../lib/date';
 
 const SHARD_SNIPPET = `development_dependencies:
   ameba:
@@ -40,11 +39,7 @@ const stats = [
   { n: 'MIT', l: 'Open source license' },
 ];
 
-const posts = (await getCollection('blog'))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
-
-const dateFormat = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short' });
+const posts = (await getSortedPosts()).slice(0, 3);
 ---
 
 <BaseLayout>
@@ -125,7 +120,7 @@ const dateFormat = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 's
         {
           posts.map((post) => (
             <a class="post" href={`/blog/${post.id}`}>
-              <span class="date">{dateFormat.format(post.data.pubDate)}</span>
+              <span class="date">{formatDate(post.data.pubDate, 'short')}</span>
               <span class="t">{post.data.title}</span>
               <span class="arr">→</span>
             </a>

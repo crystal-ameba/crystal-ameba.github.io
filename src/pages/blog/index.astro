@@ -1,18 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { BLOG_DESCRIPTION } from '../../consts';
+import { getSortedPosts } from '../../lib/posts';
+import { formatDate } from '../../lib/date';
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
-
-const dateFormat = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+const posts = await getSortedPosts();
 ---
 
-<BaseLayout
-  title="Blog"
-  description="Release announcements and articles about the Ameba linter for Crystal."
->
+<BaseLayout title="Blog" description={BLOG_DESCRIPTION}>
   <div class="wrap blog-index">
     <header class="blog-head">
       <p class="eyebrow">Blog</p>
@@ -25,7 +20,7 @@ const dateFormat = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 's
         posts.map((post) => (
           <a class="entry" href={`/blog/${post.id}`}>
             <div class="entry-meta">
-              <time datetime={post.data.pubDate.toISOString()}>{dateFormat.format(post.data.pubDate)}</time>
+              <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
               {post.data.category && <span class="cat">{post.data.category}</span>}
             </div>
             <h2>{post.data.title}</h2>
