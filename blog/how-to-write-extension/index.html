@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><title>Writing an extension for Ameba linter · Ameba</title><meta name="description" content="It was announced recently that Ameba is going to be extendable. That means any developer can create his own extension and use together with Ameba's engine."><link rel="canonical" href="https://crystal-ameba.github.io/blog/how-to-write-extension/"><meta name="generator" content="Astro v7.0.4"><meta property="og:type" content="article"><meta property="og:site_name" content="Ameba"><meta property="og:title" content="Writing an extension for Ameba linter · Ameba"><meta property="og:description" content="It was announced recently that Ameba is going to be extendable. That means any developer can create his own extension and use together with Ameba's engine."><meta property="og:url" content="https://crystal-ameba.github.io/blog/how-to-write-extension/"><meta property="og:image" content="https://crystal-ameba.github.io/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="A static code analysis tool for the Crystal programming language."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://crystal-ameba.github.io/og.png"><link rel="alternate" type="application/rss+xml" title="Ameba blog" href="/rss.xml"><script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script><link rel="stylesheet" href="/_astro/BaseLayout.spFYFZ5z.css"><style>.post-page[data-astro-cid-tldeq5d5]{padding:56px 0 40px}.back[data-astro-cid-tldeq5d5]{font-family:var(--mono);color:var(--muted);font-size:13px;text-decoration:none}.back[data-astro-cid-tldeq5d5]:hover{color:var(--ink)}.post-header[data-astro-cid-tldeq5d5]{max-width:var(--reading);margin:28px auto 40px}.post-meta[data-astro-cid-tldeq5d5]{font-family:var(--mono);color:var(--muted);flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:18px;font-size:12.5px;display:flex}.post-meta[data-astro-cid-tldeq5d5] .cat[data-astro-cid-tldeq5d5]{text-transform:uppercase;letter-spacing:.1em;border:1px solid var(--line);border-radius:999px;padding:3px 10px}.post-header[data-astro-cid-tldeq5d5] h1[data-astro-cid-tldeq5d5]{letter-spacing:-.02em;text-wrap:balance;margin:0;font-size:clamp(28px,4.5vw,42px);line-height:1.1}.post-foot[data-astro-cid-tldeq5d5]{max-width:var(--reading);border-top:1px solid var(--line);flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;margin:48px auto 0;padding-top:24px;display:flex}.tags[data-astro-cid-tldeq5d5]{flex-wrap:wrap;gap:8px;display:flex}.tag[data-astro-cid-tldeq5d5]{font-family:var(--mono);color:var(--muted);font-size:13px}.edit[data-astro-cid-tldeq5d5]{font-family:var(--mono);color:var(--muted);font-size:13px;text-decoration:none}.edit[data-astro-cid-tldeq5d5]:hover{color:var(--ink)}
+</style></head><body><header class="site-header" data-astro-cid-wpvy4v7s><div class="wrap nav" data-astro-cid-wpvy4v7s><a class="brand" href="/" aria-label="Ameba home" data-astro-cid-wpvy4v7s><img src="/ameba-logo.png" alt="ameba" width="49" height="20" data-astro-cid-wpvy4v7s></a><nav class="nav-links" aria-label="Primary" data-astro-cid-wpvy4v7s><a href="/#features" class="hide-sm" data-astro-cid-wpvy4v7s>Features</a><a href="https://crystal-ameba.github.io/ameba/" class="ext" data-astro-cid-wpvy4v7s>Docs</a><a href="/blog" aria-current="page" data-astro-cid-wpvy4v7s>Blog</a><a href="https://github.com/crystal-ameba/ameba" class="ext" data-astro-cid-wpvy4v7s>GitHub</a><button class="icon-btn" id="search-open" aria-label="Search blog" data-astro-cid-wpvy4v7s>⌕</button><button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme" data-astro-cid-wpvy4v7s>◐</button></nav></div></header><script type="module">var e=document.documentElement,t=document.getElementById(`theme-toggle`),n=()=>{t&&(t.textContent=e.getAttribute(`data-theme`)===`dark`?`◑`:`◐`)};n(),t?.addEventListener(`click`,()=>{let t=e.getAttribute(`data-theme`)===`dark`?`light`:`dark`;e.setAttribute(`data-theme`,t);try{localStorage.setItem(`theme`,t)}catch{}n()});</script><main><article class="post-page" data-pagefind-body data-astro-cid-tldeq5d5><div class="wrap" data-astro-cid-tldeq5d5><a class="back" href="/blog" data-astro-cid-tldeq5d5>← All posts</a><header class="post-header" data-astro-cid-tldeq5d5><div class="post-meta" data-astro-cid-tldeq5d5><span class="cat" data-pagefind-filter="category" data-astro-cid-tldeq5d5>Tutorial</span><time datetime="2019-07-22T15:56:53.000Z" data-astro-cid-tldeq5d5>July 22, 2019</time></div><h1 data-astro-cid-tldeq5d5>Writing an extension for Ameba linter</h1></header><div class="prose" data-astro-cid-tldeq5d5><p>It was <a href="https://github.com/crystal-ameba/ameba/pull/112">announced recently</a> that Ameba
+is going to be extendable.
+That means any developer can create his own extension and use together
+with Ameba’s engine.</p>
+<p>Here we will be following through the steps on how to create such an extension and use it.</p>
+<p>It is going to be <code>crystal-docs</code> extension, where a new rule will be implemented
+which will <strong>enforce classes to have documentation</strong>.</p>
+<h3 id="1-new-extension-skeleton">1. New extension skeleton</h3>
+<p>Creating a new Ameba extension is as simple as creating a new Crystal library:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> crystal</span><span style="color:#9ECBFF"> init</span><span style="color:#9ECBFF"> lib</span><span style="color:#9ECBFF"> crystal-docs</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> crystal-docs</span></span></code></pre>
+<p>and adding Ameba as a dependency to <code>shard.yml</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yml"><code><span class="line"><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ameba-docs</span></span>
+<span class="line"><span style="color:#85E89D">version</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">0.1.0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">authors</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#9ECBFF">Vitalii Elenhaupt &#x3C;velenhaupt@gmail.com></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">crystal</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">0.29.0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">license</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">MIT</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">development_dependencies</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  ameba</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    github</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">crystal-ameba/ameba</span></span>
+<span class="line"><span style="color:#85E89D">    version</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">~> 0.10.0</span></span></code></pre>
+<p>It needs to be a development dependency because we don’t want to force
+the end application to be dependent on a specific version of Ameba.</p>
+<h3 id="2-creating-a-rule">2. Creating a rule</h3>
+<p>Ameba enforces rules to be extended from <code>Rule::Base</code> entity and to be a class.
+Let’s create one:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#F97583">module</span><span style="color:#B392F0"> Ameba::Rule</span></span>
+<span class="line"><span style="color:#79B8FF">  VERSION</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "0.1.0"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  class</span><span style="color:#B392F0"> Docs &#x3C; Base</span></span>
+<span class="line"><span style="color:#E1E4E8">    properties </span><span style="color:#F97583">do</span></span>
+<span class="line"><span style="color:#E1E4E8">      description </span><span style="color:#9ECBFF">"Enforces public classes to be documented"</span></span>
+<span class="line"><span style="color:#F97583">    end</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">    MSG</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "Class must be documented"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    def</span><span style="color:#B392F0"> test</span><span style="color:#E1E4E8">(source)</span></span>
+<span class="line"><span style="color:#79B8FF">      AST</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">NodeVisitor</span><span style="color:#E1E4E8">.new </span><span style="color:#79B8FF">self</span><span style="color:#E1E4E8">, source</span></span>
+<span class="line"><span style="color:#F97583">    end</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    def</span><span style="color:#B392F0"> test</span><span style="color:#E1E4E8">(source, node : </span><span style="color:#79B8FF">Crystal</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">ClassDef</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#F97583"> unless</span><span style="color:#E1E4E8"> node.visibility.public?</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">      doc </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> node.doc</span></span>
+<span class="line"><span style="color:#B392F0">      issue_for</span><span style="color:#E1E4E8">(node, </span><span style="color:#79B8FF">MSG</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">if</span><span style="color:#E1E4E8"> doc</span><span style="color:#F97583">.nil?</span><span style="color:#F97583"> ||</span><span style="color:#E1E4E8"> doc.empty?</span></span>
+<span class="line"><span style="color:#F97583">    end</span></span>
+<span class="line"><span style="color:#F97583">  end</span></span>
+<span class="line"><span style="color:#F97583">end</span></span></code></pre>
+<p>A couple of things are defined here:</p>
+<ol>
+<li><code>properties</code> defines a dsl for configurable rule properties. We only have a rule description.</li>
+<li><code>MSG</code> defines a constant for the error message to be reported.</li>
+<li><code>def test(source)</code> is an entry point of the rule. Here the method accepts a source file and
+passes it to the node visitor, which allows us filter the <code>ClassDef</code> nodes in the method below.</li>
+<li><code>def test(source, node : Crystal::ClassDef)</code> is a method which does an actual job. The implementation is pretty self explained: it filters out node, which have public visibility and do not have (or have empty) docs.</li>
+</ol>
+<p>The extension is pretty much done. Let’s try to use it.</p>
+<h3 id="3-plug-in-the-extension">3. Plug-in the extension</h3>
+<p>Somewhere in a separate project we want to plug-in the ameba engine and the extension we made.</p>
+<p>To do that, we need to add a development dependencies for both of this projects:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yml"><code><span class="line"><span style="color:#85E89D">development_dependencies</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  ameba</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    github</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">crystal-ameba/ameba</span></span>
+<span class="line"><span style="color:#85E89D">  ameba-docs</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    github</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">crystal-ameba/ameba-docs-rule-example</span></span></code></pre>
+<p>Then we install those deps:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> shards</span><span style="color:#9ECBFF"> install</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Fetching</span><span style="color:#9ECBFF"> https://github.com/veelenga/ameba.git</span></span>
+<span class="line"><span style="color:#B392F0">Fetching</span><span style="color:#9ECBFF"> https://github.com/crystal-ameba/ameba-docs-rule-example.git</span></span>
+<span class="line"><span style="color:#B392F0">Installing</span><span style="color:#9ECBFF"> ameba</span><span style="color:#E1E4E8"> (0.10.0 </span><span style="color:#9ECBFF">at</span><span style="color:#9ECBFF"> master</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0">Installing</span><span style="color:#9ECBFF"> ameba-docs</span><span style="color:#E1E4E8"> (0.1.0 </span><span style="color:#9ECBFF">at</span><span style="color:#9ECBFF"> master</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<p>It will create <code>bin/ameba.cr</code> file which is needed to built the ameba together with modules.</p>
+<p>First, we need to enable the module:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#F97583">require</span><span style="color:#9ECBFF"> "ameba/cli"</span><span style="color:#6A737D">  # requires Ameba's cli</span></span>
+<span class="line"><span style="color:#F97583">require</span><span style="color:#9ECBFF"> "ameba-docs"</span><span style="color:#6A737D"> # requires ameba docs extension</span></span></code></pre>
+<p>And now we are ready to build and run it:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> crystal</span><span style="color:#9ECBFF"> build</span><span style="color:#9ECBFF"> bin/ameba.cr</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> bin/ameba</span></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> bin/ameba</span></span></code></pre>
+<p>The results are displayed below. <code>crystal-docs</code> extension in action:</p>
+<p><img src="/gallery/posts/how-to-write-extension/crystal-docs-ext.png" alt=""></p>
+<h2 id="wrap-up">Wrap up</h2>
+<p>We made a small Ameba extension and used that in a third-party project.
+Of course, this was just an example of the rule and not a production ready
+solution. However, it is a perfect example of the power of Ameba’s modules.</p>
+<p>The sources <a href="https://github.com/crystal-ameba/ameba-docs-rule-example">are availabe on Github</a>.</p>
+</div><footer class="post-foot" data-astro-cid-tldeq5d5><div class="tags" data-astro-cid-tldeq5d5><span class="tag" data-astro-cid-tldeq5d5>#extension</span></div><a class="edit" href="https://github.com/crystal-ameba/crystal-ameba.github.io/edit/site/src/content/blog/how-to-write-extension.md" data-astro-cid-tldeq5d5>Edit this page on GitHub ↗</a></footer></div></article></main><footer class="site-footer"><div class="wrap"><div class="foot"><div class="col brand-col"><img src="/ameba-logo.png" alt="ameba" width="54" height="22"><p>A static code analysis tool for the Crystal programming language.</p></div><div class="col"><h4>Project</h4><a href="https://crystal-ameba.github.io/ameba/">Documentation</a><a href="https://crystal-ameba.github.io/ameba/">Rules reference</a><a href="https://github.com/crystal-ameba/ameba/releases">Releases</a></div><div class="col"><h4>Community</h4><a href="https://github.com/crystal-ameba/ameba">GitHub</a><a href="/blog">Blog</a><a href="https://github.com/crystal-ameba/ameba/blob/master/CONTRIBUTING.md">Contributing</a></div></div><div class="legal"><span>© 2026 Ameba contributors · MIT licensed</span><span>Built with Crystal</span></div></div></footer><div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search blog posts"><div class="search-panel"><div id="search-ui"></div><div class="hint"><span>Search the blog</span><span>Esc to close</span></div></div></div><script type="module">var e=document.getElementById(`search-overlay`),t=document.getElementById(`search-open`),n=!1;function r(){if(n||!e)return;n=!0;let t=document.createElement(`link`);t.rel=`stylesheet`,t.href=`/pagefind/pagefind-ui.css`,document.head.appendChild(t);let r=document.createElement(`script`);r.src=`/pagefind/pagefind-ui.js`,r.onload=()=>{new window.PagefindUI({element:`#search-ui`,showSubResults:!0,showImages:!1}),i()},document.body.appendChild(r)}function i(){let t=e?.querySelector(`input`);t instanceof HTMLInputElement&&t.focus()}function a(){e&&(e.setAttribute(`open`,``),r(),setTimeout(i,60))}function o(){e?.removeAttribute(`open`)}t?.addEventListener(`click`,a),e?.addEventListener(`click`,t=>{t.target===e&&o()}),document.addEventListener(`keydown`,e=>{let t=document.activeElement,n=t&&(t.tagName===`INPUT`||t.tagName===`TEXTAREA`);e.key===`Escape`&&o(),e.key===`/`&&!n&&(e.preventDefault(),a())});</script></body></html>
