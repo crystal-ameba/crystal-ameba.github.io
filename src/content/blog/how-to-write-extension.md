@@ -1,15 +1,10 @@
 ---
-title: Writing an extension for Ameba linter
-date: 2019-07-22 15:56:53
+title: "Writing an extension for Ameba linter"
+description: "It was announced recently that Ameba is going to be extendable. That means any developer can create his own extension and use together with Ameba's engine."
+pubDate: 2019-07-22T15:56:53
+category: "Tutorial"
 tags:
- - extension
-category:
- - Tutorial
-toc: true
-navbar_links:
-  Edit on GitHub:
-    icon: fas fa-edit
-    url: https://github.com/crystal-ameba/crystal-ameba.github.io/edit/site/source/_posts/how-to-write-extension.md
+  - extension
 ---
 
 It was [announced recently](https://github.com/crystal-ameba/ameba/pull/112) that Ameba
@@ -18,8 +13,6 @@ That means any developer can create his own extension and use together
 with Ameba's engine.
 
 Here we will be following through the steps on how to create such an extension and use it.
-
-<!-- more -->
 
 It is going to be `crystal-docs` extension, where a new rule will be implemented
 which will **enforce classes to have documentation**.
@@ -63,7 +56,7 @@ Let's create one:
 module Ameba::Rule
   VERSION = "0.1.0"
 
-  class Docs ‹ Base
+  class Docs < Base
     properties do
       description "Enforces public classes to be documented"
     end
@@ -137,15 +130,12 @@ $ bin/ameba
 
 The results are displayed below. `crystal-docs` extension in action:
 
-
-{% img /gallery/posts/how-to-write-extension/crystal-docs-ext.png %}
-
+![](/gallery/posts/how-to-write-extension/crystal-docs-ext.png)
 
 ## Wrap up
 
 We made a small Ameba extension and used that in a third-party project.
 Of course, this was just an example of the rule and not a production ready
 solution. However, it is a perfect example of the power of Ameba's modules.
-
 
 The sources [are availabe on Github](https://github.com/crystal-ameba/ameba-docs-rule-example).

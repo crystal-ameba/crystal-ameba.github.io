@@ -1,15 +1,10 @@
 ---
-title: Ameba v1.0.0 has been released
-date: 2021-10-04 12:54:30
+title: "Ameba v1.0.0 has been released"
+description: "This release includes a long-waiting autocorrection feature, new rules and several improvements. Checkout the release notes to see a full scope of changes."
+pubDate: 2021-10-04T12:54:30
+category: "Release announcement"
 tags:
   - releases
-category:
-  - Release announcement
-toc: true
-navbar_links:
-  Edit on GitHub:
-    icon: fas fa-edit
-    url: https://github.com/crystal-ameba/crystal-ameba.github.io/edit/site/source/_posts/release-v1.0.0.md
 ---
 
 This release includes a long-waiting autocorrection feature, new rules and several improvements.
@@ -24,11 +19,8 @@ if you need a compatibility of Crystal `1.3.x` or below.
 
 ### Autocorrection
 
-
 Thanks to community, there is a huge step forward implementing autocorrection for Ameba.
 The feature was originally developed in [#248](https://github.com/crystal-ameba/ameba/pull/248) and afterwards improved in a several cycles.
-
-<!-- more -->
 
 Now if Ameba reports an issue which can be corrected, it adds a `[Correctable]` notice:
 
@@ -85,16 +77,20 @@ during refactoring.
 A tiny rule that checks for mistyped shorthand assignments.
 
 <div class="compare">
-{% example bad %}
+
+<div class="example bad">
+
 Bad
 ```crystal
 x =- y
 x =+ y
 x =! y
 ```
-{% endexample %}
 
-{% example good %}
+</div>
+
+<div class="example good">
+
 Good
 
 ```crystal
@@ -102,7 +98,9 @@ x -= y # or x = -y
 x += y # or x = +y
 x != y # or x = !y
 ```
-{% endexample %}
+
+</div>
+
 </div>
 
 #### [`Lint/DebugCalls`](/ameba/Ameba/Rule/Lint/DebugCalls.html)
@@ -123,7 +121,9 @@ A rule that enforces a guard clause instead of wrapping the code inside
 a conditional expression.
 
 <div class="compare">
-{% example bad %}
+
+<div class="example bad">
+
 Bad
 
 ```crystal
@@ -133,9 +133,11 @@ def test
   end
 end
 ```
-{% endexample %}
 
-{% example good %}
+</div>
+
+<div class="example good">
+
 Good
 
 ```crystal
@@ -145,7 +147,9 @@ def test
   work
 end
 ```
-{% endexample %}
+
+</div>
+
 </div>
 
 ### New spec matchers
@@ -156,7 +160,6 @@ and some readability issues.
 
 In this release [were introduced](https://github.com/crystal-ameba/ameba/pull/245) a new spec matchers for rule tests.
 This new declarative approach allows to easily track all the reported issues in specs.
-
 
 ```crystal
 it "reports multiple shared variables in spawn" do

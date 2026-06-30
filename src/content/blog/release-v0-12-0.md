@@ -1,21 +1,14 @@
 ---
-title: Ameba v0.12.0 has been released 
-date: 2020-03-27 12:54:30
+title: "Ameba v0.12.0 has been released"
+description: "Checkout the release notes to see a full scope of changes. Here we will go through the most important changes."
+pubDate: 2020-03-27T12:54:30
+category: "Release announcement"
 tags:
   - releases
-category:
-  - Release announcement
-toc: true
-navbar_links:
-  Edit on GitHub:
-    icon: fas fa-edit
-    url: https://github.com/crystal-ameba/crystal-ameba.github.io/edit/site/source/_posts/release-v0.12.0.md
 ---
 
 Checkout the [release notes](https://github.com/crystal-ameba/ameba/releases/tag/v0.12.0)
 to see a full scope of changes. Here we will go through the most important changes.
-
-<!-- more -->
 
 ### Globs and Excluded configuration options
 
@@ -87,7 +80,7 @@ iterations. For example:
 n = 0
 channel = Channel(Int32).new
 
-while n ‹ 3
+while n < 3
   n = n + 1
   spawn { channel.send n }
 end
@@ -105,7 +98,7 @@ To solve it, the code above can be written to the following:
 n = 0
 channel = Channel(Int32).new
 
-while n ‹ 3
+while n < 3
   n = n + 1
 + m = n
 - spawn do { channel.send n }
@@ -150,7 +143,7 @@ And these samples are valid and not reported:
 
 ```crystal
 a = 1
-while a ‹ 10
+while a < 10
   a += 1
 end
 

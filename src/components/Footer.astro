@@ -1,0 +1,46 @@
+---
+import {
+  SITE_DESCRIPTION,
+  DOCS_URL,
+  GITHUB_URL,
+  GITHUB_RELEASES_URL,
+  CONTRIBUTING_URL,
+} from '../consts';
+
+const project = [
+  { label: 'Documentation', href: DOCS_URL },
+  { label: 'Rules reference', href: DOCS_URL },
+  { label: 'Releases', href: GITHUB_RELEASES_URL },
+];
+
+const community = [
+  { label: 'GitHub', href: GITHUB_URL },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contributing', href: CONTRIBUTING_URL },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot">
+      <div class="col brand-col">
+        <img src="/ameba-logo.png" alt="ameba" width="54" height="22" />
+        <p>{SITE_DESCRIPTION}</p>
+      </div>
+      <div class="col">
+        <h4>Project</h4>
+        {project.map((l) => <a href={l.href}>{l.label}</a>)}
+      </div>
+      <div class="col">
+        <h4>Community</h4>
+        {community.map((l) => <a href={l.href}>{l.label}</a>)}
+      </div>
+    </div>
+    <div class="legal">
+      <span>© {year} Ameba contributors · MIT licensed</span>
+      <span>Built with Crystal</span>
+    </div>
+  </div>
+</footer>

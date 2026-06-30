@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { BLOG_DESCRIPTION } from '../../consts';
+import { getSortedPosts } from '../../lib/posts';
+import { formatDate } from '../../lib/date';
+
+const posts = await getSortedPosts();
+---
+
+<BaseLayout title="Blog" description={BLOG_DESCRIPTION}>
+  <div class="wrap blog-index">
+    <header class="blog-head">
+      <p class="eyebrow">Blog</p>
+      <h1>Release notes &amp; articles</h1>
+      <p class="sub">Updates from the Ameba project — new rules, releases, and how it works inside.</p>
+    </header>
+
+    <div class="post-list">
+      {
+        posts.map((post) => (
+          <a class="entry" href={`/blog/${post.id}`}>
+            <div class="entry-meta">
+              <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+              {post.data.category && <span class="cat">{post.data.category}</span>}
+            </div>
+            <h2>{post.data.title}</h2>
+            <p>{post.data.description}</p>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .blog-index {
+    padding: 56px 0 20px;
+  }
+  .blog-head {
+    margin-bottom: 48px;
+  }
+  .blog-head h1 {
+    font-size: clamp(30px, 5vw, 44px);
+    letter-spacing: -0.02em;
+    margin: 10px 0 0;
+  }
+  .blog-head .sub {
+    color: var(--muted);
+    max-width: 52ch;
+    margin: 14px 0 0;
+  }
+  .post-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .entry {
+    display: block;
+    padding: 30px 4px;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    transition: padding-left 0.18s;
+  }
+  .entry:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+  .entry:hover {
+    padding-left: 14px;
+  }
+  .entry-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+  .entry-meta .cat {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .entry h2 {
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    margin: 12px 0 8px;
+  }
+  .entry p {
+    margin: 0;
+    color: var(--muted);
+    max-width: 70ch;
+  }
+</style>

@@ -1,0 +1,391 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Terminal from '../components/Terminal.astro';
+import { DOCS_URL, GITHUB_URL } from '../consts';
+import { getSortedPosts } from '../lib/posts';
+import { formatDate } from '../lib/date';
+
+const SHARD_SNIPPET = `development_dependencies:
+  ameba:
+    github: crystal-ameba/ameba`;
+
+const features = [
+  {
+    kicker: '01 · Speed',
+    title: 'Fast',
+    body: 'Native Crystal with its own AST parser and lexer. Lints large code bases in milliseconds.',
+  },
+  {
+    kicker: '02 · Fixes',
+    title: 'Autocorrect',
+    body: 'Issues flagged [Correctable] can be rewritten for you. Run ameba --fix and move on.',
+  },
+  {
+    kicker: '03 · Control',
+    title: 'Configurable',
+    body: 'Tune every rule from the command line or a single config file. Enable only what you need.',
+  },
+  {
+    kicker: '04 · Anywhere',
+    title: 'Editor support',
+    body: 'Diagnostics in VS Code, Vim, Emacs and Sublime, plus CI and code-quality integrations.',
+  },
+];
+
+const stats = [
+  { n: '1', l: 'Single static binary' },
+  { n: '0', l: 'Runtime dependencies' },
+  { n: '<1s', l: 'To lint a typical project' },
+  { n: 'MIT', l: 'Open source license' },
+];
+
+const posts = (await getSortedPosts()).slice(0, 3);
+---
+
+<BaseLayout>
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow fade">Static code analysis · Crystal</p>
+        <img class="logo-mark fade d1" src="/ameba-logo.png" alt="ameba" width="300" height="121" />
+        <h1 class="fade d2">Keep your Crystal code clean.</h1>
+        <p class="lede fade d2">
+          A fast, modular linter for Crystal — hundreds of rules, autocorrection and editor
+          support, shipped as a single binary.
+        </p>
+
+        <div class="install fade d3">
+          <div class="install-head">
+            <span class="install-file">shard.yml</span>
+            <button class="copy-btn" id="copy-install" data-copy={SHARD_SNIPPET}>Copy</button>
+          </div>
+          <pre><code>{SHARD_SNIPPET}</code></pre>
+        </div>
+        <p class="install-note fade d3">
+          Then <code>shards install &amp;&amp; bin/ameba</code>. Also on Homebrew, Docker and from source.
+        </p>
+
+        <div class="cta-row fade d4">
+          <a class="btn btn-primary" href={DOCS_URL}>Read the docs →</a>
+          <a class="btn btn-ghost" href={GITHUB_URL}>★ Star on GitHub</a>
+        </div>
+      </div>
+
+      <div class="hero-demo fade d4">
+        <Terminal />
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Why ameba</p>
+        <h2>Built for the way Crystal developers work.</h2>
+      </div>
+      <div class="grid">
+        {
+          features.map((f) => (
+            <div class="cell">
+              <p class="k">{f.kicker}</p>
+              <h3>{f.title}</h3>
+              <p>{f.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap stats">
+      {
+        stats.map((s) => (
+          <div class="stat">
+            <div class="n">{s.n}</div>
+            <div class="l">{s.l}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section" id="blog">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Updates</p>
+        <h2>From the blog</h2>
+      </div>
+      <div class="posts">
+        {
+          posts.map((post) => (
+            <a class="post" href={`/blog/${post.id}`}>
+              <span class="date">{formatDate(post.data.pubDate, 'short')}</span>
+              <span class="t">{post.data.title}</span>
+              <span class="arr">→</span>
+            </a>
+          ))
+        }
+      </div>
+      <a class="all-posts" href="/blog">All posts →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 48px 0 60px;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 38px;
+    align-items: center;
+  }
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 0;
+  }
+  .logo-mark {
+    width: min(300px, 72%);
+    height: auto;
+    margin: 4px 0 22px;
+    filter: var(--logo-filter, none);
+  }
+  .hero h1 {
+    font-size: clamp(28px, 4.4vw, 40px);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    margin: 0 0 16px;
+    max-width: 18ch;
+    text-wrap: balance;
+  }
+  .lede {
+    font-size: clamp(15.5px, 1.6vw, 18px);
+    color: var(--muted);
+    max-width: 46ch;
+    margin: 0 0 26px;
+    text-wrap: balance;
+  }
+
+  .install {
+    width: 100%;
+    max-width: 360px;
+    text-align: left;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel);
+    overflow: hidden;
+    font-family: var(--mono);
+  }
+  .install-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 8px 8px 14px;
+    border-bottom: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .copy-btn {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--muted);
+    border-radius: 7px;
+    padding: 4px 12px;
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 12px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .copy-btn:hover {
+    color: var(--ink);
+    border-color: var(--muted);
+  }
+  .install pre {
+    margin: 0;
+    padding: 14px 16px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink);
+    overflow-x: auto;
+  }
+  .install-note {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 14px 0 0;
+  }
+  .install-note code {
+    font-family: var(--mono);
+    font-size: 0.92em;
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 26px;
+  }
+
+  .hero-demo {
+    min-width: 0;
+  }
+
+  @media (min-width: 920px) {
+    .hero {
+      padding: 60px 0 76px;
+    }
+    .hero-grid {
+      grid-template-columns: 1.04fr 1fr;
+      gap: 56px;
+    }
+    .hero-copy {
+      align-items: flex-start;
+      text-align: left;
+    }
+    .logo-mark {
+      margin: 2px 0 20px;
+    }
+    .cta-row {
+      justify-content: flex-start;
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .cell {
+    background: var(--paper);
+    padding: 28px 24px 34px;
+  }
+  .cell .k {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
+  }
+  .cell h3 {
+    font-size: 19px;
+    margin: 16px 0 8px;
+    font-weight: 650;
+  }
+  .cell p {
+    margin: 0;
+    font-size: 14.5px;
+    color: var(--muted);
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+  .stat .n {
+    font-family: var(--mono);
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .stat .l {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .posts {
+    display: flex;
+    flex-direction: column;
+  }
+  .post {
+    display: flex;
+    gap: 24px;
+    align-items: baseline;
+    padding: 22px 4px;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    transition: padding-left 0.18s;
+  }
+  .post:hover {
+    padding-left: 14px;
+  }
+  .post .date {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    white-space: nowrap;
+    min-width: 90px;
+  }
+  .post .t {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .post .arr {
+    margin-left: auto;
+    color: var(--muted);
+    transition: transform 0.18s, color 0.18s;
+  }
+  .post:hover .arr {
+    transform: translateX(4px);
+    color: var(--ink);
+  }
+  .all-posts {
+    display: inline-block;
+    margin-top: 26px;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .all-posts:hover {
+    color: var(--ink);
+  }
+
+  @media (max-width: 760px) {
+    .grid,
+    .stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 520px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+    .post {
+      gap: 16px;
+    }
+    .post .date {
+      min-width: 74px;
+    }
+  }
+</style>
+
+<script>
+  const COPIED_RESET_MS = 1400;
+  const button = document.getElementById('copy-install');
+
+  button?.addEventListener('click', async () => {
+    const text = button.getAttribute('data-copy') ?? '';
+    try {
+      await navigator.clipboard.writeText(text);
+      const original = button.textContent;
+      button.textContent = 'Copied';
+      setTimeout(() => (button.textContent = original), COPIED_RESET_MS);
+    } catch (e) {
+      /* clipboard unavailable */
+    }
+  });
+</script>

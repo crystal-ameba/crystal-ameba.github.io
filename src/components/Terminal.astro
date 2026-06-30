@@ -1,0 +1,147 @@
+---
+// A static recreation of real `ameba` CLI output, used as the homepage hero demo.
+---
+
+<div class="term" id="term">
+  <div class="term-bar">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    <span class="term-title">~/projects/my-shard — ameba</span>
+  </div>
+  <div class="term-body" id="term-body">
+<div class="line"><span class="prompt"><span class="sym">$</span> ameba</span></div>
+<div class="line reveal dim">Inspecting 107 files</div>
+<div class="line reveal">&nbsp;</div>
+<div class="line reveal dim">...............F.....................FF..........</div>
+<div class="line reveal">&nbsp;</div>
+<div class="line reveal"><span class="path">src/ameba/formatter/flycheck_formatter.cr</span><span class="lineno">:6:37</span></div>
+<div class="line reveal"><span class="flag-w">W</span> <span class="rule">Lint/UnusedArgument</span><span class="msg">: Unused argument `location`.</span></div>
+<div class="line reveal dim">&gt; source.issues.each do |issue, location|</div>
+<div class="line reveal caret">                                ^------^</div>
+<div class="line reveal">&nbsp;</div>
+<div class="line reveal"><span class="path">src/ameba/formatter/base_formatter.cr</span><span class="lineno">:16:7</span> <span class="tag">[Correctable]</span></div>
+<div class="line reveal"><span class="flag-c">C</span> <span class="rule">Style/RedundantReturn</span><span class="msg">: Redundant `return` detected</span></div>
+<div class="line reveal dim">&gt; return size += issues.size</div>
+<div class="line reveal caret">  ^------------------------^</div>
+<div class="line reveal">&nbsp;</div>
+<div class="line reveal ok">Finished in 389.45 milliseconds</div>
+<div class="line reveal summary"><b>107</b> inspected, <b>3</b> failures — run <span class="rule">ameba --fix</span> to autocorrect</div>
+  </div>
+</div>
+
+<style>
+  .term {
+    background: var(--term-bg);
+    color: var(--term-fg);
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    box-shadow: 0 30px 70px -40px rgba(0, 0, 0, 0.55);
+    font-family: var(--mono);
+    font-size: 13.5px;
+    line-height: 1.75;
+    overflow: hidden;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .term-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 16px;
+    border-bottom: 1px solid #1c1c20;
+  }
+  .term-bar .dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #3a3a40;
+  }
+  .term-title {
+    margin-left: 10px;
+    color: var(--term-dim);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+  .term-body {
+    padding: 18px 20px 22px;
+    overflow-x: auto;
+  }
+  .line {
+    white-space: pre;
+  }
+  .reveal {
+    opacity: 0;
+  }
+  .prompt {
+    color: #ededed;
+  }
+  .prompt .sym,
+  .dim {
+    color: var(--term-dim);
+  }
+  .path {
+    color: #cfcfd6;
+  }
+  .lineno,
+  .tag {
+    color: var(--term-dim);
+  }
+  .flag-w {
+    border: 1px solid #3a3a40;
+    border-radius: 4px;
+    padding: 0 5px;
+    color: #e4e4e4;
+  }
+  .flag-c {
+    border: 1px solid #2c2c32;
+    border-radius: 4px;
+    padding: 0 5px;
+    color: #b9b9c2;
+  }
+  .rule {
+    color: #ffffff;
+  }
+  .msg {
+    color: var(--term-dim);
+  }
+  .caret {
+    color: #ededed;
+  }
+  .ok {
+    color: #d6d6d6;
+  }
+  .summary {
+    color: var(--term-dim);
+  }
+  .summary b {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    .term {
+      font-size: 12px;
+    }
+    .term-body {
+      padding: 14px 14px 18px;
+    }
+  }
+</style>
+
+<script>
+  const REVEAL_START_MS = 600;
+  const REVEAL_STEP_MS = 90;
+
+  const lines = document.querySelectorAll<HTMLElement>('#term-body .reveal');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduceMotion) {
+    lines.forEach((line) => (line.style.opacity = '1'));
+  } else {
+    lines.forEach((line, index) => {
+      setTimeout(() => {
+        line.style.transition = 'opacity 0.25s';
+        line.style.opacity = '1';
+      }, REVEAL_START_MS + index * REVEAL_STEP_MS);
+    });
+  }
+</script>

@@ -1,18 +1,13 @@
 ---
-title: Ameba's internals
-date: 2019-09-03 00:54:30
+title: "Ameba's internals"
+description: "In this article you will find a high level overview of the Ameba's modules, which will help to understand how it works internally. We will cover everything needed starting from source…"
+pubDate: 2019-09-03T00:54:30
+category: "Tutorial"
 tags:
   - parser
   - rule
   - formatter
   - modules
-category:
-  - Tutorial
-toc: true
-navbar_links:
-  Edit on GitHub:
-    icon: fas fa-edit
-    url: https://github.com/crystal-ameba/crystal-ameba.github.io/edit/site/source/_posts/internal-modules.md
 ---
 
 In this article you will find a high level overview of the Ameba's
@@ -20,9 +15,7 @@ modules, which will help to understand how it works internally.
 We will cover everything needed starting from source code
 loading and finishing by showing results of static analysis.
 
-{% img /gallery/posts/internal-modules/ameba-modules.png %}
-
-<!-- more -->
+![](/gallery/posts/internal-modules/ameba-modules.png)
 
 Ameba and similar command-line applications for static analysis are
 required to be highly configurable.
@@ -104,7 +97,7 @@ A simple version of it could look like this:
 ```crystal
 module Ameba::Rule
   # A rule that disallows calls to `puts` method.
-  class NoPuts ‹ Base
+  class NoPuts < Base
     def test(source)
       AST::NodeVisitor.new self, source
     end
