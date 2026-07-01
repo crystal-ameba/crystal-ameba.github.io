@@ -18,12 +18,12 @@ const features = [
   {
     kicker: '02 · Fixes',
     title: 'Autocorrect',
-    body: 'Issues flagged [Correctable] can be rewritten for you. Run ameba --fix and move on.',
+    body: 'Issues flagged as <code>[Correctable]</code> can be rewritten for you. Run <code>ameba --fix</code> and move on.',
   },
   {
     kicker: '03 · Control',
     title: 'Configurable',
-    body: 'Tune every rule from the command line or a single config file. Enable only what you need.',
+    body: 'Tune every rule from a single config file. Enable only what you need.',
   },
   {
     kicker: '04 · Anywhere',
@@ -89,7 +89,7 @@ const posts = (await getSortedPosts()).slice(0, 3);
             <div class="cell">
               <p class="k">{f.kicker}</p>
               <h3>{f.title}</h3>
-              <p>{f.body}</p>
+              <p set:html={f.body}></p>
             </div>
           ))
         }
