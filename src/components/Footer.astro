@@ -2,14 +2,16 @@
 import {
   SITE_DESCRIPTION,
   DOCS_URL,
+  RULES_REFERENCE_URL,
   GITHUB_URL,
   GITHUB_RELEASES_URL,
   CONTRIBUTING_URL,
+  CONTRIBUTORS_URL,
 } from '../consts';
 
 const project = [
   { label: 'Documentation', href: DOCS_URL },
-  { label: 'Rules reference', href: DOCS_URL },
+  { label: 'Rules reference', href: RULES_REFERENCE_URL },
   { label: 'Releases', href: GITHUB_RELEASES_URL },
 ];
 
@@ -39,7 +41,7 @@ const year = new Date().getFullYear();
       </div>
     </div>
     <div class="legal">
-      <span>© {year} Ameba contributors · MIT licensed</span>
+      <span>© {year} <a href={CONTRIBUTORS_URL}>Ameba contributors</a> · MIT licensed</span>
       <span>Built with Crystal</span>
     </div>
   </div>
