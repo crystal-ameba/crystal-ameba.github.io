@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><title>Ameba&#39;s internals · Ameba</title><meta name="description" content="In this article you will find a high level overview of the Ameba's modules, which will help to understand how it works internally. We will cover everything needed starting from source…"><link rel="canonical" href="https://crystal-ameba.github.io/blog/internals/"><meta name="generator" content="Astro v7.0.7"><meta property="og:type" content="article"><meta property="og:site_name" content="Ameba"><meta property="og:title" content="Ameba's internals · Ameba"><meta property="og:description" content="In this article you will find a high level overview of the Ameba's modules, which will help to understand how it works internally. We will cover everything needed starting from source…"><meta property="og:url" content="https://crystal-ameba.github.io/blog/internals/"><meta property="og:image" content="https://crystal-ameba.github.io/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="A static code analysis tool for the Crystal programming language."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://crystal-ameba.github.io/og.png"><link rel="alternate" type="application/rss+xml" title="Ameba blog" href="/rss.xml"><script>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><title>Ameba&#39;s internals · Ameba</title><meta name="description" content="In this article you will find a high level overview of the Ameba's modules, which will help to understand how it works internally. We will cover everything needed starting from source…"><link rel="canonical" href="https://crystal-ameba.github.io/blog/internals/"><meta name="generator" content="Astro v7.1.0"><meta property="og:type" content="article"><meta property="og:site_name" content="Ameba"><meta property="og:title" content="Ameba's internals · Ameba"><meta property="og:description" content="In this article you will find a high level overview of the Ameba's modules, which will help to understand how it works internally. We will cover everything needed starting from source…"><meta property="og:url" content="https://crystal-ameba.github.io/blog/internals/"><meta property="og:image" content="https://crystal-ameba.github.io/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="A static code analysis tool for the Crystal programming language."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://crystal-ameba.github.io/og.png"><link rel="alternate" type="application/rss+xml" title="Ameba blog" href="/rss.xml"><script>
       (function () {
         try {
           var stored = localStorage.getItem('theme');
@@ -42,7 +42,7 @@ to operate on it. For example, it is possible to attach an
 <span class="line"><span style="color:#9ECBFF">  end</span></span>
 <span class="line"><span style="color:#9ECBFF">)</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"source.cr"</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#E1E4E8">source.issues </span><span style="color:#6A737D"># => []</span></span></code></pre>
+<span class="line"><span style="color:#E1E4E8">source.issues </span><span style="color:#6A737D"># =&gt; []</span></span></code></pre>
 <h3 id="ast-parsing">AST Parsing</h3>
 <p>Unprocessed source code is a very difficult format for static analysis.
 Fortunately, Crystal language can do a lot of different ways of source
@@ -52,7 +52,7 @@ It is widely used by Ameba internally to do a static analysis.</p>
 <p>As you might have noticed, a <code>Source</code> responds to
 <a href="https://crystal-ameba.github.io/ameba/Ameba/Source.html#ast-instance-method"><code>#ast</code></a> method,
 which returns a list of AST nodes for that source:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">source.ast </span><span style="color:#6A737D"># =></span></span>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">source.ast </span><span style="color:#6A737D"># =&gt;</span></span>
 <span class="line"><span style="color:#6A737D">  # class Ameba::Internals</span></span>
 <span class="line"><span style="color:#6A737D">  #   getter(info : Info)</span></span>
 <span class="line"><span style="color:#6A737D">  #   def explain</span></span>
@@ -60,7 +60,7 @@ which returns a list of AST nodes for that source:</p>
 <span class="line"><span style="color:#6A737D">  #   end</span></span>
 <span class="line"><span style="color:#6A737D">  # end</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#E1E4E8">source.ast.class </span><span style="color:#6A737D"># => Crystal::ClassDef</span></span></code></pre>
+<span class="line"><span style="color:#E1E4E8">source.ast.class </span><span style="color:#6A737D"># =&gt; Crystal::ClassDef</span></span></code></pre>
 <p>In this example, <code>ast</code> method returns an instance of <code>Crystal::ClassDef</code> because the top level node
 in the source code is a class, which is parsed by Crystal’s AST parser as <code>ClassDef</code>.</p>
 <p>Next, nodes are iterated by rules.</p>
@@ -72,7 +72,7 @@ to the handler. Let’s say there is a rule that disallows calling <code>puts</c
 A simple version of it could look like this:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#F97583">module</span><span style="color:#B392F0"> Ameba::Rule</span></span>
 <span class="line"><span style="color:#6A737D">  # A rule that disallows calls to `puts` method.</span></span>
-<span class="line"><span style="color:#F97583">  class</span><span style="color:#B392F0"> NoPuts &#x3C; Base</span></span>
+<span class="line"><span style="color:#F97583">  class</span><span style="color:#B392F0"> NoPuts &lt; Base</span></span>
 <span class="line"><span style="color:#F97583">    def</span><span style="color:#B392F0"> test</span><span style="color:#E1E4E8">(source)</span></span>
 <span class="line"><span style="color:#79B8FF">      AST</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">NodeVisitor</span><span style="color:#E1E4E8">.new </span><span style="color:#79B8FF">self</span><span style="color:#E1E4E8">, source</span></span>
 <span class="line"><span style="color:#F97583">    end</span></span>
@@ -91,7 +91,7 @@ if the node matches the expectations.</p>
 <p>So, in such a way a <code>Source</code> is passed to all the rules and can hold some issues on it:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">rule </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> Ameba</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">Rule</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">NoPuts</span><span style="color:#E1E4E8">.new</span></span>
 <span class="line"><span style="color:#E1E4E8">rule.</span><span style="color:#B392F0">catch</span><span style="color:#E1E4E8">(source)</span></span>
-<span class="line"><span style="color:#E1E4E8">source.issues </span><span style="color:#6A737D"># =></span></span>
+<span class="line"><span style="color:#E1E4E8">source.issues </span><span style="color:#6A737D"># =&gt;</span></span>
 <span class="line"><span style="color:#6A737D">  # [</span></span>
 <span class="line"><span style="color:#6A737D">  #   Ameba::Issue(</span></span>
 <span class="line"><span style="color:#6A737D">  #     @rule=Ameba::Rule::Lint::NoPuts(</span></span>

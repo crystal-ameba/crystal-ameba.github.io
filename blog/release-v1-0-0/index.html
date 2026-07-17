@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><title>Ameba v1.0.0 has been released · Ameba</title><meta name="description" content="This release includes a long-waiting autocorrection feature, new rules and several improvements. Checkout the release notes to see a full scope of changes."><link rel="canonical" href="https://crystal-ameba.github.io/blog/release-v1-0-0/"><meta name="generator" content="Astro v7.0.7"><meta property="og:type" content="article"><meta property="og:site_name" content="Ameba"><meta property="og:title" content="Ameba v1.0.0 has been released · Ameba"><meta property="og:description" content="This release includes a long-waiting autocorrection feature, new rules and several improvements. Checkout the release notes to see a full scope of changes."><meta property="og:url" content="https://crystal-ameba.github.io/blog/release-v1-0-0/"><meta property="og:image" content="https://crystal-ameba.github.io/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="A static code analysis tool for the Crystal programming language."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://crystal-ameba.github.io/og.png"><link rel="alternate" type="application/rss+xml" title="Ameba blog" href="/rss.xml"><script>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><title>Ameba v1.0.0 has been released · Ameba</title><meta name="description" content="This release includes a long-waiting autocorrection feature, new rules and several improvements. Checkout the release notes to see a full scope of changes."><link rel="canonical" href="https://crystal-ameba.github.io/blog/release-v1-0-0/"><meta name="generator" content="Astro v7.1.0"><meta property="og:type" content="article"><meta property="og:site_name" content="Ameba"><meta property="og:title" content="Ameba v1.0.0 has been released · Ameba"><meta property="og:description" content="This release includes a long-waiting autocorrection feature, new rules and several improvements. Checkout the release notes to see a full scope of changes."><meta property="og:url" content="https://crystal-ameba.github.io/blog/release-v1-0-0/"><meta property="og:image" content="https://crystal-ameba.github.io/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="A static code analysis tool for the Crystal programming language."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://crystal-ameba.github.io/og.png"><link rel="alternate" type="application/rss+xml" title="Ameba blog" href="/rss.xml"><script>
       (function () {
         try {
           var stored = localStorage.getItem('theme');
@@ -24,7 +24,7 @@ The feature was originally developed in <a href="https://github.com/crystal-ameb
 <span class="line"></span>
 <span class="line"><span style="color:#B392F0">src/file_utils.cr:428:5</span><span style="color:#E1E4E8"> [Correctable]</span></span>
 <span class="line"><span style="color:#E1E4E8">[C] Style/RedundantBegin: Redundant </span><span style="color:#9ECBFF">`</span><span style="color:#B392F0">begin</span><span style="color:#9ECBFF">`</span><span style="color:#B392F0"> block</span><span style="color:#9ECBFF"> detected</span></span>
-<span class="line"><span style="color:#F97583">></span><span style="color:#E1E4E8"> begin</span></span>
+<span class="line"><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> begin</span></span>
 <span class="line"><span style="color:#B392F0">  ^---^</span></span></code></pre>
 <p>meaning, if you append a new <code>--fix</code> command-line flag to the command it will automatically
 correct the issue adding another notice <code>[Corrected]</code>:</p>
@@ -32,7 +32,7 @@ correct the issue adding another notice <code>[Corrected]</code>:</p>
 <span class="line"></span>
 <span class="line"><span style="color:#B392F0">src/file_utils.cr:428:5</span><span style="color:#E1E4E8"> [Corrected]</span></span>
 <span class="line"><span style="color:#E1E4E8">[C] Style/RedundantBegin: Redundant </span><span style="color:#9ECBFF">`</span><span style="color:#B392F0">begin</span><span style="color:#9ECBFF">`</span><span style="color:#B392F0"> block</span><span style="color:#9ECBFF"> detected</span></span>
-<span class="line"><span style="color:#F97583">></span><span style="color:#E1E4E8"> begin</span></span>
+<span class="line"><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> begin</span></span>
 <span class="line"><span style="color:#B392F0">  ^---^</span></span></code></pre>
 <p>using a git diff we can quickly check that Ameba removed a reported redundant begin block
 and used the exception handler as part of a method:</p>
@@ -109,7 +109,7 @@ This new declarative approach allows to easily track all the reported issues in 
 <span class="line"><span style="color:#E1E4E8">  expect_issue subject, </span><span style="color:#9ECBFF">%(</span></span>
 <span class="line"><span style="color:#9ECBFF">    foo, bar, baz = 0, 0, 0</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#9ECBFF">    while foo &#x3C; 10</span></span>
+<span class="line"><span style="color:#9ECBFF">    while foo &lt; 10</span></span>
 <span class="line"><span style="color:#9ECBFF">      baz += 1</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#9ECBFF">      spawn do</span></span>
