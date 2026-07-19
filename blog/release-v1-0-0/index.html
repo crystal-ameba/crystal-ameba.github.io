@@ -55,7 +55,7 @@ and used the exception handler as part of a method:</p>
 flag on a reported issue, do not hesitate to autocorrect it in order to save some time
 during refactoring.</p>
 <h3 id="new-rules">New rules</h3>
-<h4 id="lintambiguousassignment"><a href="/ameba/Ameba/Rule/Lint/AmbiguousAssignment.html"><code>Lint/AmbiguousAssignment</code></a></h4>
+<h4 id="lintambiguousassignment"><a href="/ameba/1.0.0/Ameba/Rule/Lint/AmbiguousAssignment.html"><code>Lint/AmbiguousAssignment</code></a></h4>
 <p>A tiny rule that checks for mistyped shorthand assignments.</p>
 <div class="compare">
 <div class="example bad">
@@ -71,14 +71,14 @@ during refactoring.</p>
 <span class="line"><span style="color:#E1E4E8">x </span><span style="color:#F97583">!=</span><span style="color:#E1E4E8"> y </span><span style="color:#6A737D"># or x = !y</span></span></code></pre>
 </div>
 </div>
-<h4 id="lintdebugcalls"><a href="/ameba/Ameba/Rule/Lint/DebugCalls.html"><code>Lint/DebugCalls</code></a></h4>
+<h4 id="lintdebugcalls"><a href="/ameba/1.0.0/Ameba/Rule/Lint/DebugCalls.html"><code>Lint/DebugCalls</code></a></h4>
 <p>A rule that disallows calls to debug-related methods.
 This is because we don’t want debug calls accidentally being committed into our codebase.</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">a </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 2</span></span>
 <span class="line"><span style="color:#E1E4E8">pp! a </span><span style="color:#6A737D"># error: Possibly forgotten debug-related `pp!` call detected</span></span>
 <span class="line"><span style="color:#E1E4E8">a </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> a </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 1</span></span></code></pre>
-<p>Checkout the <a href="/ameba/Ameba/Rule/Lint/DebugCalls.html">API doc</a> to see a full list of supported debug-related calls.</p>
-<h4 id="styleguardclause"><a href="/ameba/Ameba/Rule/Style/GuardClause.html"><code>Style/GuardClause</code></a></h4>
+<p>Checkout the <a href="/ameba/1.0.0/Ameba/Rule/Lint/DebugCalls.html">API doc</a> to see a full list of supported debug-related calls.</p>
+<h4 id="styleguardclause"><a href="/ameba/1.0.0/Ameba/Rule/Style/GuardClause.html"><code>Style/GuardClause</code></a></h4>
 <p>A rule that enforces a guard clause instead of wrapping the code inside
 a conditional expression.</p>
 <div class="compare">
@@ -131,5 +131,5 @@ This new declarative approach allows to easily track all the reported issues in 
 <li><code>Shared variable 'foo' is used in fiber</code> - the reported error message</li>
 </ul>
 <p>These new matchers are used internally and of course can be used by Ameba extensions.
-Checkout the <a href="/ameba/Ameba/Spec/ExpectIssue.html">doc</a> for more details.</p>
+Checkout the <a href="/ameba/1.0.0/Ameba/Spec/ExpectIssue.html">doc</a> for more details.</p>
 </div><footer class="post-foot" data-astro-cid-tldeq5d5><div class="tags" data-astro-cid-tldeq5d5><span class="tag" data-astro-cid-tldeq5d5>#releases</span></div><a class="edit" href="https://github.com/crystal-ameba/crystal-ameba.github.io/edit/site/src/content/blog/release-v1-0-0.md" data-astro-cid-tldeq5d5>Edit this page on GitHub ↗</a></footer></div></article></main><footer class="site-footer"><div class="wrap"><div class="foot"><div class="col brand-col"><img src="/ameba-logo.png" alt="Ameba logo" width="54" height="22"><p>A static code analysis tool for the Crystal programming language.</p></div><div class="col"><h4>Project</h4><a href="https://crystal-ameba.github.io/ameba/">Documentation</a><a href="https://crystal-ameba.github.io/ameba/">Rules reference</a><a href="https://github.com/crystal-ameba/ameba/releases">Releases</a></div><div class="col"><h4>Community</h4><a href="https://github.com/crystal-ameba/ameba">GitHub</a><a href="/blog">Blog</a><a href="https://github.com/crystal-ameba/ameba/blob/master/CONTRIBUTING.md">Contributing</a></div></div><div class="legal"><span>© 2026 <a href="https://github.com/crystal-ameba/ameba/graphs/contributors?all=1">Ameba contributors</a> · MIT licensed</span><span>Built with <a href="https://crystal-lang.org/">Crystal</a></span></div></div></footer><div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search blog posts"><div class="search-panel"><div id="search-ui"></div><div class="hint"><span>Search the blog</span><span>Esc to close</span></div></div></div><script type="module">var e=document.getElementById(`search-overlay`),t=document.getElementById(`search-open`),n=!1;function r(){if(n||!e)return;n=!0;let t=document.createElement(`link`);t.rel=`stylesheet`,t.href=`/pagefind/pagefind-ui.css`,document.head.appendChild(t);let r=document.createElement(`script`);r.src=`/pagefind/pagefind-ui.js`,r.onload=()=>{new window.PagefindUI({element:`#search-ui`,showSubResults:!0,showImages:!1}),i()},document.body.appendChild(r)}function i(){let t=e?.querySelector(`input`);t instanceof HTMLInputElement&&t.focus()}function a(){e&&(e.setAttribute(`open`,``),r(),setTimeout(i,60))}function o(){e?.removeAttribute(`open`)}t?.addEventListener(`click`,a),e?.addEventListener(`click`,t=>{t.target===e&&o()}),document.addEventListener(`keydown`,e=>{let t=document.activeElement,n=t&&(t.tagName===`INPUT`||t.tagName===`TEXTAREA`);e.key===`Escape`&&o(),e.key===`/`&&!n&&(e.preventDefault(),a())});</script></body></html>

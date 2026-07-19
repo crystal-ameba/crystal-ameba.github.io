@@ -25,10 +25,10 @@ and the appropriate design is a key for a good tool architecture and convenient 
 <h3 id="source-loading">Source Loading</h3>
 <p>Of course, the first step of static code analysis is a loading of that source code.
 It does not matter whether it is a file, a steam or just a regular string, Ameba
-is capable to read that and create a new <a href="https://crystal-ameba.github.io/ameba/Ameba/Source.html"><code>Source</code></a>
+is capable to read that and create a new <a href="/ameba/0.10.0/Ameba/Source.html"><code>Source</code></a>
 abstraction. Such internal representation of source code is very convenient
 to operate on it. For example, it is possible to attach an
-<a href="https://crystal-ameba.github.io/ameba/Ameba/Issue.html"><code>Issue</code></a> to this source.</p>
+<a href="/ameba/0.10.0/Ameba/Issue.html"><code>Issue</code></a> to this source.</p>
 <p><code>Source</code> also can be created programatically:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#F97583">require</span><span style="color:#9ECBFF"> "ameba"</span></span>
 <span class="line"></span>
@@ -50,7 +50,7 @@ code pre-processing, including <a href="https://en.wikipedia.org/wiki/Abstract_s
 <p>List of AST nodes is a quite convenient representation of a source code to decompose.
 It is widely used by Ameba internally to do a static analysis.</p>
 <p>As you might have noticed, a <code>Source</code> responds to
-<a href="https://crystal-ameba.github.io/ameba/Ameba/Source.html#ast-instance-method"><code>#ast</code></a> method,
+<a href="/ameba/0.10.0/Ameba/Source.html#ast-instance-method"><code>#ast</code></a> method,
 which returns a list of AST nodes for that source:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">source.ast </span><span style="color:#6A737D"># =&gt;</span></span>
 <span class="line"><span style="color:#6A737D">  # class Ameba::Internals</span></span>
@@ -66,7 +66,7 @@ in the source code is a class, which is parsed by Crystal’s AST parser as <cod
 <p>Next, nodes are iterated by rules.</p>
 <h3 id="rules">Rules</h3>
 <p>Rule is a basic abstraction that iterates over that or other representation of source code and
-report issues if such are detected. All rules inherit from <a href="https://crystal-ameba.github.io/ameba/Ameba/Rule/Base.html"><code>Rule::Base</code></a>.</p>
+report issues if such are detected. All rules inherit from <a href="/ameba/0.10.0/Ameba/Rule/Base.html"><code>Rule::Base</code></a>.</p>
 <p>Most rules <em>visit</em> AST nodes. There is a couple of different <em>visitors</em> which pass needed nodes
 to the handler. Let’s say there is a rule that disallows calling <code>puts</code> in a code.
 A simple version of it could look like this:</p>
@@ -84,7 +84,7 @@ A simple version of it could look like this:</p>
 <span class="line"><span style="color:#F97583">  end</span></span>
 <span class="line"><span style="color:#F97583">end</span></span></code></pre>
 <p>There are two different <code>test</code> method. The first one, which accepts a source is a main
-entry point to the rule. It returns the <a href="https://crystal-ameba.github.io/ameba/Ameba/AST/NodeVisitor.html"><code>AST::NodeVisitor</code></a>
+entry point to the rule. It returns the <a href="/ameba/0.10.0/Ameba/AST/NodeVisitor.html"><code>AST::NodeVisitor</code></a>
 which will visit AST nodes and pass only needed ones to the second <code>test</code> method (handler).</p>
 <p>In a handler we just explore the node properties and add issues to the source code
 if the node matches the expectations.</p>
@@ -108,10 +108,10 @@ if the node matches the expectations.</p>
 <p>Now the source holds an issue. It’s a time to report it.</p>
 <h3 id="format-results">Format results</h3>
 <p>Formatters are used to format the output reported by Ameba.</p>
-<p>For example, <a href="https://crystal-ameba.github.io/ameba/Ameba/Formatter/ExplainFormatter.html"><code>ExplainFormatter</code></a>
+<p>For example, <a href="/ameba/0.10.0/Ameba/Formatter/ExplainFormatter.html"><code>ExplainFormatter</code></a>
 is designed to show the detailed explanation of the issue in the source
 at a specific location.
-Another one is <a href="https://crystal-ameba.github.io/ameba/Ameba/Formatter/JSONFormatter.html"><code>JSONFormatter</code></a>
+Another one is <a href="/ameba/0.10.0/Ameba/Formatter/JSONFormatter.html"><code>JSONFormatter</code></a>
 which formats to JSON. Let’s give it a try:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">formatter </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> Ameba</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">Formatter</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">JSONFormatter</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">new</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">STDOUT</span><span style="color:#E1E4E8">)</span></span>
 <span class="line"><span style="color:#E1E4E8">formatter.</span><span style="color:#B392F0">started</span><span style="color:#E1E4E8">([source])</span></span>

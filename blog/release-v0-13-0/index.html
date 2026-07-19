@@ -25,7 +25,7 @@ module.</p>
 of Ameba still works with Crystal <code>0.35.0</code> however, users might see the
 deprecation warning while compiling the binary.</p>
 <h3 id="new-rules">New Rules</h3>
-<h4 id="lintbaddirective"><a href="/ameba/Ameba/Rule/Lint/BadDirective.html"><code>Lint/BadDirective</code></a></h4>
+<h4 id="lintbaddirective"><a href="/ameba/0.13.0/Ameba/Rule/Lint/BadDirective.html"><code>Lint/BadDirective</code></a></h4>
 <p>This is a new rule that reports the incorrect comment directive for Ameba.</p>
 <p>For example, the user can mistakenly add a directive to disable a rule that even doesn’t exist:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#6A737D"># ameba:disable BadRuleName</span></span>
@@ -33,7 +33,7 @@ deprecation warning while compiling the binary.</p>
 <span class="line"><span style="color:#79B8FF">  :bar</span></span>
 <span class="line"><span style="color:#F97583">end</span></span></code></pre>
 <p>Now, such a comment directive above will be propertly reported.</p>
-<h3 id="styleisanil"><a href="/ameba/Ameba/Rule/Style/IsANil.html"><code>Style/IsANil</code></a></h3>
+<h3 id="styleisanil"><a href="/ameba/0.13.0/Ameba/Rule/Style/IsANil.html"><code>Style/IsANil</code></a></h3>
 <p>Crystal has two ways for checking the <code>nil</code> equality: <code>.is_a?(Nil)</code> and <code>.nil?</code>.</p>
 <p>Since the second is much more consice and doing basically the same, now Ameba
 disallows calls to <code>.is_a?(Nil)</code> in favor of <code>.nil?</code>.</p>

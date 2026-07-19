@@ -17,7 +17,7 @@ on. There are two new sections which can be added to <code>.ameba.yml</code>:</p
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yml"><code><span class="line"><span style="color:#85E89D">Globs</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#F97583">*</span><span style="color:#E1E4E8">*</span><span style="color:#FDAEB7;font-style:italic">/*.cr</span></span>
 <span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#F97583">!lib</span></span>
-<span class="line"><span style="color:#E1E4E8">  </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#85E89D">Excluded</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#9ECBFF">src/compiler</span></span></code></pre>
 <ul>
@@ -29,7 +29,7 @@ on. There are two new sections which can be added to <code>.ameba.yml</code>:</p
 Ameba is now ready to the upcoming release and is still compatible to the current
 Crystal version <code>0.33</code>.</p>
 <h3 id="new-rules">New Rules</h3>
-<h4 id="styleredundantnext"><a href="/ameba/Ameba/Rule/Style/RedundantNext.html"><code>Style/RedundantNext</code></a></h4>
+<h4 id="styleredundantnext"><a href="/ameba/0.12.0/Ameba/Rule/Style/RedundantNext.html"><code>Style/RedundantNext</code></a></h4>
 <p>Crystal has <a href="https://crystal-lang.org/reference/syntax_and_semantics/next.html"><code>next</code></a>
 keyword which can be used to go to the next iteration in a loop. However, it can
 also be used to exit from a block, for example:</p>
@@ -52,7 +52,7 @@ last expression in the block. For example:</p>
 <p>In all three places above the <code>next</code> keyword is redundant and is reported by the
 new rule.</p>
 <hr>
-<h4 id="lintsharedvarinfiber"><a href="/ameba/Ameba/Rule/Lint/SharedVarInFiber.html"><code>Lint/SharedVarInFiber</code></a></h4>
+<h4 id="lintsharedvarinfiber"><a href="/ameba/0.12.0/Ameba/Rule/Lint/SharedVarInFiber.html"><code>Lint/SharedVarInFiber</code></a></h4>
 <p>To achieve <a href="https://crystal-lang.org/reference/guides/concurrency.html#spawning-a-call">concurrency and parallelism</a>
 Crystal uses Fibers and Channels. There is a tricky behavior which happens when
 a shared variable is used across multiple fibers and is mutated during
@@ -89,7 +89,7 @@ second one.</p>
 <p><strong>There are also other technics to solve the problem above which are
 <a href="https://crystal-lang.org/reference/guides/concurrency.html#spawning-a-call">officially documented</a>.</strong></p>
 <hr>
-<h4 id="lintemptyloop"><a href="/ameba/Ameba/Rule/Lint/EmptyLoop.html"><code>Lint/EmptyLoop</code></a></h4>
+<h4 id="lintemptyloop"><a href="/ameba/0.12.0/Ameba/Rule/Lint/EmptyLoop.html"><code>Lint/EmptyLoop</code></a></h4>
 <p>After some round of refactoring it can happen that the loop body becomes empty
 but for whatever reason such an empty loop is forgotten to be removed. A new
 rule is able to detect a few situations:</p>
@@ -114,7 +114,7 @@ rule is able to detect a few situations:</p>
 <span class="line"></span>
 <span class="line"><span style="color:#79B8FF">loop</span><span style="color:#E1E4E8"> { run }</span></span></code></pre>
 <hr>
-<h4 id="lintredundantstringcoercion"><a href="/ameba/Ameba/Rule/Lint/RedundantStringCoercion.html"><code>Lint/RedundantStringCoercion</code></a></h4>
+<h4 id="lintredundantstringcoercion"><a href="/ameba/0.12.0/Ameba/Rule/Lint/RedundantStringCoercion.html"><code>Lint/RedundantStringCoercion</code></a></h4>
 <p>This is typical situation when a value is being converted to string using
 <a href="https://crystal-lang.org/api/0.33.0/Object.html#to_s:String-instance-method"><code>Object.to_s</code></a>
 method in the interpolation.</p>
