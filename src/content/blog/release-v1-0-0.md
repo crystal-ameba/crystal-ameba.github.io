@@ -1,6 +1,6 @@
 ---
 title: "Ameba v1.0.0 has been released"
-description: "This release includes a long-waiting autocorrection feature, new rules and several improvements. Checkout the release notes to see a full scope of changes."
+description: "This release includes a long-waiting autocorrection feature, new rules and several improvements. Check out the release notes to see a full scope of changes."
 pubDate: 2021-10-04T12:54:30
 category: "Release announcement"
 tags:
@@ -8,19 +8,19 @@ tags:
 ---
 
 This release includes a long-waiting autocorrection feature, new rules and several improvements.
-Checkout the [release notes](https://github.com/crystal-ameba/ameba/releases/tag/v1.0.0)
+Check out the [release notes](https://github.com/crystal-ameba/ameba/releases/tag/v1.0.0)
 to see a full scope of changes.
 
 ### Crystal compatibility
 
-This release introduces [Crystal 1.4](https://crystal-lang.org/2022/04/06/1.4.0-released.html) compatibility and **breaks compatibility of previous Crystal versions**.
+This release introduces [Crystal 1.4](https://crystal-lang.org/2022/04/06/1.4.0-released.html) compatibility and **breaks compatibility with previous Crystal versions**.
 Use the latest Ameba bugfix release [0.14.4](https://github.com/crystal-ameba/ameba/releases/tag/v0.14.4)
 if you need a compatibility of Crystal `1.3.x` or below.
 
 ### Autocorrection
 
-Thanks to community, there is a huge step forward implementing autocorrection for Ameba.
-The feature was originally developed in [#248](https://github.com/crystal-ameba/ameba/pull/248) and afterwards improved in a several cycles.
+Thanks to the community, there is a huge step forward implementing autocorrection for Ameba.
+The feature was originally developed in [#248](https://github.com/crystal-ameba/ameba/pull/248) and afterwards improved in several cycles.
 
 Now if Ameba reports an issue which can be corrected, it adds a `[Correctable]` notice:
 
@@ -158,7 +158,7 @@ Ameba has a high code coverage which was obviously achieved by a big amount of t
 However, most of the rule specs were too imperative and it led to code duplication
 and some readability issues.
 
-In this release [were introduced](https://github.com/crystal-ameba/ameba/pull/245) a new spec matchers for rule tests.
+In this release, new spec matchers for rule tests [were introduced](https://github.com/crystal-ameba/ameba/pull/245).
 This new declarative approach allows to easily track all the reported issues in specs.
 
 ```crystal
