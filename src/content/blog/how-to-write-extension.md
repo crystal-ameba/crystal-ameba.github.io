@@ -124,7 +124,7 @@ require "ameba-docs" # requires ameba docs extension
 And now we are ready to build and run it:
 
 ```sh
-$ crystal build bin/ameba.cr -o bin/ameba
+$ make build
 $ bin/ameba
 ```
 

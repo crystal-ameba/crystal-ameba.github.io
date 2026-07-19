@@ -106,7 +106,7 @@ Let's do some benchmarking now.
 At first, we need to build Ameba using the `preview_mt` flag and install it manually:
 
 ```sh
-$ crystal build src/cli.cr -Dpreview_mt -o bin/ameba
+$ make build CRFLAGS="-Dpreview_mt"
 $ sudo make install
 ```
 
