@@ -43,13 +43,13 @@ def foo
 end
 ```
 
-Now, such a comment directive above will be propertly reported.
+Now, such a comment directive above will be properly reported.
 
 ### [`Style/IsANil`](/ameba/0.13.0/Ameba/Rule/Style/IsANil.html)
 
 Crystal has two ways for checking the `nil` equality: `.is_a?(Nil)` and `.nil?`.
 
-Since the second is much more consice and doing basically the same, now Ameba
+Since the second is much more concise and doing basically the same, now Ameba
 disallows calls to `.is_a?(Nil)` in favor of `.nil?`.
 
 This is considered bad:

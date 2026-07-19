@@ -37,7 +37,7 @@ abstraction. Such internal representation of source code is very convenient
 to operate on it. For example, it is possible to attach an
 [`Issue`](/ameba/0.10.0/Ameba/Issue.html) to this source.
 
-`Source` also can be created programatically:
+`Source` also can be created programmatically:
 
 ```crystal
 require "ameba"
@@ -204,7 +204,7 @@ Congratulations, we successfully analyzed our source code and reported an issue.
 
 ## Wrap-up
 
-In this tutorial we went through the steps to programatically load source code,
+In this tutorial we went through the steps to programmatically load source code,
 parse it into AST nodes, create a custom rule, create an issue and show results.
 It covers the full loop, which Ameba does while doing static analysis.
 So it can help to understand how it works internally.

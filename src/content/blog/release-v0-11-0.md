@@ -71,11 +71,11 @@ Lint/RedundantWithObject:
 
 ### Parallel linting
 
-Crystal started to [support parallism](https://crystal-lang.org/2019/09/06/parallelism-in-crystal.html)
+Crystal started to [support parallelism](https://crystal-lang.org/2019/09/06/parallelism-in-crystal.html)
 as an experimental feature starting from `0.31.0`. The main intention here is
 speed, which is achieved by doing several things in parallel. Ameba is a small set
 of rules and enforcements and in most cases, it takes a couple of seconds to lint
-an average shard. However, we still find it useful to parallize the linting,
+an average shard. However, we still find it useful to parallelize the linting,
 especially on a large amount of sources.
 
 We found that the easiest way to run linting in parallel is to spawn each
@@ -145,7 +145,7 @@ Ameba GitHub action [has been released](https://github.com/crystal-ameba/github-
 and the first version [has been published](https://github.com/marketplace/actions/crystal-ameba-linter)
 to the GitHub marketplace.
 
-The easiest way to use it is to follow installation intructions:
+The easiest way to use it is to follow installation instructions:
 
 ```yml
 # Copy and paste the following snippet into your .yml file.

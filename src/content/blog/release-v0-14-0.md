@@ -27,7 +27,7 @@ require "./thing" # duplicated require
 
 In specs `focus: true` is mainly used to focus on a spec item locally during development.
 However, if such change is committed, it silently runs only focused spec on all other
-enviroments, which is undesired.
+environments, which is undesired.
 
 This rule reports if specs are focused.
 

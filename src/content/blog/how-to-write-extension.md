@@ -138,4 +138,4 @@ We made a small Ameba extension and used that in a third-party project.
 Of course, this was just an example of the rule and not a production ready
 solution. However, it is a perfect example of the power of Ameba's modules.
 
-The sources [are availabe on Github](https://github.com/crystal-ameba/ameba-docs-rule-example).
+The sources [are available on Github](https://github.com/crystal-ameba/ameba-docs-rule-example).
