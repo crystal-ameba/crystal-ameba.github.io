@@ -1,5 +1,5 @@
 export const SITE_NAME = 'Ameba';
-export const SITE_TITLE = `${SITE_NAME} — Crystal code linter`;
+export const SITE_TITLE = `${SITE_NAME} — Crystal code linter and formatter`;
 export const SITE_DESCRIPTION = 'A static code analysis tool for the Crystal programming language.';
 
 export const BLOG_TITLE = `${SITE_NAME} blog`;
