@@ -157,14 +157,14 @@ loop { run }
 #### [`Lint/RedundantStringCoercion`](/ameba/0.12.0/Ameba/Rule/Lint/RedundantStringCoercion.html)
 
 This is typical situation when a value is being converted to string using
-[`Object.to_s`](https://crystal-lang.org/api/0.33.0/Object.html#to_s:String-instance-method)
+[`Object#to_s`](https://crystal-lang.org/api/0.33.0/Object.html#to_s:String-instance-method)
 method in the interpolation.
 
 ```crystal
 "Hello, #{name.to_s}"
 ```
 
-Since each value enclosed by `{ ... }` ends up invoking `Object.to_s` explicit
+Since each value enclosed by `{ ... }` ends up invoking `Object#to_s` explicit
 calls are redundant and are now reported by Ameba.
 The code above is forced to be changed to
 
