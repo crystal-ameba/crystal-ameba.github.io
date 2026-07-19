@@ -90,7 +90,7 @@ passes it to the node visitor, which allows us filter the <code>ClassDef</code> 
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#F97583">require</span><span style="color:#9ECBFF"> "ameba/cli"</span><span style="color:#6A737D">  # requires Ameba's cli</span></span>
 <span class="line"><span style="color:#F97583">require</span><span style="color:#9ECBFF"> "ameba-docs"</span><span style="color:#6A737D"> # requires ameba docs extension</span></span></code></pre>
 <p>And now we are ready to build and run it:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> crystal</span><span style="color:#9ECBFF"> build</span><span style="color:#9ECBFF"> bin/ameba.cr</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> bin/ameba</span></span>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> make</span><span style="color:#9ECBFF"> build</span></span>
 <span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> bin/ameba</span></span></code></pre>
 <p>The results are displayed below. <code>crystal-docs</code> extension in action:</p>
 <p><img src="/gallery/posts/how-to-write-extension/crystal-docs-ext.png" alt=""></p>

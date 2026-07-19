@@ -80,7 +80,7 @@ needed is to wait the hole inspection on all sources at the end and gather resul
 <p>In reality, it is a bit more complex and it was simplified just to explain the concept.
 Let’s do some benchmarking now.</p>
 <p>At first, we need to build Ameba using the <code>preview_mt</code> flag and install it manually:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> crystal</span><span style="color:#9ECBFF"> build</span><span style="color:#9ECBFF"> src/cli.cr</span><span style="color:#79B8FF"> -Dpreview_mt</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> bin/ameba</span></span>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> make</span><span style="color:#9ECBFF"> build</span><span style="color:#9ECBFF"> CRFLAGS="-Dpreview_mt"</span></span>
 <span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> sudo</span><span style="color:#9ECBFF"> make</span><span style="color:#9ECBFF"> install</span></span></code></pre>
 <p>And then we can try running it on Crystal repo (1449 files for the moment)
 using different amount of crystal workers:</p>
