@@ -56,15 +56,15 @@ the following:</p>
 <h3 id="parallel-linting">Parallel linting</h3>
 <p>Crystal started to <a href="https://crystal-lang.org/2019/09/06/parallelism-in-crystal.html">support parallelism</a>
 as an experimental feature starting from <code>0.31.0</code>. The main intention here is
-speed, which is achieved by doing several things in parallel. Ameba is a small set
-of rules and enforcements and in most cases, it takes a couple of seconds to lint
+speed, which is achieved by doing several things in parallel. Ameba has a small set
+of rules and enforcements, and in most cases, it takes a couple of seconds to lint
 an average shard. However, we still find it useful to parallelize the linting,
 especially on a large amount of sources.</p>
-<p>We found that the easiest way to run linting in parallel is to spawn each
+<p>We found that the easiest way to run linting in parallel, is to spawn each
 source into its own channel. And since issues are added to the sources, we don’t
 have to care about thread safety, because a full set of rules will be running
-sequentially on each source in its own thread. So the only thing which is
-needed is to wait for the whole inspection on all sources at the end and gather results.</p>
+sequentially on each source and in its own thread. So the only thing which is
+needed, is to wait for the whole inspection on all sources at the end and gather results.</p>
 <p>At a high level, it looks similar to this:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">channels </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> sources.map { </span><span style="color:#79B8FF">Channel</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">Nil</span><span style="color:#E1E4E8">).new }</span></span>
 <span class="line"></span>
@@ -91,10 +91,10 @@ using different amount of crystal workers:</p>
 <p>If you look at the <code>total</code> part, you will find that the max time is <code>28.116</code>
 seconds and the min one is <code>10.900</code> seconds. So we were able to run it
 almost <strong>3 times faster</strong> on 8 workers.</p>
-<p>However, the results are
-not linear to the amount of workers. And that is expected, because our sources
-(or more accurate, lines of code) are not divided evenly and some workers have
-to inspect bigger sources and other workers will have to wait until they finish.</p>
+<p>However, the results are not linear to the amount of workers. And that is expected,
+because our sources (or more accurate, lines of code) are not divided evenly and
+some workers have to inspect bigger sources and other workers will have to wait until
+they finish.</p>
 <p>Of course, someone can say that we can pre-calculate the LoCs and divide the work
 more evenly. And it would be true. But that would complicate our implementation
 a lot. So here we decided to make it as simple as possible and keep the room
@@ -107,7 +107,7 @@ the best results, keep us posted!</p>
 <p>Ameba GitHub action <a href="https://github.com/crystal-ameba/github-action">has been released</a>
 and the first version <a href="https://github.com/marketplace/actions/crystal-ameba-linter">has been published</a>
 to the GitHub marketplace.</p>
-<p>The easiest way to use it is to follow installation instructions:</p>
+<p>The easiest way to use it, is to follow installation instructions:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yml"><code><span class="line"><span style="color:#6A737D"># Copy and paste the following snippet into your .yml file.</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#E1E4E8">- </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Run Ameba Linter</span></span>

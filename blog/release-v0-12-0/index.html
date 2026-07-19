@@ -116,10 +116,10 @@ rule is able to detect a few situations:</p>
 <hr>
 <h4 id="lintredundantstringcoercion"><a href="/ameba/0.12.0/Ameba/Rule/Lint/RedundantStringCoercion.html"><code>Lint/RedundantStringCoercion</code></a></h4>
 <p>This is typical situation when a value is being converted to string using
-<a href="https://crystal-lang.org/api/0.33.0/Object.html#to_s:String-instance-method"><code>Object.to_s</code></a>
+<a href="https://crystal-lang.org/api/0.33.0/Object.html#to_s:String-instance-method"><code>Object#to_s</code></a>
 method in the interpolation.</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#9ECBFF">"Hello, </span><span style="color:#9ECBFF">#{</span><span style="color:#E1E4E8">name</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">to_s</span><span style="color:#9ECBFF">}</span><span style="color:#9ECBFF">"</span></span></code></pre>
-<p>Since each value enclosed by <code>{ ... }</code> ends up invoking <code>Object.to_s</code> explicit
+<p>Since each value enclosed by <code>{ ... }</code> ends up invoking <code>Object#to_s</code> explicit
 calls are redundant and are now reported by Ameba.
 The code above is forced to be changed to</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#9ECBFF">"Hello, </span><span style="color:#9ECBFF">#{</span><span style="color:#E1E4E8">name</span><span style="color:#9ECBFF">}</span><span style="color:#9ECBFF">"</span></span></code></pre>
