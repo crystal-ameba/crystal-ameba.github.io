@@ -61,10 +61,10 @@ of rules and enforcements and in most cases, it takes a couple of seconds to lin
 an average shard. However, we still find it useful to parallelize the linting,
 especially on a large amount of sources.</p>
 <p>We found that the easiest way to run linting in parallel is to spawn each
-source into it’s own channel. And since issues are added to the sources, we don’t
-have to care about thread safely, because a full set of rules will be running
-sequentially on each source in it’s own thread. So the only thing which is
-needed is to wait the hole inspection on all sources at the end and gather results.</p>
+source into its own channel. And since issues are added to the sources, we don’t
+have to care about thread safety, because a full set of rules will be running
+sequentially on each source in its own thread. So the only thing which is
+needed is to wait for the whole inspection on all sources at the end and gather results.</p>
 <p>At a high level, it looks similar to this:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">channels </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> sources.map { </span><span style="color:#79B8FF">Channel</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">Nil</span><span style="color:#E1E4E8">).new }</span></span>
 <span class="line"></span>
