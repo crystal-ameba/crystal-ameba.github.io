@@ -1,5 +1,5 @@
 ---
-title: "Ameba v0.13.0 has been released"
+title: "Ameba 0.13.0 has been released"
 description: "A very small release that supports Crystal 0.35.0 and eliminates the deprecation messages which are related to yaml serialization."
 pubDate: 2020-06-22T12:54:30
 category: "Release announcement"

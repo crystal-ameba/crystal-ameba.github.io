@@ -1,13 +1,13 @@
 ---
-title: "Ameba v0.11.0 - New rules, lint in parallel, GitHub action and more."
-description: "Ameba v0.11.0 has been released. Here we will go through the main features and improvements which are included to this release. Also, will do benchmarking comparing parallel linting…"
+title: "Ameba 0.11.0 - New rules, lint in parallel, GitHub action and more."
+description: "Ameba 0.11.0 has been released. Here we will go through the main features and improvements which are included to this release. Also, will do benchmarking comparing parallel linting…"
 pubDate: 2019-11-28T00:54:30
 category: "Release announcement"
 tags:
   - releases
 ---
 
-Ameba [v0.11.0](https://github.com/crystal-ameba/ameba/releases/tag/v0.11.0) has been released.
+Ameba [0.11.0](https://github.com/crystal-ameba/ameba/releases/tag/v0.11.0) has been released.
 Here we will go through the main **features and improvements** which are included to this
 release. Also, will do **benchmarking** comparing parallel linting using
 Crystal's experimental parallelism and will explain how to use Ameba together

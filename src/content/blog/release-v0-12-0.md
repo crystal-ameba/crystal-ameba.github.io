@@ -1,5 +1,5 @@
 ---
-title: "Ameba v0.12.0 has been released"
+title: "Ameba 0.12.0 has been released"
 description: "Check out the release notes to see a full scope of changes. Here we will go through the most important changes."
 pubDate: 2020-03-27T12:54:30
 category: "Release announcement"

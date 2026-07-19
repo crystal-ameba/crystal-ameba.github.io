@@ -1,5 +1,5 @@
 ---
-title: "Ameba v1.0.0 has been released"
+title: "Ameba 1.0.0 has been released"
 description: "This release includes a long-waiting autocorrection feature, new rules and several improvements. Check out the release notes to see a full scope of changes."
 pubDate: 2021-10-04T12:54:30
 category: "Release announcement"
