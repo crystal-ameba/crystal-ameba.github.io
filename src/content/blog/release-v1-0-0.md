@@ -15,7 +15,7 @@ to see a full scope of changes.
 
 This release introduces [Crystal 1.4](https://crystal-lang.org/2022/04/06/1.4.0-released.html) compatibility and **breaks compatibility with previous Crystal versions**.
 Use the latest Ameba bugfix release [0.14.4](https://github.com/crystal-ameba/ameba/releases/tag/v0.14.4)
-if you need a compatibility of Crystal `1.3.x` or below.
+if you need compatibility with Crystal `1.3.x` or below.
 
 ### Autocorrection
 
