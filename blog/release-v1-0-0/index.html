@@ -114,10 +114,10 @@ This new declarative approach allows to easily track all the reported issues in 
 <span class="line"></span>
 <span class="line"><span style="color:#9ECBFF">      spawn do</span></span>
 <span class="line"><span style="color:#9ECBFF">        puts foo</span></span>
-<span class="line"><span style="color:#9ECBFF">            # ^^^ error: Shared variable `foo` is used in fiber</span></span>
+<span class="line"><span style="color:#9ECBFF">           # ^^^ error: Shared variable `foo` is used in fiber</span></span>
 <span class="line"><span style="color:#9ECBFF">        puts foo + bar + baz</span></span>
-<span class="line"><span style="color:#9ECBFF">            # ^^^ error: Shared variable `foo` is used in fiber</span></span>
-<span class="line"><span style="color:#9ECBFF">                        # ^^^ error: Shared variable `baz` is used in fiber</span></span>
+<span class="line"><span style="color:#9ECBFF">           # ^^^ error: Shared variable `foo` is used in fiber</span></span>
+<span class="line"><span style="color:#9ECBFF">                       # ^^^ error: Shared variable `baz` is used in fiber</span></span>
 <span class="line"><span style="color:#9ECBFF">      end</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#9ECBFF">      foo += 1</span></span>
