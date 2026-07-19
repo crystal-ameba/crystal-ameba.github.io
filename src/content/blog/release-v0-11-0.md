@@ -150,7 +150,7 @@ The easiest way to use it is to follow installation instructions:
 ```yml
 # Copy and paste the following snippet into your .yml file.
 
-- name: Crystal Ameba Linter
+- name: Run Ameba Linter
   uses: crystal-ameba/github-action@v0.1.1
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -163,27 +163,30 @@ And here is an example of the workflow with Ameba and Crystal specs:
 
 name: Crystal CI
 
-on: [push]
+on:
+  push:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     container:
       image: crystallang/crystal
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Crystal Ameba Linter
-      id: crystal-ameba
-      uses: crystal-ameba/github-action@v0.1.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Install dependencies
-      run: shards install
-    - name: Run tests
-      run: crystal spec
+      - name: Download source
+        uses: actions/checkout@v1
+
+      - name: Run Ameba Linter
+        uses: crystal-ameba/github-action@v0.1.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install dependencies
+        run: shards install
+
+      - name: Run tests
+        run: crystal spec
 ```
 
 Once this is added to GitHub action workflow, Ameba will start reporting

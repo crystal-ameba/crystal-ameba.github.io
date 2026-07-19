@@ -34,14 +34,14 @@ version: 0.1.0
 authors:
   - Vitalii Elenhaupt <velenhaupt@gmail.com>
 
-crystal: 0.29.0
-
-license: MIT
-
 development_dependencies:
   ameba:
     github: crystal-ameba/ameba
     version: ~> 0.10.0
+
+crystal: 0.29.0
+
+license: MIT
 ```
 
 It needs to be a development dependency because we don't want to force
@@ -106,7 +106,7 @@ Then we install those deps:
 ```sh
 $ shards install
 
-Fetching https://github.com/veelenga/ameba.git
+Fetching https://github.com/crystal-ameba/ameba.git
 Fetching https://github.com/crystal-ameba/ameba-docs-rule-example.git
 Installing ameba (0.10.0 at master)
 Installing ameba-docs (0.1.0 at master)
@@ -124,7 +124,7 @@ require "ameba-docs" # requires ameba docs extension
 And now we are ready to build and run it:
 
 ```sh
-$ make build
+$ crystal build bin/ameba.cr -o bin/ameba
 $ bin/ameba
 ```
 

@@ -136,7 +136,6 @@ source.issues # =>
   #     @status=nil
   #   )
   # ]
-
 ```
 
 Now the source holds an issue. It's a time to report it.
@@ -167,7 +166,6 @@ Formatters are designed to update its states using hooks, like
 If we compile the source code above and run it, we will see:
 
 ```json
-
 {
     "metadata": {
         "ameba_version": "0.10.0",

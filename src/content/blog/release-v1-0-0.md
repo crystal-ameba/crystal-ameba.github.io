@@ -81,6 +81,7 @@ A tiny rule that checks for mistyped shorthand assignments.
 <div class="example bad">
 
 Bad
+
 ```crystal
 x =- y
 x =+ y
@@ -113,6 +114,7 @@ a = 2
 pp! a # error: Possibly forgotten debug-related `pp!` call detected
 a = a + 1
 ```
+
 Check out the [API doc](/ameba/1.0.0/Ameba/Rule/Lint/DebugCalls.html) to see a full list of supported debug-related calls.
 
 #### [`Style/GuardClause`](/ameba/1.0.0/Ameba/Rule/Style/GuardClause.html)
