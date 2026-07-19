@@ -54,11 +54,11 @@ the following:</p>
 <span class="line"><span style="color:#85E89D">Lint/RedundantWithObject</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#85E89D">  Enabled</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span></code></pre>
 <h3 id="parallel-linting">Parallel linting</h3>
-<p>Crystal started to <a href="https://crystal-lang.org/2019/09/06/parallelism-in-crystal.html">support parallism</a>
+<p>Crystal started to <a href="https://crystal-lang.org/2019/09/06/parallelism-in-crystal.html">support parallelism</a>
 as an experimental feature starting from <code>0.31.0</code>. The main intention here is
 speed, which is achieved by doing several things in parallel. Ameba is a small set
 of rules and enforcements and in most cases, it takes a couple of seconds to lint
-an average shard. However, we still find it useful to parallize the linting,
+an average shard. However, we still find it useful to parallelize the linting,
 especially on a large amount of sources.</p>
 <p>We found that the easiest way to run linting in parallel is to spawn each
 source into it’s own channel. And since issues are added to the sources, we don’t
@@ -107,7 +107,7 @@ the best results, keep us posted!</p>
 <p>Ameba GitHub action <a href="https://github.com/crystal-ameba/github-action">has been released</a>
 and the first version <a href="https://github.com/marketplace/actions/crystal-ameba-linter">has been published</a>
 to the GitHub marketplace.</p>
-<p>The easiest way to use it is to follow installation intructions:</p>
+<p>The easiest way to use it is to follow installation instructions:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yml"><code><span class="line"><span style="color:#6A737D"># Copy and paste the following snippet into your .yml file.</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#E1E4E8">- </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Crystal Ameba Linter</span></span>

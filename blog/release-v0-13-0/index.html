@@ -32,10 +32,10 @@ deprecation warning while compiling the binary.</p>
 <span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> foo</span></span>
 <span class="line"><span style="color:#79B8FF">  :bar</span></span>
 <span class="line"><span style="color:#F97583">end</span></span></code></pre>
-<p>Now, such a comment directive above will be propertly reported.</p>
+<p>Now, such a comment directive above will be properly reported.</p>
 <h3 id="styleisanil"><a href="/ameba/0.13.0/Ameba/Rule/Style/IsANil.html"><code>Style/IsANil</code></a></h3>
 <p>Crystal has two ways for checking the <code>nil</code> equality: <code>.is_a?(Nil)</code> and <code>.nil?</code>.</p>
-<p>Since the second is much more consice and doing basically the same, now Ameba
+<p>Since the second is much more concise and doing basically the same, now Ameba
 disallows calls to <code>.is_a?(Nil)</code> in favor of <code>.nil?</code>.</p>
 <p>This is considered bad:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">var</span><span style="color:#F97583">.is_a?</span><span style="color:#79B8FF"> Nil</span></span></code></pre>

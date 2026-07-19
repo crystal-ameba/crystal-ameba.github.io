@@ -29,7 +29,7 @@ is capable to read that and create a new <a href="/ameba/0.10.0/Ameba/Source.htm
 abstraction. Such internal representation of source code is very convenient
 to operate on it. For example, it is possible to attach an
 <a href="/ameba/0.10.0/Ameba/Issue.html"><code>Issue</code></a> to this source.</p>
-<p><code>Source</code> also can be created programatically:</p>
+<p><code>Source</code> also can be created programmatically:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#F97583">require</span><span style="color:#9ECBFF"> "ameba"</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#E1E4E8">source </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> Ameba</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">Source</span><span style="color:#E1E4E8">.new </span><span style="color:#9ECBFF">%(</span></span>
@@ -157,7 +157,7 @@ which formats to JSON. Let’s give it a try:</p>
 <span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
 <p>Congratulations, we successfully analyzed our source code and reported an issue.</p>
 <h2 id="wrap-up">Wrap-up</h2>
-<p>In this tutorial we went through the steps to programatically load source code,
+<p>In this tutorial we went through the steps to programmatically load source code,
 parse it into AST nodes, create a custom rule, create an issue and show results.
 It covers the full loop, which Ameba does while doing static analysis.
 So it can help to understand how it works internally.</p>
