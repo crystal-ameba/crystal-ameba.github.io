@@ -119,25 +119,28 @@ to the GitHub marketplace.</p>
 <span class="line"></span>
 <span class="line"><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Crystal CI</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#79B8FF">on</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">push</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#79B8FF">on</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  push</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#85E89D">jobs</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#85E89D">  build</span><span style="color:#E1E4E8">:</span></span>
-<span class="line"></span>
 <span class="line"><span style="color:#85E89D">    runs-on</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ubuntu-latest</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#85E89D">    container</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#85E89D">      image</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">crystallang/crystal</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#85E89D">    steps</span><span style="color:#E1E4E8">:</span></span>
-<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">actions/checkout@v1</span></span>
-<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Crystal Ameba Linter</span></span>
-<span class="line"><span style="color:#85E89D">      id</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">crystal-ameba</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Download source</span></span>
+<span class="line"><span style="color:#85E89D">      uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">actions/checkout@v1</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Run Ameba Linter</span></span>
 <span class="line"><span style="color:#85E89D">      uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">crystal-ameba/github-action@v0.1.1</span></span>
 <span class="line"><span style="color:#85E89D">      env</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#85E89D">        GITHUB_TOKEN</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">${{ secrets.GITHUB_TOKEN }}</span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Install dependencies</span></span>
 <span class="line"><span style="color:#85E89D">      run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shards install</span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Run tests</span></span>
 <span class="line"><span style="color:#85E89D">      run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">crystal spec</span></span></code></pre>
 <p>Once this is added to GitHub action workflow, Ameba will start reporting

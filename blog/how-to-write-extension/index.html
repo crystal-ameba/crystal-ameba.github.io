@@ -26,14 +26,14 @@ which will <strong>enforce classes to have documentation</strong>.</p>
 <span class="line"><span style="color:#85E89D">authors</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#9ECBFF">Vitalii Elenhaupt &lt;velenhaupt@gmail.com&gt;</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#85E89D">crystal</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">0.29.0</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#85E89D">license</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">MIT</span></span>
-<span class="line"></span>
 <span class="line"><span style="color:#85E89D">development_dependencies</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#85E89D">  ameba</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#85E89D">    github</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">crystal-ameba/ameba</span></span>
-<span class="line"><span style="color:#85E89D">    version</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">~&gt; 0.10.0</span></span></code></pre>
+<span class="line"><span style="color:#85E89D">    version</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">~&gt; 0.10.0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">crystal</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">0.29.0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">license</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">MIT</span></span></code></pre>
 <p>It needs to be a development dependency because we don’t want to force
 the end application to be dependent on a specific version of Ameba.</p>
 <h3 id="2-creating-a-rule">2. Creating a rule</h3>
@@ -81,7 +81,7 @@ passes it to the node visitor, which allows us filter the <code>ClassDef</code> 
 <p>Then we install those deps:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> shards</span><span style="color:#9ECBFF"> install</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#B392F0">Fetching</span><span style="color:#9ECBFF"> https://github.com/veelenga/ameba.git</span></span>
+<span class="line"><span style="color:#B392F0">Fetching</span><span style="color:#9ECBFF"> https://github.com/crystal-ameba/ameba.git</span></span>
 <span class="line"><span style="color:#B392F0">Fetching</span><span style="color:#9ECBFF"> https://github.com/crystal-ameba/ameba-docs-rule-example.git</span></span>
 <span class="line"><span style="color:#B392F0">Installing</span><span style="color:#9ECBFF"> ameba</span><span style="color:#E1E4E8"> (0.10.0 </span><span style="color:#9ECBFF">at</span><span style="color:#9ECBFF"> master</span><span style="color:#E1E4E8">)</span></span>
 <span class="line"><span style="color:#B392F0">Installing</span><span style="color:#9ECBFF"> ameba-docs</span><span style="color:#E1E4E8"> (0.1.0 </span><span style="color:#9ECBFF">at</span><span style="color:#9ECBFF"> master</span><span style="color:#E1E4E8">)</span></span></code></pre>
