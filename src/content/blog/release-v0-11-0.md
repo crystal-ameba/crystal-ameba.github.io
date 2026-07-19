@@ -11,7 +11,7 @@ Ameba [v0.11.0](https://github.com/crystal-ameba/ameba/releases/tag/v0.11.0) has
 Here we will go through the main **features and improvements** which are included to this
 release. Also, will do **benchmarking** comparing parallel linting using
 Crystal's experimental parallelism and will explain how to use Ameba together
-with **GitHub actions**. 
+with **GitHub actions**.
 
 ### New Rules
 
@@ -64,7 +64,7 @@ If your source code is not ready for these enforcements, they can be disabled in
 ```yml
 Lint/RedundantWithIndex:
   Enabled: false
-  
+
 Lint/RedundantWithObject:
   Enabled: false
 ```
@@ -109,7 +109,7 @@ At first, we need to build Ameba using the `preview_mt` flag and install it manu
 $ crystal build src/cli.cr -Dpreview_mt -o bin/ameba
 $ sudo make install
 ```
- 
+
 And then we can try running it on Crystal repo (1449 files for the moment)
 using different amount of crystal workers:
 
@@ -134,7 +134,7 @@ more evenly. And it would be true. But that would complicate our implementation
 a lot. So here we decided to make it as simple as possible and keep the room
 opened for the future improvements.
 
-At the end, we must say that this feature is fully functional and reliable on 
+At the end, we must say that this feature is fully functional and reliable on
 Ameba's side. It was well tested using different formatters, so the end user
 is free to try it to inspect his crystal code in parallel. We are looking for
 the best results, keep us posted!
@@ -199,5 +199,5 @@ running the inspection. Hope you would enjoy it!
 ### More
 
 This release also includes a couple of bug fixes and small improvements.
-Checkout the [release notes](https://github.com/crystal-ameba/ameba/releases/tag/v0.11.0)
+Check out the [release notes](https://github.com/crystal-ameba/ameba/releases/tag/v0.11.0)
 for more details.

@@ -113,7 +113,7 @@ a = 2
 pp! a # error: Possibly forgotten debug-related `pp!` call detected
 a = a + 1
 ```
-Checkout the [API doc](/ameba/1.0.0/Ameba/Rule/Lint/DebugCalls.html) to see a full list of supported debug-related calls.
+Check out the [API doc](/ameba/1.0.0/Ameba/Rule/Lint/DebugCalls.html) to see a full list of supported debug-related calls.
 
 #### [`Style/GuardClause`](/ameba/1.0.0/Ameba/Rule/Style/GuardClause.html)
 
@@ -190,4 +190,4 @@ Some explanation:
 * `Shared variable 'foo' is used in fiber` - the reported error message
 
 These new matchers are used internally and of course can be used by Ameba extensions.
-Checkout the [doc](/ameba/1.0.0/Ameba/Spec/ExpectIssue.html) for more details.
+Check out the [doc](/ameba/1.0.0/Ameba/Spec/ExpectIssue.html) for more details.

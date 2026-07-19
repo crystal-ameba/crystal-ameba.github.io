@@ -10,7 +10,7 @@ tags:
 A very small release that supports [Crystal 0.35.0](https://github.com/crystal-lang/crystal/releases/tag/0.35.0)
 and eliminates the deprecation messages which are related to yaml serialization.
 
-Checkout the [release notes](https://github.com/crystal-ameba/ameba/releases/tag/v0.13.0)
+Check out the [release notes](https://github.com/crystal-ameba/ameba/releases/tag/v0.13.0)
 to see a full scope of changes.
 
 ### Move to `YAML::Serializable`

@@ -1,13 +1,13 @@
 ---
 title: "Ameba v0.12.0 has been released"
-description: "Checkout the release notes to see a full scope of changes. Here we will go through the most important changes."
+description: "Check out the release notes to see a full scope of changes. Here we will go through the most important changes."
 pubDate: 2020-03-27T12:54:30
 category: "Release announcement"
 tags:
   - releases
 ---
 
-Checkout the [release notes](https://github.com/crystal-ameba/ameba/releases/tag/v0.12.0)
+Check out the [release notes](https://github.com/crystal-ameba/ameba/releases/tag/v0.12.0)
 to see a full scope of changes. Here we will go through the most important changes.
 
 ### Globs and Excluded configuration options
