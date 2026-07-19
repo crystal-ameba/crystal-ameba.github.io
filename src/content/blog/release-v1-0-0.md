@@ -171,10 +171,10 @@ it "reports multiple shared variables in spawn" do
 
       spawn do
         puts foo
-            # ^^^ error: Shared variable `foo` is used in fiber
+           # ^^^ error: Shared variable `foo` is used in fiber
         puts foo + bar + baz
-            # ^^^ error: Shared variable `foo` is used in fiber
-                        # ^^^ error: Shared variable `baz` is used in fiber
+           # ^^^ error: Shared variable `foo` is used in fiber
+                       # ^^^ error: Shared variable `baz` is used in fiber
       end
 
       foo += 1
