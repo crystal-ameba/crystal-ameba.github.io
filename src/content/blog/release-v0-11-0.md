@@ -79,10 +79,10 @@ an average shard. However, we still find it useful to parallelize the linting,
 especially on a large amount of sources.
 
 We found that the easiest way to run linting in parallel is to spawn each
-source into it's own channel. And since issues are added to the sources, we don't
-have to care about thread safely, because a full set of rules will be running
-sequentially on each source in it's own thread. So the only thing which is
-needed is to wait the hole inspection on all sources at the end and gather results.
+source into its own channel. And since issues are added to the sources, we don't
+have to care about thread safety, because a full set of rules will be running
+sequentially on each source in its own thread. So the only thing which is
+needed is to wait for the whole inspection on all sources at the end and gather results.
 
 At a high level, it looks similar to this:
 
