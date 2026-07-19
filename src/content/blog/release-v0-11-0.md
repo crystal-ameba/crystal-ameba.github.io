@@ -1,5 +1,5 @@
 ---
-title: "Ameba 0.11.0 - New rules, lint in parallel, GitHub action and more."
+title: "Ameba 0.11.0 - New rules, lint in parallel, GitHub action and more"
 description: "Ameba 0.11.0 has been released. Here we will go through the main features and improvements which are included to this release. Also, will do benchmarking comparing parallel linting…"
 pubDate: 2019-11-28T00:54:30
 category: "Release announcement"
@@ -73,16 +73,16 @@ Lint/RedundantWithObject:
 
 Crystal started to [support parallelism](https://crystal-lang.org/2019/09/06/parallelism-in-crystal.html)
 as an experimental feature starting from `0.31.0`. The main intention here is
-speed, which is achieved by doing several things in parallel. Ameba is a small set
-of rules and enforcements and in most cases, it takes a couple of seconds to lint
+speed, which is achieved by doing several things in parallel. Ameba has a small set
+of rules and enforcements, and in most cases, it takes a couple of seconds to lint
 an average shard. However, we still find it useful to parallelize the linting,
 especially on a large amount of sources.
 
-We found that the easiest way to run linting in parallel is to spawn each
+We found that the easiest way to run linting in parallel, is to spawn each
 source into its own channel. And since issues are added to the sources, we don't
 have to care about thread safety, because a full set of rules will be running
-sequentially on each source in its own thread. So the only thing which is
-needed is to wait for the whole inspection on all sources at the end and gather results.
+sequentially on each source and in its own thread. So the only thing which is
+needed, is to wait for the whole inspection on all sources at the end and gather results.
 
 At a high level, it looks similar to this:
 
@@ -124,10 +124,10 @@ If you look at the `total` part, you will find that the max time is `28.116`
 seconds and the min one is `10.900` seconds. So we were able to run it
 almost **3 times faster** on 8 workers.
 
-However, the results are
-not linear to the amount of workers. And that is expected, because our sources
-(or more accurate, lines of code) are not divided evenly and some workers have
-to inspect bigger sources and other workers will have to wait until they finish.
+However, the results are not linear to the amount of workers. And that is expected,
+because our sources (or more accurate, lines of code) are not divided evenly and
+some workers have to inspect bigger sources and other workers will have to wait until
+they finish.
 
 Of course, someone can say that we can pre-calculate the LoCs and divide the work
 more evenly. And it would be true. But that would complicate our implementation
@@ -145,7 +145,7 @@ Ameba GitHub action [has been released](https://github.com/crystal-ameba/github-
 and the first version [has been published](https://github.com/marketplace/actions/crystal-ameba-linter)
 to the GitHub marketplace.
 
-The easiest way to use it is to follow installation instructions:
+The easiest way to use it, is to follow installation instructions:
 
 ```yml
 # Copy and paste the following snippet into your .yml file.
