@@ -82,7 +82,7 @@ A couple of things are defined here:
 1. `properties` defines a dsl for configurable rule properties. We only have a rule description.
 2. `MSG` defines a constant for the error message to be reported.
 3. `def test(source)` is an entry point of the rule. Here the method accepts a source file and
-passes it to the node visitor, which allows us filter the `ClassDef` nodes in the method below.
+passes it to the node visitor, which allows us to filter the `ClassDef` nodes in the method below.
 4. `def test(source, node : Crystal::ClassDef)` is a method which does an actual job. The implementation is pretty self explained: it filters out node, which have public visibility and do not have (or have empty) docs.
 
 The extension is pretty much done. Let's try to use it.
@@ -91,7 +91,7 @@ The extension is pretty much done. Let's try to use it.
 
 Somewhere in a separate project we want to plug-in the ameba engine and the extension we made.
 
-To do that, we need to add a development dependencies for both of this projects:
+To do that, we need to add a development dependencies for both of these projects:
 
 ```yml shard.yml
 development_dependencies:
@@ -112,7 +112,7 @@ Installing ameba (0.10.0 at master)
 Installing ameba-docs (0.1.0 at master)
 ```
 
-It will create `bin/ameba.cr` file which is needed to built the ameba together with modules.
+It will create `bin/ameba.cr` file, which is needed to build the ameba together with modules.
 
 First, we need to enable the module:
 
@@ -138,4 +138,4 @@ We made a small Ameba extension and used that in a third-party project.
 Of course, this was just an example of the rule and not a production ready
 solution. However, it is a perfect example of the power of Ameba's modules.
 
-The sources [are available on Github](https://github.com/crystal-ameba/ameba-docs-rule-example).
+The sources [are available on GitHub](https://github.com/crystal-ameba/ameba-docs-rule-example).
