@@ -61,7 +61,7 @@ end
 
 If your source code is not ready for these enforcements, they can be disabled in `.ameba.yml` via:
 
-```yml
+```yaml
 Lint/RedundantWithIndex:
   Enabled: false
 
@@ -147,7 +147,7 @@ to the GitHub marketplace.
 
 The easiest way to use it, is to follow installation instructions:
 
-```yml
+```yaml
 # Copy and paste the following snippet into your .yml file.
 
 - name: Run Ameba Linter
@@ -158,7 +158,7 @@ The easiest way to use it, is to follow installation instructions:
 
 And here is an example of the workflow with Ameba and Crystal specs:
 
-```yml
+```yaml
 # Create .github/workflows/crystal.yml in your repository
 
 name: Crystal CI

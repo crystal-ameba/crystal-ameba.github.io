@@ -27,7 +27,7 @@ $ crystal init lib crystal-docs && cd crystal-docs
 
 and adding Ameba as a dependency to `shard.yml`:
 
-```yml shard.yml
+```yaml shard.yml
 name: ameba-docs
 version: 0.1.0
 
@@ -93,7 +93,7 @@ Somewhere in a separate project we want to plug-in the ameba engine and the exte
 
 To do that, we need to add a development dependencies for both of these projects:
 
-```yml shard.yml
+```yaml shard.yml
 development_dependencies:
   ameba:
     github: crystal-ameba/ameba
