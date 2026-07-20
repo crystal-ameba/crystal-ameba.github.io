@@ -91,6 +91,7 @@ if the node matches the expectations.</p>
 <p>So, in such a way a <code>Source</code> is passed to all the rules and can hold some issues on it:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">rule </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> Ameba</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">Rule</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">NoPuts</span><span style="color:#E1E4E8">.new</span></span>
 <span class="line"><span style="color:#E1E4E8">rule.</span><span style="color:#B392F0">catch</span><span style="color:#E1E4E8">(source)</span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#E1E4E8">source.issues </span><span style="color:#6A737D"># =&gt;</span></span>
 <span class="line"><span style="color:#6A737D">  # [</span></span>
 <span class="line"><span style="color:#6A737D">  #   Ameba::Issue(</span></span>
