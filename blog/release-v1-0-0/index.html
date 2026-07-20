@@ -106,23 +106,23 @@ and some readability issues.</p>
 <p>In this release, new spec matchers for rule tests <a href="https://github.com/crystal-ameba/ameba/pull/245">were introduced</a>.
 This new declarative approach allows to easily track all the reported issues in specs.</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#F97583">it</span><span style="color:#9ECBFF"> "reports multiple shared variables in spawn"</span><span style="color:#F97583"> do</span></span>
-<span class="line"><span style="color:#E1E4E8">  expect_issue subject, </span><span style="color:#9ECBFF">%(</span></span>
-<span class="line"><span style="color:#9ECBFF">    foo, bar, baz = 0, 0, 0</span></span>
+<span class="line"><span style="color:#E1E4E8">  expect_issue subject, </span><span style="color:#9ECBFF">&lt;&lt;-CRYSTAL</span></span>
+<span class="line"><span style="color:#E1E4E8">    foo</span><span style="color:#9ECBFF">, </span><span style="color:#E1E4E8">bar</span><span style="color:#9ECBFF">, </span><span style="color:#E1E4E8">baz</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#9ECBFF">, </span><span style="color:#79B8FF">0</span><span style="color:#9ECBFF">, </span><span style="color:#79B8FF">0</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#9ECBFF">    while foo &lt; 10</span></span>
-<span class="line"><span style="color:#9ECBFF">      baz += 1</span></span>
+<span class="line"><span style="color:#F97583">    while</span><span style="color:#E1E4E8"> foo</span><span style="color:#F97583"> &lt;</span><span style="color:#79B8FF"> 10</span></span>
+<span class="line"><span style="color:#E1E4E8">      baz</span><span style="color:#F97583"> +=</span><span style="color:#79B8FF"> 1</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#9ECBFF">      spawn do</span></span>
-<span class="line"><span style="color:#9ECBFF">        puts foo</span></span>
-<span class="line"><span style="color:#9ECBFF">           # ^^^ error: Shared variable `foo` is used in fiber</span></span>
-<span class="line"><span style="color:#9ECBFF">        puts foo + bar + baz</span></span>
-<span class="line"><span style="color:#9ECBFF">           # ^^^ error: Shared variable `foo` is used in fiber</span></span>
-<span class="line"><span style="color:#9ECBFF">                       # ^^^ error: Shared variable `baz` is used in fiber</span></span>
-<span class="line"><span style="color:#9ECBFF">      end</span></span>
+<span class="line"><span style="color:#79B8FF">      spawn</span><span style="color:#F97583"> do</span></span>
+<span class="line"><span style="color:#79B8FF">        puts</span><span style="color:#9ECBFF"> foo</span></span>
+<span class="line"><span style="color:#6A737D">           # ^^^ error: Shared variable `foo` is used in fiber</span></span>
+<span class="line"><span style="color:#79B8FF">        puts</span><span style="color:#E1E4E8"> foo</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8"> bar</span><span style="color:#F97583"> +</span><span style="color:#9ECBFF"> baz</span></span>
+<span class="line"><span style="color:#6A737D">           # ^^^ error: Shared variable `foo` is used in fiber</span></span>
+<span class="line"><span style="color:#6A737D">                       # ^^^ error: Shared variable `baz` is used in fiber</span></span>
+<span class="line"><span style="color:#F97583">      end</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#9ECBFF">      foo += 1</span></span>
-<span class="line"><span style="color:#9ECBFF">    end</span></span>
-<span class="line"><span style="color:#9ECBFF">  )</span></span>
+<span class="line"><span style="color:#E1E4E8">      foo</span><span style="color:#F97583"> +=</span><span style="color:#79B8FF"> 1</span></span>
+<span class="line"><span style="color:#F97583">    end</span></span>
+<span class="line"><span style="color:#9ECBFF">    CRYSTAL</span></span>
 <span class="line"><span style="color:#F97583">end</span></span></code></pre>
 <p>Some explanation:</p>
 <ul>

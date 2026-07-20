@@ -32,15 +32,15 @@ to operate on it. For example, it is possible to attach an
 <p><code>Source</code> also can be created programmatically:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#F97583">require</span><span style="color:#9ECBFF"> "ameba"</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#E1E4E8">source </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> Ameba</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">Source</span><span style="color:#E1E4E8">.new </span><span style="color:#9ECBFF">%(</span></span>
-<span class="line"><span style="color:#9ECBFF">  class Ameba::Internals</span></span>
-<span class="line"><span style="color:#9ECBFF">    getter info : Info</span></span>
+<span class="line"><span style="color:#E1E4E8">source </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> Ameba</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">Source</span><span style="color:#E1E4E8">.new </span><span style="color:#9ECBFF">&lt;&lt;-CRYSTAL, "source.cr"</span></span>
+<span class="line"><span style="color:#F97583">  class</span><span style="color:#B392F0"> Ameba::Internals</span></span>
+<span class="line"><span style="color:#79B8FF">    getter</span><span style="color:#9ECBFF"> info : </span><span style="color:#79B8FF">Info</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#9ECBFF">    def explain</span></span>
-<span class="line"><span style="color:#9ECBFF">      puts info</span></span>
-<span class="line"><span style="color:#9ECBFF">    end</span></span>
-<span class="line"><span style="color:#9ECBFF">  end</span></span>
-<span class="line"><span style="color:#9ECBFF">)</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"source.cr"</span></span>
+<span class="line"><span style="color:#F97583">    def</span><span style="color:#B392F0"> explain</span></span>
+<span class="line"><span style="color:#79B8FF">      puts</span><span style="color:#9ECBFF"> info</span></span>
+<span class="line"><span style="color:#F97583">    end</span></span>
+<span class="line"><span style="color:#F97583">  end</span></span>
+<span class="line"><span style="color:#9ECBFF">  CRYSTAL</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#E1E4E8">source.issues </span><span style="color:#6A737D"># =&gt; []</span></span></code></pre>
 <h3 id="ast-parsing">AST Parsing</h3>
