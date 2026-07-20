@@ -117,8 +117,8 @@ It will create `bin/ameba.cr` file which is needed to built the ameba together w
 First, we need to enable the module:
 
 ```crystal bin/ameba.cr
-require "ameba/cli"  # requires Ameba's cli
-require "ameba-docs" # requires ameba docs extension
+require "ameba-docs" # requires Ameba docs extension
+require "ameba/cli"  # requires Ameba CLI
 ```
 
 And now we are ready to build and run it:
