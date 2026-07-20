@@ -43,7 +43,7 @@ also be used to exit from a block, for example:
 
 ```crystal
 (1..3).each do |e|
-  break if e.even?
+  next if e.even?
   puts e
 end # => 1, 3
 ```
@@ -82,7 +82,7 @@ channel = Channel(Int32).new
 
 while n < 3
   n = n + 1
-  spawn { channel.send n }
+  spawn { channel.send(n) }
 end
 
 3.times { puts channel.receive }
@@ -101,8 +101,8 @@ channel = Channel(Int32).new
 while n < 3
   n = n + 1
 + m = n
-- spawn do { channel.send n }
-+ spawn do { channel.send m }
+- spawn do { channel.send(n) }
++ spawn do { channel.send(m) }
 end
 
 3.times { puts channel.receive }
