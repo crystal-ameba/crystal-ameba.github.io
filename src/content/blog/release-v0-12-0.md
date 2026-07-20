@@ -24,7 +24,7 @@ Excluded:
   - src/compiler
 ```
 
-* `Globs` is used to define paths to include to the inspection. Defaults to `%w(**/*.cr !lib)`
+* `Globs` is used to define paths to include to the inspection. Defaults to `%w[**/*.cr !lib]`
 * `Excluded` is used to exclude from the list defined by `Globs`
 
 ### Crystal 0.34 compatibility
