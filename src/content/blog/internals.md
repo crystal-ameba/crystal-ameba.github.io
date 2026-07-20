@@ -122,6 +122,7 @@ So, in such a way a `Source` is passed to all the rules and can hold some issues
 ```crystal
 rule = Ameba::Rule::NoPuts.new
 rule.catch(source)
+
 source.issues # =>
   # [
   #   Ameba::Issue(
@@ -167,34 +168,34 @@ If we compile the source code above and run it, we will see:
 
 ```json
 {
-    "metadata": {
-        "ameba_version": "0.10.0",
-        "crystal_version": "0.30.0"
-    },
-    "sources": [
+  "metadata": {
+    "ameba_version": "0.10.0",
+    "crystal_version": "0.30.0"
+  },
+  "sources": [
+    {
+      "issues": [
         {
-            "issues": [
-                {
-                    "end_location": {
-                        "column": 15,
-                        "line": 6
-                    },
-                    "location": {
-                        "column": 7,
-                        "line": 6
-                    },
-                    "message": "puts method is called",
-                    "rule_name": "NoPuts",
-                    "severity": "Convention"
-                }
-            ],
-            "path": "source.cr"
+          "end_location": {
+            "column": 15,
+            "line": 6
+          },
+          "location": {
+            "column": 7,
+            "line": 6
+          },
+          "message": "puts method is called",
+          "rule_name": "NoPuts",
+          "severity": "Convention"
         }
-    ],
-    "summary": {
-        "issues_count": 1,
-        "target_sources_count": 1
+      ],
+      "path": "source.cr"
     }
+  ],
+  "summary": {
+    "issues_count": 1,
+    "target_sources_count": 1
+  }
 }
 ```
 
