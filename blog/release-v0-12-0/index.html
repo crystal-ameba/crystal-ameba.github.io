@@ -62,7 +62,7 @@ iterations. For example:</p>
 <span class="line"></span>
 <span class="line"><span style="color:#F97583">while</span><span style="color:#E1E4E8"> n </span><span style="color:#F97583">&lt;</span><span style="color:#79B8FF"> 3</span></span>
 <span class="line"><span style="color:#E1E4E8">  n </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> n </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 1</span></span>
-<span class="line"><span style="color:#79B8FF">  spawn</span><span style="color:#E1E4E8"> { channel.send n }</span></span>
+<span class="line"><span style="color:#79B8FF">  spawn</span><span style="color:#E1E4E8"> { channel.</span><span style="color:#B392F0">send</span><span style="color:#E1E4E8">(n) }</span></span>
 <span class="line"><span style="color:#F97583">end</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">.times { </span><span style="color:#79B8FF">puts</span><span style="color:#E1E4E8"> channel.receive }</span></span></code></pre>
