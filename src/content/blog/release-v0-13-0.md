@@ -63,11 +63,3 @@ And needs to be written as:
 ```crystal
 var.nil?
 ```
-
-### Support
-
-A new Patreon page has been created recently to support Ameba.
-If you enjoy the project please consider becoming a patreon which will give
-more attention to the project from the development perspective and make it better.
-
-[![](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/join/2488933/checkout)
