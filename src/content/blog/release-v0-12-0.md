@@ -15,7 +15,7 @@ to see a full scope of changes. Here we will go through the most important chang
 Ameba now allows to globally configure the list of sources to run the inspection
 on. There are two new sections which can be added to `.ameba.yml`:
 
-```yaml
+```yaml .ameba.yml
 Globs:
   - "**/*.cr"
   - "!lib"

@@ -61,7 +61,7 @@ end
 
 If your source code is not ready for these enforcements, they can be disabled in `.ameba.yml` via:
 
-```yaml
+```yaml .ameba.yml
 Lint/RedundantWithIndex:
   Enabled: false
 

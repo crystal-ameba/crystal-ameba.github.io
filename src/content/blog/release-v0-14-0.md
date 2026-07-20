@@ -88,7 +88,7 @@ chars = names
 There is a configuration property that allows to add/remove the method call names
 to take into account during the check:
 
-```yaml
+```yaml .ameba.yml
 Performance/ChainedCallWithNoBang:
   CallNames:
     - uniq
@@ -173,7 +173,7 @@ matches.any?(Regex::MatchData)
 And of course there is a configuration property that allow to change
 the list of filter name to inspect:
 
-```yaml
+```yaml .ameba.yml
 Style/IsAFilter:
   FilterNames:
     - select
@@ -205,7 +205,7 @@ And it should be written as this:
 There is a bag of configuration properties, which are not yet documented,
 but you can give it a shot:
 
-```yaml
+```yaml .ameba.yml
 Style/VerboseBlock:
   ExcludeMultipleLineBlocks: true
   ExcludeCallsWithBlocks: false
