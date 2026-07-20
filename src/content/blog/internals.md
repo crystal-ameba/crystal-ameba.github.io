@@ -42,7 +42,7 @@ to operate on it. For example, it is possible to attach an
 ```crystal
 require "ameba"
 
-source = Ameba::Source.new %(
+source = Ameba::Source.new <<-CRYSTAL, "source.cr"
   class Ameba::Internals
     getter info : Info
 
@@ -50,7 +50,7 @@ source = Ameba::Source.new %(
       puts info
     end
   end
-), "source.cr"
+  CRYSTAL
 
 source.issues # => []
 ```

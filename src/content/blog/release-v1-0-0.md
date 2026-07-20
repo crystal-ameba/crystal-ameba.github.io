@@ -165,7 +165,7 @@ This new declarative approach allows to easily track all the reported issues in 
 
 ```crystal
 it "reports multiple shared variables in spawn" do
-  expect_issue subject, %(
+  expect_issue subject, <<-CRYSTAL
     foo, bar, baz = 0, 0, 0
 
     while foo < 10
@@ -181,7 +181,7 @@ it "reports multiple shared variables in spawn" do
 
       foo += 1
     end
-  )
+    CRYSTAL
 end
 ```
 
