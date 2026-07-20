@@ -188,7 +188,7 @@ end
 Some explanation:
 
 * `^^^` - tracks location of the reported node
-* `error` - severity of the issue
+* `error` - error message annotation marker
 * `Shared variable 'foo' is used in fiber` - the reported error message
 
 These new matchers are used internally and of course can be used by Ameba extensions.
