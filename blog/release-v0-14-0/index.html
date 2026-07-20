@@ -54,7 +54,7 @@ This is a nice way to find all the places to reduce unnecessary collection alloc
 <span class="line"><span style="color:#E1E4E8">  .sort!</span></span></code></pre>
 <p>There is a configuration property that allows to add/remove the method call names
 to take into account during the check:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yml"><code><span class="line"><span style="color:#85E89D">Performance/ChainedCallWithNoBang</span><span style="color:#E1E4E8">:</span></span>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">Performance/ChainedCallWithNoBang</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#85E89D">  CallNames</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">uniq</span></span>
 <span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">sort</span></span>
@@ -94,7 +94,7 @@ It helps to avoid the boilerplate in filters and improve the readability.</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">matches.</span><span style="color:#B392F0">any?</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">Regex</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">MatchData</span><span style="color:#E1E4E8">)</span></span></code></pre>
 <p>And of course there is a configuration property that allow to change
 the list of filter name to inspect:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yml"><code><span class="line"><span style="color:#85E89D">Style/IsAFilter</span><span style="color:#E1E4E8">:</span></span>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">Style/IsAFilter</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#85E89D">  FilterNames</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">select</span></span>
 <span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">reject</span></span>
@@ -112,7 +112,7 @@ argument as a receiver, that can be collapsed into such a short form.</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">..</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">any?</span><span style="color:#E1E4E8">(&amp;.odd?)</span></span></code></pre>
 <p>There is a bag of configuration properties, which are not yet documented,
 but you can give it a shot:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yml"><code><span class="line"><span style="color:#85E89D">Style/VerboseBlock</span><span style="color:#E1E4E8">:</span></span>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">Style/VerboseBlock</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#85E89D">  ExcludeMultipleLineBlocks</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
 <span class="line"><span style="color:#85E89D">  ExcludeCallsWithBlocks</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
 <span class="line"><span style="color:#85E89D">  ExcludePrefixOperators</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>

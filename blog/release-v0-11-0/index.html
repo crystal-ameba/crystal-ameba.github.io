@@ -48,7 +48,7 @@ the following:</p>
 <span class="line"><span style="color:#79B8FF">  puts</span><span style="color:#E1E4E8"> e</span></span>
 <span class="line"><span style="color:#F97583">end</span></span></code></pre>
 <p>If your source code is not ready for these enforcements, they can be disabled in <code>.ameba.yml</code> via:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yml"><code><span class="line"><span style="color:#85E89D">Lint/RedundantWithIndex</span><span style="color:#E1E4E8">:</span></span>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">Lint/RedundantWithIndex</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#85E89D">  Enabled</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#85E89D">Lint/RedundantWithObject</span><span style="color:#E1E4E8">:</span></span>
@@ -108,14 +108,14 @@ the best results, keep us posted!</p>
 and the first version <a href="https://github.com/marketplace/actions/crystal-ameba-linter">has been published</a>
 to the GitHub marketplace.</p>
 <p>The easiest way to use it, is to follow installation instructions:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yml"><code><span class="line"><span style="color:#6A737D"># Copy and paste the following snippet into your .yml file.</span></span>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#6A737D"># Copy and paste the following snippet into your .yml file.</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#E1E4E8">- </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Run Ameba Linter</span></span>
 <span class="line"><span style="color:#85E89D">  uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">crystal-ameba/github-action@v0.1.1</span></span>
 <span class="line"><span style="color:#85E89D">  env</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#85E89D">    GITHUB_TOKEN</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">${{ secrets.GITHUB_TOKEN }}</span></span></code></pre>
 <p>And here is an example of the workflow with Ameba and Crystal specs:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yml"><code><span class="line"><span style="color:#6A737D"># Create .github/workflows/crystal.yml in your repository</span></span>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#6A737D"># Create .github/workflows/crystal.yml in your repository</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Crystal CI</span></span>
 <span class="line"></span>

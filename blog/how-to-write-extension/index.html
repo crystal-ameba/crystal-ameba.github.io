@@ -20,7 +20,7 @@ which will <strong>enforce classes to have documentation</strong>.</p>
 <p>Creating a new Ameba extension is as simple as creating a new Crystal library:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> crystal</span><span style="color:#9ECBFF"> init</span><span style="color:#9ECBFF"> lib</span><span style="color:#9ECBFF"> crystal-docs</span><span style="color:#E1E4E8"> &amp;&amp; </span><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> crystal-docs</span></span></code></pre>
 <p>and adding Ameba as a dependency to <code>shard.yml</code>:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yml"><code><span class="line"><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ameba-docs</span></span>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ameba-docs</span></span>
 <span class="line"><span style="color:#85E89D">version</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">0.1.0</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#85E89D">authors</span><span style="color:#E1E4E8">:</span></span>
@@ -73,7 +73,7 @@ passes it to the node visitor, which allows us to filter the <code>ClassDef</cod
 <h3 id="3-plug-in-the-extension">3. Plug-in the extension</h3>
 <p>Somewhere in a separate project we want to plug-in the ameba engine and the extension we made.</p>
 <p>To do that, we need to add a development dependencies for both of these projects:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yml"><code><span class="line"><span style="color:#85E89D">development_dependencies</span><span style="color:#E1E4E8">:</span></span>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">development_dependencies</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#85E89D">  ameba</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#85E89D">    github</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">crystal-ameba/ameba</span></span>
 <span class="line"><span style="color:#85E89D">  ameba-docs</span><span style="color:#E1E4E8">:</span></span>
