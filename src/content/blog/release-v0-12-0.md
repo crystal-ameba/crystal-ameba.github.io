@@ -17,8 +17,8 @@ on. There are two new sections which can be added to `.ameba.yml`:
 
 ```yml
 Globs:
-  - **/*.cr
-  - !lib
+  - "**/*.cr"
+  - "!lib"
 
 Excluded:
   - src/compiler
