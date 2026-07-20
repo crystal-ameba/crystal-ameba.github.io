@@ -34,7 +34,7 @@ Crystal version <code>0.33</code>.</p>
 keyword which can be used to go to the next iteration in a loop. However, it can
 also be used to exit from a block, for example:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">..</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">).each </span><span style="color:#F97583">do </span><span style="color:#E1E4E8">|e|</span></span>
-<span class="line"><span style="color:#F97583">  break</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> e.even?</span></span>
+<span class="line"><span style="color:#F97583">  next</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> e.even?</span></span>
 <span class="line"><span style="color:#79B8FF">  puts</span><span style="color:#E1E4E8"> e</span></span>
 <span class="line"><span style="color:#F97583">end</span><span style="color:#6A737D"> # =&gt; 1, 3</span></span></code></pre>
 <p>And in some places <code>next</code> can be overused, especially when it combines in the
@@ -76,8 +76,8 @@ its value is <code>3</code>.</p>
 <span class="line"><span style="color:#E1E4E8">while n &lt; 3</span></span>
 <span class="line"><span style="color:#E1E4E8">  n = n + 1</span></span>
 <span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span> m = n</span></span>
-<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span> spawn do { channel.send n }</span></span>
-<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span> spawn do { channel.send m }</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span> spawn do { channel.send(n) }</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span> spawn do { channel.send(m) }</span></span>
 <span class="line"><span style="color:#E1E4E8">end</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#E1E4E8">3.times { puts channel.receive }</span></span></code></pre>
