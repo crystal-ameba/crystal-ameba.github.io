@@ -125,34 +125,34 @@ which formats to JSON. Let’s give it a try:</p>
 </ul>
 <p>If we compile the source code above and run it, we will see:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
-<span class="line"><span style="color:#79B8FF">    "metadata"</span><span style="color:#E1E4E8">: {</span></span>
-<span class="line"><span style="color:#79B8FF">        "ameba_version"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"0.10.0"</span><span style="color:#E1E4E8">,</span></span>
-<span class="line"><span style="color:#79B8FF">        "crystal_version"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"0.30.0"</span></span>
-<span class="line"><span style="color:#E1E4E8">    },</span></span>
-<span class="line"><span style="color:#79B8FF">    "sources"</span><span style="color:#E1E4E8">: [</span></span>
+<span class="line"><span style="color:#79B8FF">  "metadata"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "ameba_version"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"0.10.0"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "crystal_version"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"0.30.0"</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#79B8FF">  "sources"</span><span style="color:#E1E4E8">: [</span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span></span>
+<span class="line"><span style="color:#79B8FF">      "issues"</span><span style="color:#E1E4E8">: [</span></span>
 <span class="line"><span style="color:#E1E4E8">        {</span></span>
-<span class="line"><span style="color:#79B8FF">            "issues"</span><span style="color:#E1E4E8">: [</span></span>
-<span class="line"><span style="color:#E1E4E8">                {</span></span>
-<span class="line"><span style="color:#79B8FF">                    "end_location"</span><span style="color:#E1E4E8">: {</span></span>
-<span class="line"><span style="color:#79B8FF">                        "column"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">15</span><span style="color:#E1E4E8">,</span></span>
-<span class="line"><span style="color:#79B8FF">                        "line"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">6</span></span>
-<span class="line"><span style="color:#E1E4E8">                    },</span></span>
-<span class="line"><span style="color:#79B8FF">                    "location"</span><span style="color:#E1E4E8">: {</span></span>
-<span class="line"><span style="color:#79B8FF">                        "column"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">7</span><span style="color:#E1E4E8">,</span></span>
-<span class="line"><span style="color:#79B8FF">                        "line"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">6</span></span>
-<span class="line"><span style="color:#E1E4E8">                    },</span></span>
-<span class="line"><span style="color:#79B8FF">                    "message"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"puts method is called"</span><span style="color:#E1E4E8">,</span></span>
-<span class="line"><span style="color:#79B8FF">                    "rule_name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"NoPuts"</span><span style="color:#E1E4E8">,</span></span>
-<span class="line"><span style="color:#79B8FF">                    "severity"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Convention"</span></span>
-<span class="line"><span style="color:#E1E4E8">                }</span></span>
-<span class="line"><span style="color:#E1E4E8">            ],</span></span>
-<span class="line"><span style="color:#79B8FF">            "path"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"source.cr"</span></span>
+<span class="line"><span style="color:#79B8FF">          "end_location"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">            "column"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">15</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">            "line"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">6</span></span>
+<span class="line"><span style="color:#E1E4E8">          },</span></span>
+<span class="line"><span style="color:#79B8FF">          "location"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">            "column"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">7</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">            "line"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">6</span></span>
+<span class="line"><span style="color:#E1E4E8">          },</span></span>
+<span class="line"><span style="color:#79B8FF">          "message"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"puts method is called"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">          "rule_name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"NoPuts"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">          "severity"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Convention"</span></span>
 <span class="line"><span style="color:#E1E4E8">        }</span></span>
-<span class="line"><span style="color:#E1E4E8">    ],</span></span>
-<span class="line"><span style="color:#79B8FF">    "summary"</span><span style="color:#E1E4E8">: {</span></span>
-<span class="line"><span style="color:#79B8FF">        "issues_count"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span></span>
-<span class="line"><span style="color:#79B8FF">        "target_sources_count"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span></span>
+<span class="line"><span style="color:#E1E4E8">      ],</span></span>
+<span class="line"><span style="color:#79B8FF">      "path"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"source.cr"</span></span>
 <span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  ],</span></span>
+<span class="line"><span style="color:#79B8FF">  "summary"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "issues_count"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "target_sources_count"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
 <span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
 <p>Congratulations, we successfully analyzed our source code and reported an issue.</p>
 <h2 id="wrap-up">Wrap-up</h2>
