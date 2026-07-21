@@ -159,9 +159,9 @@ method in the interpolation.
 "Hello, #{name.to_s}"
 ```
 
-Since each value enclosed by `{ ... }` ends up invoking `Object#to_s` explicit
-calls are redundant and are now reported by Ameba.
-The code above is forced to be changed to
+Since each interpolated value (enclosed by `#{ ... }`) ends up implicitly
+invoking `Object#to_s`, explicit calls are redundant and are now reported by Ameba.
+The code above is forced to be changed to:
 
 ```crystal
 "Hello, #{name}"
