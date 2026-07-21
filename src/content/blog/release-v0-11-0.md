@@ -15,6 +15,8 @@ with **GitHub actions**.
 
 ## New rules
 
+### [`Lint/RedundantWithIndex`](/ameba/0.11.0/Ameba/Rule/Lint/RedundantWithIndex.html) and [`Lint/RedundantWithObject`](/ameba/0.11.0/Ameba/Rule/Lint/RedundantWithObject.html)
+
 Crystal has several handy methods to iterate over collection together with
 index/object:
 
@@ -42,7 +44,7 @@ collection.each.with_index do |e|
 end
 
 collection.each_with_index do |e, _|
- puts e
+  puts e
 end
 
 collection.each_with_object(0) do |e|
