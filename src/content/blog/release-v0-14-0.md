@@ -60,7 +60,7 @@ and it should be written as this:
 ![1, 2, 3].empty?
 ```
 
-### [`Performance/ChainedCallWithNoBang`](/ameba/0.14.0/Ameba/Rule/Performance/ChainedCallWithNoBang.html)
+#### [`Performance/ChainedCallWithNoBang`](/ameba/0.14.0/Ameba/Rule/Performance/ChainedCallWithNoBang.html)
 
 This rule is used to identify usage of chained calls not utilizing the bang method variants.
 This is a nice way to find all the places to reduce unnecessary collection allocations.
@@ -98,7 +98,7 @@ Performance/ChainedCallWithNoBang:
     - reverse
 ```
 
-### [`Performance/CompactAfterMap`](/ameba/0.14.0/Ameba/Rule/Performance/CompactAfterMap.html)
+#### [`Performance/CompactAfterMap`](/ameba/0.14.0/Ameba/Rule/Performance/CompactAfterMap.html)
 
 This rule is used to identify usage of `compact` calls that follow `map`.
 Such cases can be improved using `compact_map`.
@@ -115,7 +115,7 @@ And can be written as this:
 %w[Alice Bob].compact_map(&.match(/^A./))
 ```
 
-### [`Performance/FlattenAfterMap`](/ameba/0.14.0/Ameba/Rule/Performance/FlattenAfterMap.html)
+#### [`Performance/FlattenAfterMap`](/ameba/0.14.0/Ameba/Rule/Performance/FlattenAfterMap.html)
 
 There is a close counterpart of a previous example: `flatten` after `map` and `flat_map`.
 So there is another rule to which is used to identify this usecase.
@@ -132,7 +132,7 @@ And can be written as this:
 %w[Alice Bob].flat_map(&.chars)
 ```
 
-### [`Performance/MapInsteadOfBlock`](/ameba/0.14.0/Ameba/Rule/Performance/MapInsteadOfBlock.html)
+#### [`Performance/MapInsteadOfBlock`](/ameba/0.14.0/Ameba/Rule/Performance/MapInsteadOfBlock.html)
 
 Another performance rule which is used to identify usage of `join/sum/product` calls
 that follow `map`.
@@ -153,7 +153,7 @@ And can be written as this:
 
 ### New Style Rules
 
-### [`Style/IsAFilter`](/ameba/0.14.0/Ameba/Rule/Style/IsAFilter.html)
+#### [`Style/IsAFilter`](/ameba/0.14.0/Ameba/Rule/Style/IsAFilter.html)
 
 This rule is used to identify usage of `is_a?/nil?` calls within filters.
 It helps to avoid the boilerplate in filters and improve the readability.
@@ -184,7 +184,7 @@ Style/IsAFilter:
     - one?
 ```
 
-### [`Style/VerboseBlock`](/ameba/0.14.0/Ameba/Rule/Style/VerboseBlock.html)
+#### [`Style/VerboseBlock`](/ameba/0.14.0/Ameba/Rule/Style/VerboseBlock.html)
 
 As you might know some blocks in Crystal can have a shorter and much nicer form.
 This rule is used to identify usage of single expression blocks with

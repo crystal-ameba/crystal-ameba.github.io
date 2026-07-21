@@ -25,7 +25,7 @@ npm run preview      # serve the production build locally
 
 ## Structure
 
-```
+```sh
 src/
   pages/             # routes (index, blog, rss.xml, 404)
   layouts/           # BaseLayout, BlogPost

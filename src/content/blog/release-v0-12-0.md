@@ -67,8 +67,6 @@ end
 In all three places above the `next` keyword is redundant and is reported by the
 new rule.
 
-<hr>
-
 #### [`Lint/SharedVarInFiber`](/ameba/0.12.0/Ameba/Rule/Lint/SharedVarInFiber.html)
 
 To achieve [concurrency and parallelism](https://crystal-lang.org/reference/guides/concurrency.html#spawning-a-call)
@@ -101,8 +99,8 @@ channel = Channel(Int32).new
 while n < 3
   n = n + 1
 + m = n
-- spawn do { channel.send(n) }
-+ spawn do { channel.send(m) }
+- spawn { channel.send(n) }
++ spawn { channel.send(m) }
 end
 
 3.times { puts channel.receive }
@@ -117,8 +115,6 @@ second one.
 **There are also other techniques to solve the problem above which are
 [officially documented](https://crystal-lang.org/reference/guides/concurrency.html#spawning-a-call).**
 
-<hr>
-
 #### [`Lint/EmptyLoop`](/ameba/0.12.0/Ameba/Rule/Lint/EmptyLoop.html)
 
 After some round of refactoring it can happen that the loop body becomes empty
@@ -127,11 +123,11 @@ rule is able to detect a few situations:
 
 ```crystal
 while true
- # empty body
+  # empty body
 end
 
 until false
- # empty body
+  # empty body
 end
 
 loop do
@@ -147,12 +143,11 @@ while a < 10
   a += 1
 end
 
-until socket_opened?; end
+until socket_opened?
+end
 
 loop { run }
 ```
-
-<hr>
 
 #### [`Lint/RedundantStringCoercion`](/ameba/0.12.0/Ameba/Rule/Lint/RedundantStringCoercion.html)
 

@@ -45,7 +45,7 @@ end
 
 Now, such a comment directive above will be properly reported.
 
-### [`Style/IsANil`](/ameba/0.13.0/Ameba/Rule/Style/IsANil.html)
+#### [`Style/IsANil`](/ameba/0.13.0/Ameba/Rule/Style/IsANil.html)
 
 Crystal has two ways for checking the `nil` equality: `.is_a?(Nil)` and `.nil?`.
 
@@ -55,7 +55,7 @@ disallows calls to `.is_a?(Nil)` in favor of `.nil?`.
 This is considered bad:
 
 ```crystal
-var.is_a? Nil
+var.is_a?(Nil)
 ```
 
 And needs to be written as:
