@@ -75,8 +75,8 @@ its value is <code>3</code>.</p>
 <span class="line"><span style="color:#E1E4E8">while n &lt; 3</span></span>
 <span class="line"><span style="color:#E1E4E8">  n = n + 1</span></span>
 <span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span> m = n</span></span>
-<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span> spawn do { channel.send(n) }</span></span>
-<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span> spawn do { channel.send(m) }</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span> spawn { channel.send(n) }</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span> spawn { channel.send(m) }</span></span>
 <span class="line"><span style="color:#E1E4E8">end</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#E1E4E8">3.times { puts channel.receive }</span></span></code></pre>
