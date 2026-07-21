@@ -13,7 +13,7 @@ and eliminates the deprecation messages which are related to yaml serialization.
 Check out the [release notes](https://github.com/crystal-ameba/ameba/releases/tag/v0.13.0)
 to see a full scope of changes.
 
-### Move to `YAML::Serializable`
+## Move to `YAML::Serializable`
 
 Each rule in Ameba can be serialized to YAML and deserialized back to the Crystal struct.
 This is needed in order to give users an ability to configure the Ameba binary
@@ -28,9 +28,9 @@ Starting from this release, Ameba uses `YAML::Serializable`. The older version
 of Ameba still works with Crystal `0.35.0` however, users might see the
 deprecation warning while compiling the binary.
 
-### New Rules
+## New rules
 
-#### [`Lint/BadDirective`](/ameba/0.13.0/Ameba/Rule/Lint/BadDirective.html)
+### [`Lint/BadDirective`](/ameba/0.13.0/Ameba/Rule/Lint/BadDirective.html)
 
 This is a new rule that reports the incorrect comment directive for Ameba.
 
@@ -45,7 +45,7 @@ end
 
 Now, such a comment directive above will be properly reported.
 
-#### [`Style/IsANil`](/ameba/0.13.0/Ameba/Rule/Style/IsANil.html)
+### [`Style/IsANil`](/ameba/0.13.0/Ameba/Rule/Style/IsANil.html)
 
 Crystal has two ways for checking the `nil` equality: `.is_a?(Nil)` and `.nil?`.
 

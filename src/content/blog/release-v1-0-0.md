@@ -11,13 +11,13 @@ This release includes a long-waiting autocorrection feature, new rules and sever
 Check out the [release notes](https://github.com/crystal-ameba/ameba/releases/tag/v1.0.0)
 to see a full scope of changes.
 
-### Crystal compatibility
+## Crystal compatibility
 
 This release introduces [Crystal 1.4](https://crystal-lang.org/2022/04/06/1.4.0-released.html) compatibility and **breaks compatibility with previous Crystal versions**.
 Use the latest Ameba bugfix release [0.14.4](https://github.com/crystal-ameba/ameba/releases/tag/v0.14.4)
 if you need compatibility with Crystal `1.3.x` or below.
 
-### Autocorrection
+## Autocorrection
 
 Thanks to the community, there is a huge step forward implementing autocorrection for Ameba.
 The feature was originally developed in [#248](https://github.com/crystal-ameba/ameba/pull/248) and afterwards improved in several cycles.
@@ -70,9 +70,9 @@ Note: not all rules support autocorrection yet, but if you see a `[Correctable]`
 flag on a reported issue, do not hesitate to autocorrect it in order to save some time
 during refactoring.
 
-### New rules
+## New rules
 
-#### [`Lint/AmbiguousAssignment`](/ameba/1.0.0/Ameba/Rule/Lint/AmbiguousAssignment.html)
+### [`Lint/AmbiguousAssignment`](/ameba/1.0.0/Ameba/Rule/Lint/AmbiguousAssignment.html)
 
 A tiny rule that checks for mistyped shorthand assignments.
 
@@ -104,7 +104,7 @@ x != y # or x = !y
 
 </div>
 
-#### [`Lint/DebugCalls`](/ameba/1.0.0/Ameba/Rule/Lint/DebugCalls.html)
+### [`Lint/DebugCalls`](/ameba/1.0.0/Ameba/Rule/Lint/DebugCalls.html)
 
 A rule that disallows calls to debug-related methods.
 This is because we don't want debug calls accidentally being committed into our codebase.
@@ -117,7 +117,7 @@ a = a + 1
 
 Check out the [API doc](/ameba/1.0.0/Ameba/Rule/Lint/DebugCalls.html) to see a full list of supported debug-related calls.
 
-#### [`Style/GuardClause`](/ameba/1.0.0/Ameba/Rule/Style/GuardClause.html)
+### [`Style/GuardClause`](/ameba/1.0.0/Ameba/Rule/Style/GuardClause.html)
 
 A rule that enforces a guard clause instead of wrapping the code inside
 a conditional expression.
@@ -154,7 +154,7 @@ end
 
 </div>
 
-### New spec matchers
+## New spec matchers
 
 Ameba has a high code coverage which was obviously achieved by a big amount of tests.
 However, most of the rule specs were too imperative and it led to code duplication

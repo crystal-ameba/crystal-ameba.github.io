@@ -28,7 +28,7 @@ and the appropriate design is a key for a good tool architecture and convenient 
 
 Let's take a look at the high-level picture of Ameba's module architecture.
 
-### Source Loading
+## Source loading
 
 Of course, the first step of static code analysis is a loading of that source code.
 It does not matter whether it is a file, a steam or just a regular string, Ameba
@@ -55,7 +55,7 @@ source = Ameba::Source.new <<-CRYSTAL, "source.cr"
 source.issues # => []
 ```
 
-### AST Parsing
+## AST parsing
 
 Unprocessed source code is a very difficult format for static analysis.
 Fortunately, Crystal language can do a lot of different ways of source
@@ -85,7 +85,7 @@ in the source code is a class, which is parsed by Crystal's AST parser as `Class
 
 Next, nodes are iterated by rules.
 
-### Rules
+## Rules
 
 Rule is a basic abstraction that iterates over that or other representation of source code and
 report issues if such are detected. All rules inherit from [`Rule::Base`](/ameba/0.10.0/Ameba/Rule/Base.html).
@@ -141,7 +141,7 @@ source.issues # =>
 
 Now the source holds an issue. It's a time to report it.
 
-### Format results
+## Format results
 
 Formatters are used to format the output reported by Ameba.
 

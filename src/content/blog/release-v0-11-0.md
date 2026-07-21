@@ -13,7 +13,7 @@ release. Also, will do **benchmarking** comparing parallel linting using
 Crystal's experimental parallelism and will explain how to use Ameba together
 with **GitHub actions**.
 
-### New Rules
+## New rules
 
 Crystal has several handy methods to iterate over collection together with
 index/object:
@@ -69,7 +69,7 @@ Lint/RedundantWithObject:
   Enabled: false
 ```
 
-### Parallel linting
+## Parallel linting
 
 Crystal started to [support parallelism](https://crystal-lang.org/2019/09/06/parallelism-in-crystal.html)
 as an experimental feature starting from `0.31.0`. The main intention here is
@@ -139,7 +139,7 @@ Ameba's side. It was well tested using different formatters, so the end user
 is free to try it to inspect his crystal code in parallel. We are looking for
 the best results, keep us posted!
 
-### GitHub Action
+## GitHub Action
 
 Ameba GitHub action [has been released](https://github.com/crystal-ameba/github-action)
 and the first version [has been published](https://github.com/marketplace/actions/crystal-ameba-linter)
@@ -199,7 +199,7 @@ couple of required configuration options. However, it still uses
 `.ameba.yml` config in the repository root and properly configures rules before
 running the inspection. Hope you would enjoy it!
 
-### More
+## More
 
 This release also includes a couple of bug fixes and small improvements.
 Check out the [release notes](https://github.com/crystal-ameba/ameba/releases/tag/v0.11.0)

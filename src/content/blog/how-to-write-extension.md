@@ -17,7 +17,7 @@ Here we will be following through the steps on how to create such an extension a
 It is going to be `crystal-docs` extension, where a new rule will be implemented
 which will **enforce classes to have documentation**.
 
-### 1. New extension skeleton
+## 1. New extension skeleton
 
 Creating a new Ameba extension is as simple as creating a new Crystal library:
 
@@ -47,7 +47,7 @@ license: MIT
 It needs to be a development dependency because we don't want to force
 the end application to be dependent on a specific version of Ameba.
 
-### 2. Creating a rule
+## 2. Creating a rule
 
 Ameba enforces rules to be extended from `Rule::Base` entity and to be a class.
 Let's create one:
@@ -87,7 +87,7 @@ passes it to the node visitor, which allows us to filter the `ClassDef` nodes in
 
 The extension is pretty much done. Let's try to use it.
 
-### 3. Plug-in the extension
+## 3. Plug-in the extension
 
 Somewhere in a separate project we want to plug-in the ameba engine and the extension we made.
 
