@@ -14,7 +14,7 @@ Here we will go through the main <strong>features and improvements</strong> whic
 release. Also, will do <strong>benchmarking</strong> comparing parallel linting using
 Crystal’s experimental parallelism and will explain how to use Ameba together
 with <strong>GitHub actions</strong>.</p>
-<h3 id="new-rules">New Rules</h3>
+<h2 id="new-rules">New rules</h2>
 <p>Crystal has several handy methods to iterate over collection together with
 index/object:</p>
 <ul>
@@ -53,7 +53,7 @@ the following:</p>
 <span class="line"></span>
 <span class="line"><span style="color:#85E89D">Lint/RedundantWithObject</span><span style="color:#E1E4E8">:</span></span>
 <span class="line"><span style="color:#85E89D">  Enabled</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span></code></pre>
-<h3 id="parallel-linting">Parallel linting</h3>
+<h2 id="parallel-linting">Parallel linting</h2>
 <p>Crystal started to <a href="https://crystal-lang.org/2019/09/06/parallelism-in-crystal.html">support parallelism</a>
 as an experimental feature starting from <code>0.31.0</code>. The main intention here is
 speed, which is achieved by doing several things in parallel. Ameba has a small set
@@ -103,7 +103,7 @@ opened for the future improvements.</p>
 Ameba’s side. It was well tested using different formatters, so the end user
 is free to try it to inspect his crystal code in parallel. We are looking for
 the best results, keep us posted!</p>
-<h3 id="github-action">GitHub Action</h3>
+<h2 id="github-action">GitHub Action</h2>
 <p>Ameba GitHub action <a href="https://github.com/crystal-ameba/github-action">has been released</a>
 and the first version <a href="https://github.com/marketplace/actions/crystal-ameba-linter">has been published</a>
 to the GitHub marketplace.</p>
@@ -150,7 +150,7 @@ annotations in pull requests:</p>
 couple of required configuration options. However, it still uses
 <code>.ameba.yml</code> config in the repository root and properly configures rules before
 running the inspection. Hope you would enjoy it!</p>
-<h3 id="more">More</h3>
+<h2 id="more">More</h2>
 <p>This release also includes a couple of bug fixes and small improvements.
 Check out the <a href="https://github.com/crystal-ameba/ameba/releases/tag/v0.11.0">release notes</a>
 for more details.</p>

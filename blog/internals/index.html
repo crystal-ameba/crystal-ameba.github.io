@@ -22,7 +22,7 @@ Most of the static analysis tools allow inline disabling and much more…</p>
 <p>As you can see, there are a lot of different requirements for such kind of tools
 and the appropriate design is a key for a good tool architecture and convenient usage.</p>
 <p>Let’s take a look at the high-level picture of Ameba’s module architecture.</p>
-<h3 id="source-loading">Source Loading</h3>
+<h2 id="source-loading">Source loading</h2>
 <p>Of course, the first step of static code analysis is a loading of that source code.
 It does not matter whether it is a file, a steam or just a regular string, Ameba
 is capable to read that and create a new <a href="/ameba/0.10.0/Ameba/Source.html"><code>Source</code></a>
@@ -43,7 +43,7 @@ to operate on it. For example, it is possible to attach an
 <span class="line"><span style="color:#9ECBFF">  CRYSTAL</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#E1E4E8">source.issues </span><span style="color:#6A737D"># =&gt; []</span></span></code></pre>
-<h3 id="ast-parsing">AST Parsing</h3>
+<h2 id="ast-parsing">AST parsing</h2>
 <p>Unprocessed source code is a very difficult format for static analysis.
 Fortunately, Crystal language can do a lot of different ways of source
 code pre-processing, including <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">AST parsing</a>.</p>
@@ -64,7 +64,7 @@ which returns a list of AST nodes for that source:</p>
 <p>In this example, <code>ast</code> method returns an instance of <code>Crystal::ClassDef</code> because the top level node
 in the source code is a class, which is parsed by Crystal’s AST parser as <code>ClassDef</code>.</p>
 <p>Next, nodes are iterated by rules.</p>
-<h3 id="rules">Rules</h3>
+<h2 id="rules">Rules</h2>
 <p>Rule is a basic abstraction that iterates over that or other representation of source code and
 report issues if such are detected. All rules inherit from <a href="/ameba/0.10.0/Ameba/Rule/Base.html"><code>Rule::Base</code></a>.</p>
 <p>Most rules <em>visit</em> AST nodes. There is a couple of different <em>visitors</em> which pass needed nodes
@@ -107,7 +107,7 @@ if the node matches the expectations.</p>
 <span class="line"><span style="color:#6A737D">  #   )</span></span>
 <span class="line"><span style="color:#6A737D">  # ]</span></span></code></pre>
 <p>Now the source holds an issue. It’s a time to report it.</p>
-<h3 id="format-results">Format results</h3>
+<h2 id="format-results">Format results</h2>
 <p>Formatters are used to format the output reported by Ameba.</p>
 <p>For example, <a href="/ameba/0.10.0/Ameba/Formatter/ExplainFormatter.html"><code>ExplainFormatter</code></a>
 is designed to show the detailed explanation of the issue in the source

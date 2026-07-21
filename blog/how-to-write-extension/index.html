@@ -16,7 +16,7 @@ with Ameba’s engine.</p>
 <p>Here we will be following through the steps on how to create such an extension and use it.</p>
 <p>It is going to be <code>crystal-docs</code> extension, where a new rule will be implemented
 which will <strong>enforce classes to have documentation</strong>.</p>
-<h3 id="1-new-extension-skeleton">1. New extension skeleton</h3>
+<h2 id="1-new-extension-skeleton">1. New extension skeleton</h2>
 <p>Creating a new Ameba extension is as simple as creating a new Crystal library:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> crystal</span><span style="color:#9ECBFF"> init</span><span style="color:#9ECBFF"> lib</span><span style="color:#9ECBFF"> crystal-docs</span><span style="color:#E1E4E8"> &amp;&amp; </span><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> crystal-docs</span></span></code></pre>
 <p>and adding Ameba as a dependency to <code>shard.yml</code>:</p>
@@ -36,7 +36,7 @@ which will <strong>enforce classes to have documentation</strong>.</p>
 <span class="line"><span style="color:#85E89D">license</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">MIT</span></span></code></pre>
 <p>It needs to be a development dependency because we don’t want to force
 the end application to be dependent on a specific version of Ameba.</p>
-<h3 id="2-creating-a-rule">2. Creating a rule</h3>
+<h2 id="2-creating-a-rule">2. Creating a rule</h2>
 <p>Ameba enforces rules to be extended from <code>Rule::Base</code> entity and to be a class.
 Let’s create one:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#F97583">module</span><span style="color:#B392F0"> Ameba::Rule</span></span>
@@ -70,7 +70,7 @@ passes it to the node visitor, which allows us to filter the <code>ClassDef</cod
 <li><code>def test(source, node : Crystal::ClassDef)</code> is a method which does an actual job. The implementation is pretty self explained: it filters out node, which have public visibility and do not have (or have empty) docs.</li>
 </ol>
 <p>The extension is pretty much done. Let’s try to use it.</p>
-<h3 id="3-plug-in-the-extension">3. Plug-in the extension</h3>
+<h2 id="3-plug-in-the-extension">3. Plug-in the extension</h2>
 <p>Somewhere in a separate project we want to plug-in the ameba engine and the extension we made.</p>
 <p>To do that, we need to add a development dependencies for both of these projects:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">development_dependencies</span><span style="color:#E1E4E8">:</span></span>

@@ -13,7 +13,7 @@
 and eliminates the deprecation messages which are related to yaml serialization.</p>
 <p>Check out the <a href="https://github.com/crystal-ameba/ameba/releases/tag/v0.13.0">release notes</a>
 to see a full scope of changes.</p>
-<h3 id="move-to-yamlserializable">Move to <code>YAML::Serializable</code></h3>
+<h2 id="move-to-yamlserializable">Move to <code>YAML::Serializable</code></h2>
 <p>Each rule in Ameba can be serialized to YAML and deserialized back to the Crystal struct.
 This is needed in order to give users an ability to configure the Ameba binary
 using the configuration file <code>.ameba.yml</code>.</p>
@@ -24,8 +24,8 @@ module.</p>
 <p>Starting from this release, Ameba uses <code>YAML::Serializable</code>. The older version
 of Ameba still works with Crystal <code>0.35.0</code> however, users might see the
 deprecation warning while compiling the binary.</p>
-<h3 id="new-rules">New Rules</h3>
-<h4 id="lintbaddirective"><a href="/ameba/0.13.0/Ameba/Rule/Lint/BadDirective.html"><code>Lint/BadDirective</code></a></h4>
+<h2 id="new-rules">New rules</h2>
+<h3 id="lintbaddirective"><a href="/ameba/0.13.0/Ameba/Rule/Lint/BadDirective.html"><code>Lint/BadDirective</code></a></h3>
 <p>This is a new rule that reports the incorrect comment directive for Ameba.</p>
 <p>For example, the user can mistakenly add a directive to disable a rule that even doesn’t exist:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#6A737D"># ameba:disable BadRuleName</span></span>
@@ -33,7 +33,7 @@ deprecation warning while compiling the binary.</p>
 <span class="line"><span style="color:#79B8FF">  :bar</span></span>
 <span class="line"><span style="color:#F97583">end</span></span></code></pre>
 <p>Now, such a comment directive above will be properly reported.</p>
-<h4 id="styleisanil"><a href="/ameba/0.13.0/Ameba/Rule/Style/IsANil.html"><code>Style/IsANil</code></a></h4>
+<h3 id="styleisanil"><a href="/ameba/0.13.0/Ameba/Rule/Style/IsANil.html"><code>Style/IsANil</code></a></h3>
 <p>Crystal has two ways for checking the <code>nil</code> equality: <code>.is_a?(Nil)</code> and <code>.nil?</code>.</p>
 <p>Since the second is much more concise and doing basically the same, now Ameba
 disallows calls to <code>.is_a?(Nil)</code> in favor of <code>.nil?</code>.</p>
