@@ -37,7 +37,7 @@ if there’s at least one value present.</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">[</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">].any?</span></span></code></pre>
 <p>and it should be written as this:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#F97583">!</span><span style="color:#E1E4E8">[</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">].empty?</span></span></code></pre>
-<h3 id="performancechainedcallwithnobang"><a href="/ameba/0.14.0/Ameba/Rule/Performance/ChainedCallWithNoBang.html"><code>Performance/ChainedCallWithNoBang</code></a></h3>
+<h4 id="performancechainedcallwithnobang"><a href="/ameba/0.14.0/Ameba/Rule/Performance/ChainedCallWithNoBang.html"><code>Performance/ChainedCallWithNoBang</code></a></h4>
 <p>This rule is used to identify usage of chained calls not utilizing the bang method variants.
 This is a nice way to find all the places to reduce unnecessary collection allocations.</p>
 <p>For example, this is considered inefficient:</p>
@@ -61,21 +61,21 @@ to take into account during the check:</p>
 <span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">sort_by</span></span>
 <span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">shuffle</span></span>
 <span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">reverse</span></span></code></pre>
-<h3 id="performancecompactaftermap"><a href="/ameba/0.14.0/Ameba/Rule/Performance/CompactAfterMap.html"><code>Performance/CompactAfterMap</code></a></h3>
+<h4 id="performancecompactaftermap"><a href="/ameba/0.14.0/Ameba/Rule/Performance/CompactAfterMap.html"><code>Performance/CompactAfterMap</code></a></h4>
 <p>This rule is used to identify usage of <code>compact</code> calls that follow <code>map</code>.
 Such cases can be improved using <code>compact_map</code>.</p>
 <p>For example, this is considered inefficient:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#9ECBFF">%w[Alice Bob]</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(&amp;.</span><span style="color:#B392F0">match</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">^A.</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">)).compact</span></span></code></pre>
 <p>And can be written as this:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#9ECBFF">%w[Alice Bob]</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">compact_map</span><span style="color:#E1E4E8">(&amp;.</span><span style="color:#B392F0">match</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">^A.</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">))</span></span></code></pre>
-<h3 id="performanceflattenaftermap"><a href="/ameba/0.14.0/Ameba/Rule/Performance/FlattenAfterMap.html"><code>Performance/FlattenAfterMap</code></a></h3>
+<h4 id="performanceflattenaftermap"><a href="/ameba/0.14.0/Ameba/Rule/Performance/FlattenAfterMap.html"><code>Performance/FlattenAfterMap</code></a></h4>
 <p>There is a close counterpart of a previous example: <code>flatten</code> after <code>map</code> and <code>flat_map</code>.
 So there is another rule to which is used to identify this usecase.</p>
 <p>For example, this is considered inefficient:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#9ECBFF">%w[Alice Bob]</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(&amp;.chars).flatten</span></span></code></pre>
 <p>And can be written as this:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#9ECBFF">%w[Alice Bob]</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">flat_map</span><span style="color:#E1E4E8">(&amp;.chars)</span></span></code></pre>
-<h3 id="performancemapinsteadofblock"><a href="/ameba/0.14.0/Ameba/Rule/Performance/MapInsteadOfBlock.html"><code>Performance/MapInsteadOfBlock</code></a></h3>
+<h4 id="performancemapinsteadofblock"><a href="/ameba/0.14.0/Ameba/Rule/Performance/MapInsteadOfBlock.html"><code>Performance/MapInsteadOfBlock</code></a></h4>
 <p>Another performance rule which is used to identify usage of <code>join/sum/product</code> calls
 that follow <code>map</code>.</p>
 <p>For example, this is considered inefficient:</p>
@@ -85,7 +85,7 @@ that follow <code>map</code>.</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">..</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">join</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'.'</span><span style="color:#E1E4E8">, &amp;.to_s)</span></span>
 <span class="line"><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">..</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">sum</span><span style="color:#E1E4E8">(&amp;.</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">))</span></span></code></pre>
 <h3 id="new-style-rules">New Style Rules</h3>
-<h3 id="styleisafilter"><a href="/ameba/0.14.0/Ameba/Rule/Style/IsAFilter.html"><code>Style/IsAFilter</code></a></h3>
+<h4 id="styleisafilter"><a href="/ameba/0.14.0/Ameba/Rule/Style/IsAFilter.html"><code>Style/IsAFilter</code></a></h4>
 <p>This rule is used to identify usage of <code>is_a?/nil?</code> calls within filters.
 It helps to avoid the boilerplate in filters and improve the readability.</p>
 <p>For example, this is considered invalid:</p>
@@ -102,7 +102,7 @@ the list of filter name to inspect:</p>
 <span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">all?</span></span>
 <span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">none?</span></span>
 <span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">one?</span></span></code></pre>
-<h3 id="styleverboseblock"><a href="/ameba/0.14.0/Ameba/Rule/Style/VerboseBlock.html"><code>Style/VerboseBlock</code></a></h3>
+<h4 id="styleverboseblock"><a href="/ameba/0.14.0/Ameba/Rule/Style/VerboseBlock.html"><code>Style/VerboseBlock</code></a></h4>
 <p>As you might know some blocks in Crystal can have a shorter and much nicer form.
 This rule is used to identify usage of single expression blocks with
 argument as a receiver, that can be collapsed into such a short form.</p>
