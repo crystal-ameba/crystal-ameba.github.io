@@ -51,7 +51,6 @@ last expression in the block. For example:</p>
 <span class="line"><span style="color:#F97583">end</span></span></code></pre>
 <p>In all three places above the <code>next</code> keyword is redundant and is reported by the
 new rule.</p>
-<hr>
 <h4 id="lintsharedvarinfiber"><a href="/ameba/0.12.0/Ameba/Rule/Lint/SharedVarInFiber.html"><code>Lint/SharedVarInFiber</code></a></h4>
 <p>To achieve <a href="https://crystal-lang.org/reference/guides/concurrency.html#spawning-a-call">concurrency and parallelism</a>
 Crystal uses Fibers and Channels. There is a tricky behavior which happens when
@@ -88,7 +87,6 @@ The new rule properly reports the issue on the first sample and passes on the
 second one.</p>
 <p><strong>There are also other techniques to solve the problem above which are
 <a href="https://crystal-lang.org/reference/guides/concurrency.html#spawning-a-call">officially documented</a>.</strong></p>
-<hr>
 <h4 id="lintemptyloop"><a href="/ameba/0.12.0/Ameba/Rule/Lint/EmptyLoop.html"><code>Lint/EmptyLoop</code></a></h4>
 <p>After some round of refactoring it can happen that the loop body becomes empty
 but for whatever reason such an empty loop is forgotten to be removed. A new
@@ -113,7 +111,6 @@ rule is able to detect a few situations:</p>
 <span class="line"><span style="color:#F97583">until</span><span style="color:#E1E4E8"> socket_opened?; </span><span style="color:#F97583">end</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#79B8FF">loop</span><span style="color:#E1E4E8"> { run }</span></span></code></pre>
-<hr>
 <h4 id="lintredundantstringcoercion"><a href="/ameba/0.12.0/Ameba/Rule/Lint/RedundantStringCoercion.html"><code>Lint/RedundantStringCoercion</code></a></h4>
 <p>This is typical situation when a value is being converted to string using
 <a href="https://crystal-lang.org/api/0.33.0/Object.html#to_s:String-instance-method"><code>Object#to_s</code></a>
