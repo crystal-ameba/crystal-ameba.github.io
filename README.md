@@ -54,6 +54,6 @@ The file name becomes the URL slug, e.g. `internals.md` → `/blog/internals`.
 
 ## Deployment
 
-Pushing to the `site` branch triggers
+Pushing to the `master` branch triggers
 [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds the
-site and publishes `dist/` to the `master` branch that GitHub Pages serves.
+site and publishes `dist/` to the `gh-pages` branch that GitHub Pages serves.
