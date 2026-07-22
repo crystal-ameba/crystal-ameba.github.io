@@ -436,7 +436,9 @@ a {
   justify-content: space-between;
 }
 
-:root {
+/* Scoped to #search-ui so these win over the :root defaults
+   in pagefind-ui.css, which is injected after this stylesheet. */
+#search-ui {
   --pagefind-ui-scale: 0.85;
   --pagefind-ui-primary: var(--ink);
   --pagefind-ui-text: var(--ink);
@@ -446,6 +448,32 @@ a {
   --pagefind-ui-border-width: 1px;
   --pagefind-ui-border-radius: 10px;
   --pagefind-ui-font: var(--sans);
+}
+
+#search-ui .pagefind-ui__drawer {
+  flex-direction: column;
+  gap: 0;
+}
+
+#search-ui .pagefind-ui__filter-panel {
+  margin-top: 14px;
+}
+
+#search-ui .pagefind-ui__filter-block {
+  padding: 10px 0;
+}
+
+#search-ui .pagefind-ui__filter-group {
+  padding-top: 14px;
+  gap: 10px;
+}
+
+#search-ui .pagefind-ui__results-area {
+  margin-top: 0;
+}
+
+#search-ui .pagefind-ui__filter-value::before {
+  border-color: var(--paper);
 }
 
 /* ---------- motion ---------- */
