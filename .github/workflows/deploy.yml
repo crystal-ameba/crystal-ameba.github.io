@@ -39,3 +39,4 @@ jobs:
           user_email: github-actions[bot]@users.noreply.github.com
           publish_dir: ./dist
           publish_branch: gh-pages
+          cname: crystal-ameba.org
