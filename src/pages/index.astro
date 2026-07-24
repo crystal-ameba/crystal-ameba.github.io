@@ -341,9 +341,6 @@ const latestPosts = posts.slice(0, HOMEPAGE_BLOG_POSTS_NO);
     text-decoration: none;
     transition: padding-left 0.18s;
   }
-  .post:hover {
-    padding-left: 14px;
-  }
   .post .date {
     font-family: var(--mono);
     font-size: 13px;
@@ -355,6 +352,9 @@ const latestPosts = posts.slice(0, HOMEPAGE_BLOG_POSTS_NO);
     font-size: 18px;
     font-weight: 600;
   }
+  .post:hover .t {
+    text-decoration: underline;
+  }
   .post .arr {
     margin-left: auto;
     color: var(--muted);
@@ -363,7 +363,6 @@ const latestPosts = posts.slice(0, HOMEPAGE_BLOG_POSTS_NO);
       color 0.18s;
   }
   .post:hover .arr {
-    transform: translateX(4px);
     color: var(--ink);
   }
   .all-posts {
