@@ -186,14 +186,17 @@ a {
 }
 
 .icon-btn {
-  font: inherit;
-  font-family: var(--mono);
-  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex: none;
   background: transparent;
   color: var(--muted);
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 6px 12px;
+  padding: 0;
   cursor: pointer;
   transition: color 0.15s, border-color 0.15s;
 }

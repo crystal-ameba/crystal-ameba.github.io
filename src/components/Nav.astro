@@ -29,13 +29,33 @@ const isCurrent = (href: string) => href === '/blog' && path.startsWith('/blog')
           </a>
         ))
       }
-      <button class="icon-btn" id="search-open" aria-label="Search blog">⌕</button>
-      <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">◐</button>
+      <button class="icon-btn" id="search-open" aria-label="Search blog">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="m20 20-4.1-4.1"></path>
+        </svg>
+      </button>
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"></path>
+        </svg>
+      </button>
     </nav>
   </div>
 </header>
 
 <style>
+  .icon-btn svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  :global(html[data-theme='dark']) #theme-toggle svg {
+    transform: scaleX(-1);
+  }
+
   @media (max-width: 620px) {
     .hide-sm {
       display: none;
@@ -45,7 +65,8 @@ const isCurrent = (href: string) => href === '/blog' && path.startsWith('/blog')
       font-size: 13px;
     }
     .icon-btn {
-      padding: 6px 10px;
+      width: 32px;
+      height: 32px;
     }
   }
 </style>
@@ -53,13 +74,6 @@ const isCurrent = (href: string) => href === '/blog' && path.startsWith('/blog')
 <script>
   const root = document.documentElement;
   const toggle = document.getElementById('theme-toggle');
-
-  const syncGlyph = () => {
-    if (toggle) {
-      toggle.textContent = root.getAttribute('data-theme') === 'dark' ? '◑' : '◐';
-    }
-  };
-  syncGlyph();
 
   toggle?.addEventListener('click', () => {
     const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
@@ -69,6 +83,5 @@ const isCurrent = (href: string) => href === '/blog' && path.startsWith('/blog')
     } catch (e) {
       /* storage unavailable — theme still applies for the session */
     }
-    syncGlyph();
   });
 </script>
