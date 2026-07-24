@@ -45,8 +45,8 @@ Lint/Typos:
 Enforces that spec filenames have the `_spec` suffix as recommended by the [Crystal testing guide](https://crystal-lang.org/reference/1.10/guides/testing.html#running-specs). Supports autocorrection by renaming the file.
 
 ```sh
-$ ameba spec/my_spec.cr
-- spec/my_spec.cr:1:1 [Correctable]
+$ ameba spec/my.cr
+- spec/my.cr:1:1 [Correctable]
   Lint/SpecFilename: Spec filename should have `_spec` suffix: my_spec.cr, not my.cr
 ```
 
@@ -230,16 +230,15 @@ end
 
 ### Rule group reorganization
 
-Naming-related rules ([#413](https://github.com/crystal-ameba/ameba/pull/413)) and documentation-related rules ([#412](https://github.com/crystal-ameba/ameba/pull/412)) were moved into their own rule groups, `Naming` and `Documentation` respectively. If you reference these rules in your `.ameba.yml` configuration, you may need to update their paths:
+Naming-related rules ([#413](https://github.com/crystal-ameba/ameba/pull/413)) and documentation-related rules ([#412](https://github.com/crystal-ameba/ameba/pull/412)) were moved into their own rule groups, `Naming` and `Documentation` respectively. If you reference these rules in `# ameba:disable` pragmas or your `.ameba.yml` configuration, you may need to update their names:
 
-- `Lint/Documentation` → `Documentation/Documentation`
-- `Lint/DocumentationAdmonition` → `Documentation/DocumentationAdmonition`
 - `Style/PredicateName` → `Naming/PredicateName`
 - `Style/TypeNames` → `Naming/TypeNames`
 - `Style/MethodNames` → `Naming/MethodNames`
 - `Style/VariableNames` → `Naming/VariableNames`
 - `Style/ConstantNames` → `Naming/ConstantNames`
 - `Style/QueryBoolMethods` → `Naming/QueryBoolMethods`
+- `Lint/Documentation` → `Documentation/Documentation`
 
 ### Invalid file paths now raise errors
 
