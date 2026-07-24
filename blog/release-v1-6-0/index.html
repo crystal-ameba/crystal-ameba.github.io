@@ -87,8 +87,8 @@ Optionally checks whether a date associated with the admonition has already pass
 </div>
 <div class="example good">
 <p>Good</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#F97583">rescue</span><span style="color:#E1E4E8"> e</span></span>
-<span class="line"><span style="color:#79B8FF">  Log</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">exception:</span><span style="color:#E1E4E8"> e) { </span><span style="color:#9ECBFF">"Error"</span><span style="color:#E1E4E8"> }</span></span>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#F97583">rescue</span><span style="color:#E1E4E8"> ex</span></span>
+<span class="line"><span style="color:#79B8FF">  Log</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">exception:</span><span style="color:#E1E4E8"> ex) { </span><span style="color:#9ECBFF">"Error"</span><span style="color:#E1E4E8"> }</span></span>
 <span class="line"><span style="color:#F97583">end</span></span></code></pre>
 </div>
 </div>
@@ -126,15 +126,16 @@ Optionally checks whether a date associated with the admonition has already pass
 </div>
 <h2 id="breaking-changes">Breaking changes</h2>
 <h3 id="rule-group-reorganization">Rule group reorganization</h3>
-<p>Naming-related rules (<a href="https://github.com/crystal-ameba/ameba/pull/413">#413</a>) and documentation-related rules (<a href="https://github.com/crystal-ameba/ameba/pull/412">#412</a>) were moved into their own rule groups. If you reference these rules in your <code>.ameba.yml</code> configuration, you may need to update their paths:</p>
+<p>Naming-related rules (<a href="https://github.com/crystal-ameba/ameba/pull/413">#413</a>) and documentation-related rules (<a href="https://github.com/crystal-ameba/ameba/pull/412">#412</a>) were moved into their own rule groups, <code>Naming</code> and <code>Documentation</code> respectively. If you reference these rules in your <code>.ameba.yml</code> configuration, you may need to update their paths:</p>
 <ul>
+<li><code>Lint/Documentation</code> → <code>Documentation/Documentation</code></li>
+<li><code>Lint/DocumentationAdmonition</code> → <code>Documentation/DocumentationAdmonition</code></li>
 <li><code>Style/PredicateName</code> → <code>Naming/PredicateName</code></li>
 <li><code>Style/TypeNames</code> → <code>Naming/TypeNames</code></li>
 <li><code>Style/MethodNames</code> → <code>Naming/MethodNames</code></li>
 <li><code>Style/VariableNames</code> → <code>Naming/VariableNames</code></li>
 <li><code>Style/ConstantNames</code> → <code>Naming/ConstantNames</code></li>
 <li><code>Style/QueryBoolMethods</code> → <code>Naming/QueryBoolMethods</code></li>
-<li>…and similar for other rules in these groups.</li>
 </ul>
 <h3 id="invalid-file-paths-now-raise-errors">Invalid file paths now raise errors</h3>
 <p>Passing non-existent file paths to Ameba now raises an error (<a href="https://github.com/crystal-ameba/ameba/pull/394">#394</a>) instead of silently skipping them.</p>
