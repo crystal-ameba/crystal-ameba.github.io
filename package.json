@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site dist",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -15,6 +15,6 @@
     "astro": "^7.1.1"
   },
   "devDependencies": {
-    "pagefind": "^1.5.2"
+    "astro-pagefind": "^2.0.1"
   }
 }
