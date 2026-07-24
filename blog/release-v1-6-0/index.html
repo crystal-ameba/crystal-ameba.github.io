@@ -30,14 +30,14 @@ Optionally checks whether a date associated with the admonition has already pass
 <span class="line"><span style="color:#85E89D">  FailOnError</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span></code></pre>
 <h3 id="lintspecfilename"><a href="/ameba/1.6.0/Ameba/Rule/Lint/SpecFilename.html"><code>Lint/SpecFilename</code></a></h3>
 <p>Enforces that spec filenames have the <code>_spec</code> suffix as recommended by the <a href="https://crystal-lang.org/reference/1.10/guides/testing.html#running-specs">Crystal testing guide</a>. Supports autocorrection by renaming the file.</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#E1E4E8">$ ameba spec/my_spec.cr</span></span>
-<span class="line"><span style="color:#79B8FF">- spec/my_spec.cr:1:1 [Correctable]</span></span>
-<span class="line"><span style="color:#79B8FF">  Lint/SpecFilename: Spec filename should have `_spec` suffix: my_spec.cr, not my.cr</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> ameba</span><span style="color:#9ECBFF"> spec/my_spec.cr</span></span>
+<span class="line"><span style="color:#B392F0">-</span><span style="color:#9ECBFF"> spec/my_spec.cr:1:1</span><span style="color:#E1E4E8"> [Correctable]</span></span>
+<span class="line"><span style="color:#B392F0">  Lint/SpecFilename:</span><span style="color:#9ECBFF"> Spec</span><span style="color:#9ECBFF"> filename</span><span style="color:#9ECBFF"> should</span><span style="color:#9ECBFF"> have</span><span style="color:#9ECBFF"> `</span><span style="color:#B392F0">_spec</span><span style="color:#9ECBFF">`</span><span style="color:#B392F0"> suffix:</span><span style="color:#9ECBFF"> my_spec.cr,</span><span style="color:#9ECBFF"> not</span><span style="color:#9ECBFF"> my.cr</span></span></code></pre>
 <h3 id="namingfilename"><a href="/ameba/1.6.0/Ameba/Rule/Naming/Filename.html"><code>Naming/Filename</code></a></h3>
 <p>A rule that enforces file names to be in underscored case (snake_case).</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#E1E4E8">$ ameba src/MyClass.cr</span></span>
-<span class="line"><span style="color:#79B8FF">- src/MyClass.cr:1:1</span></span>
-<span class="line"><span style="color:#79B8FF">  Naming/Filename: Filename should be underscore-cased: my_class.cr, not MyClass.cr</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> ameba</span><span style="color:#9ECBFF"> src/MyClass.cr</span></span>
+<span class="line"><span style="color:#B392F0">-</span><span style="color:#9ECBFF"> src/MyClass.cr:1:1</span></span>
+<span class="line"><span style="color:#B392F0">  Naming/Filename:</span><span style="color:#9ECBFF"> Filename</span><span style="color:#9ECBFF"> should</span><span style="color:#9ECBFF"> be</span><span style="color:#9ECBFF"> underscore-cased:</span><span style="color:#9ECBFF"> my_class.cr,</span><span style="color:#9ECBFF"> not</span><span style="color:#9ECBFF"> MyClass.cr</span></span></code></pre>
 <h3 id="namingaccessormethodname"><a href="/ameba/1.6.0/Ameba/Rule/Naming/AccessorMethodName.html"><code>Naming/AccessorMethodName</code></a></h3>
 <p>Makes sure that accessor methods are named properly — favouring <code>user</code> / <code>user=</code> over <code>get_user</code> / <code>set_user</code>.</p>
 <div class="compare">
@@ -140,13 +140,12 @@ Optionally checks whether a date associated with the admonition has already pass
 <h3 id="invalid-file-paths-now-raise-errors">Invalid file paths now raise errors</h3>
 <p>Passing non-existent file paths to Ameba now raises an error (<a href="https://github.com/crystal-ameba/ameba/pull/394">#394</a>) instead of silently skipping them.</p>
 <h2 id="notable-improvements">Notable improvements</h2>
-<h3 id="new---describe-cli-switch">New <code>--describe</code> CLI switch</h3>
-<p>The <code>--rules</code> CLI output was refactored and a new <code>--describe &lt;rule-name&gt;</code> switch was added (<a href="https://github.com/crystal-ameba/ameba/pull/390">#390</a>), allowing you to quickly inspect a rule’s description and configuration:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#E1E4E8">$ ameba --describe Naming/Filename</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#79B8FF"> Naming/Filename</span></span>
-<span class="line"><span style="color:#79B8FF">  Enforces file names to be in underscored case</span></span>
-<span class="line"><span style="color:#79B8FF">  Enabled: true</span></span></code></pre>
+<h3 id="refactored---rules-cli-switch-output">Refactored <code>--rules</code> CLI switch output</h3>
+<p>This change makes the rule list formatted and nicely colored for better visual grepability.</p>
+<p><img src="https://private-user-images.githubusercontent.com/988/253127739-5cc4b82f-9a74-4735-b730-54229a8e6711.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODQ5MDI5NTQsIm5iZiI6MTc4NDkwMjY1NCwicGF0aCI6Ii85ODgvMjUzMTI3NzM5LTVjYzRiODJmLTlhNzQtNDczNS1iNzMwLTU0MjI5YThlNjcxMS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNzI0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDcyNFQxNDE3MzRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zYzIwYzg4YzYyZDEyNGQ3MjdmYmE2YTM3NGM4MmE2N2E3NjJjOWU3MjFhNGEzMjUzNzYzNTVkZTQ4YTc0MGZiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.Gdck3tYbMKK3todKur2K4gTYP4eB3g5g4Q74Oq7Mwu8" alt=""></p>
+<h3 id="new---describe-rule-name-cli-switch">New <code>--describe &lt;rule-name&gt;</code> CLI switch</h3>
+<p>New switch was added (<a href="https://github.com/crystal-ameba/ameba/pull/390">#390</a>), allowing you to quickly inspect a rule’s description and configuration:</p>
+<p><img src="https://private-user-images.githubusercontent.com/988/253127656-f1e7502a-932e-419e-ae04-164fde01456e.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODQ5MDI5NTQsIm5iZiI6MTc4NDkwMjY1NCwicGF0aCI6Ii85ODgvMjUzMTI3NjU2LWYxZTc1MDJhLTkzMmUtNDE5ZS1hZTA0LTE2NGZkZTAxNDU2ZS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNzI0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDcyNFQxNDE3MzRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zNmUzNDJhY2NmMGRhOTRmNjU0MmMzM2QxZmQ5N2YzM2MwOThjYTFjNzA3ZGRjMGVmZjczMThjZjNmNGU5YmNlJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.vKO8KzLOoDruuq_VyWdJj93g8jxITp1C4hEHUwVLgX8" alt=""></p>
 <h3 id="enhanced-lintnotnilafternobang">Enhanced <code>Lint/NotNilAfterNoBang</code></h3>
 <p>The <code>Lint/NotNilAfterNoBang</code> rule now also reports calls to <code>#match</code> (<a href="https://github.com/crystal-ameba/ameba/pull/423">#423</a>).</p>
 <h3 id="improved-namingasciiidentifiers">Improved <code>Naming/AsciiIdentifiers</code></h3>
