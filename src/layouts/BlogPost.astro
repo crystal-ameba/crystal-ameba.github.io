@@ -29,7 +29,7 @@ const editUrl = `${EDIT_BASE_URL}/${slug}.md`;
 <BaseLayout title={title} description={description} ogType="article">
   <article class="post-page" data-pagefind-body>
     <div class="wrap">
-      <a class="back" href="/blog">← All posts</a>
+      <a class="back" href="/blog">All posts</a>
 
       <header class="post-header">
         <div class="post-meta">
@@ -62,7 +62,7 @@ const editUrl = `${EDIT_BASE_URL}/${slug}.md`;
         <div class="tags">
           {tags.map((tag) => <span class="tag">#{tag}</span>)}
         </div>
-        <a class="edit" href={editUrl}>Edit this page on GitHub ↗</a>
+        <a class="edit" href={editUrl}>Edit this page on GitHub</a>
       </footer>
     </div>
   </article>
@@ -77,6 +77,10 @@ const editUrl = `${EDIT_BASE_URL}/${slug}.md`;
     font-size: 13px;
     color: var(--muted);
     text-decoration: none;
+  }
+  .back::before {
+    display: inline;
+    content: '← ';
   }
   .back:hover {
     color: var(--ink);
@@ -135,6 +139,10 @@ const editUrl = `${EDIT_BASE_URL}/${slug}.md`;
     font-size: 13px;
     color: var(--muted);
     text-decoration: none;
+  }
+  .edit::after {
+    display: inline;
+    content: ' ↗';
   }
   .edit:hover {
     color: var(--ink);

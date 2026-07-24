@@ -141,13 +141,12 @@ const latestPosts = posts.slice(0, HOMEPAGE_BLOG_POSTS_NO);
             <a class="post" href={`/blog/${post.id}`}>
               <span class="date">{formatDate(post.data.pubDate, 'short')}</span>
               <span class="t">{post.data.title}</span>
-              <span class="arr">→</span>
             </a>
           ))
         }
       </div>
 
-      <a class="all-posts" href="/blog">All posts →</a>
+      <a class="all-posts" href="/blog">All posts</a>
     </div>
   </section>
 </BaseLayout>
@@ -355,14 +354,15 @@ const latestPosts = posts.slice(0, HOMEPAGE_BLOG_POSTS_NO);
   .post:hover .t {
     text-decoration: underline;
   }
-  .post .arr {
+  .post::after {
+    content: '→';
     margin-left: auto;
     color: var(--muted);
     transition:
       transform 0.18s,
       color 0.18s;
   }
-  .post:hover .arr {
+  .post:hover::after {
     color: var(--ink);
   }
   .all-posts {
@@ -372,6 +372,10 @@ const latestPosts = posts.slice(0, HOMEPAGE_BLOG_POSTS_NO);
     font-size: 14px;
     color: var(--muted);
     text-decoration: none;
+  }
+  .all-posts::after {
+    display: inline;
+    content: ' →';
   }
   .all-posts:hover {
     color: var(--ink);
