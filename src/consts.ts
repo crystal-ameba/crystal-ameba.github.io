@@ -9,7 +9,7 @@ export const GITHUB_URL = 'https://github.com/crystal-ameba/ameba';
 export const GITHUB_RELEASES_URL = `${GITHUB_URL}/releases`;
 export const CONTRIBUTING_URL = `${GITHUB_URL}/blob/master/CONTRIBUTING.md`;
 export const CONTRIBUTORS_URL = 'https://github.com/crystal-ameba/ameba/graphs/contributors?all=1';
-export const DOCS_URL = 'https://crystal-ameba.github.io/ameba/';
+export const DOCS_URL = 'https://crystal-ameba.org/ameba/';
 export const RULES_REFERENCE_URL = DOCS_URL; // TODO
 
 export const EDIT_BASE_URL =
