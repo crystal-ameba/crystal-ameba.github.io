@@ -33,7 +33,7 @@ The `Admonitions` and `Timezone` configuration properties let you customize whic
 
 A rule that reports typos found in source files using the excellent [`typos`](https://github.com/crate-ci/typos) CLI tool. When only one correction is suggested, it can autocorrect the typo automatically.
 
-```yaml
+```yaml .ameba.yml
 Lint/Typos:
   Enabled: true
   BinPath: /usr/local/bin/typos

@@ -33,7 +33,7 @@ end
 
 This rule is **disabled by default** and will produce an issue for every public type without a doc comment:
 
-```yaml
+```yaml .ameba.yml
 Lint/Documentation:
   Enabled: true # enable to opt-in
   IgnoreClasses: false
@@ -76,7 +76,7 @@ Good
 
 The set of checked collection methods is configurable:
 
-```yaml
+```yaml .ameba.yml
 Performance/ExcessiveAllocations:
   Enabled: true
   CallNames:
