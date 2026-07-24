@@ -247,17 +247,17 @@ Passing non-existent file paths to Ameba now raises an error ([#394](https://git
 
 ## Notable improvements
 
-### New `--describe` CLI switch
+### Refactored `--rules` CLI switch output
 
-The `--rules` CLI output was refactored and a new `--describe <rule-name>` switch was added ([#390](https://github.com/crystal-ameba/ameba/pull/390)), allowing you to quickly inspect a rule's description and configuration:
+This change makes the rule list formatted and nicely colored for better visual grepability.
 
-```console
-$ ameba --describe Naming/Filename
+![](https://user-images.githubusercontent.com/988/253127739-5cc4b82f-9a74-4735-b730-54229a8e6711.png)
 
- Naming/Filename
-  Enforces file names to be in underscored case
-  Enabled: true
-```
+### New `--describe <rule-name>` CLI switch
+
+ New switch was added ([#390](https://github.com/crystal-ameba/ameba/pull/390)), allowing you to quickly inspect a rule's description and configuration:
+
+![](https://user-images.githubusercontent.com/988/253127656-f1e7502a-932e-419e-ae04-164fde01456e.png)
 
 ### Enhanced `Lint/NotNilAfterNoBang`
 
