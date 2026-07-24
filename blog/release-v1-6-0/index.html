@@ -126,15 +126,15 @@ Optionally checks whether a date associated with the admonition has already pass
 </div>
 <h2 id="breaking-changes">Breaking changes</h2>
 <h3 id="rule-group-reorganization">Rule group reorganization</h3>
-<p>Naming-related rules (<a href="https://github.com/crystal-ameba/ameba/pull/413">#413</a>) and documentation-related rules (<a href="https://github.com/crystal-ameba/ameba/pull/412">#412</a>) were moved into their own rule groups, <code>Naming</code> and <code>Documentation</code> respectively. If you reference these rules in your <code>.ameba.yml</code> configuration, you may need to update their paths:</p>
+<p>Naming-related rules (<a href="https://github.com/crystal-ameba/ameba/pull/413">#413</a>) and documentation-related rules (<a href="https://github.com/crystal-ameba/ameba/pull/412">#412</a>) were moved into their own rule groups, <code>Naming</code> and <code>Documentation</code> respectively. If you reference these rules in <code># ameba:disable</code> pragmas or your <code>.ameba.yml</code> configuration, you may need to update their names:</p>
 <ul>
-<li><code>Lint/Documentation</code> → <code>Documentation/Documentation</code></li>
 <li><code>Style/PredicateName</code> → <code>Naming/PredicateName</code></li>
 <li><code>Style/TypeNames</code> → <code>Naming/TypeNames</code></li>
 <li><code>Style/MethodNames</code> → <code>Naming/MethodNames</code></li>
 <li><code>Style/VariableNames</code> → <code>Naming/VariableNames</code></li>
 <li><code>Style/ConstantNames</code> → <code>Naming/ConstantNames</code></li>
 <li><code>Style/QueryBoolMethods</code> → <code>Naming/QueryBoolMethods</code></li>
+<li><code>Lint/Documentation</code> → <code>Documentation/Documentation</code></li>
 </ul>
 <h3 id="invalid-file-paths-now-raise-errors">Invalid file paths now raise errors</h3>
 <p>Passing non-existent file paths to Ameba now raises an error (<a href="https://github.com/crystal-ameba/ameba/pull/394">#394</a>) instead of silently skipping them.</p>
