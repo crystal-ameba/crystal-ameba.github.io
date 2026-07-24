@@ -4,27 +4,53 @@
 
 <div class="term" id="term">
   <div class="term-bar">
-    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
     <span class="term-title">~/projects/my-shard — ameba</span>
   </div>
   <div class="term-body" id="term-body">
-<div class="line"><span class="prompt"><span class="sym">$</span> ameba</span></div>
-<div class="line reveal dim">Inspecting 107 files</div>
-<div class="line reveal">&nbsp;</div>
-<div class="line reveal dim">...............F.....................FF..........</div>
-<div class="line reveal">&nbsp;</div>
-<div class="line reveal"><span class="path">src/ameba/formatter/flycheck_formatter.cr</span><span class="lineno">:6:37</span></div>
-<div class="line reveal"><span class="flag-w">W</span> <span class="rule">Lint/UnusedArgument</span><span class="msg">: Unused argument `location`.</span></div>
-<div class="line reveal dim">&gt; source.issues.each do |issue, location|</div>
-<div class="line reveal caret">                                ^------^</div>
-<div class="line reveal">&nbsp;</div>
-<div class="line reveal"><span class="path">src/ameba/formatter/base_formatter.cr</span><span class="lineno">:16:7</span> <span class="tag">[Correctable]</span></div>
-<div class="line reveal"><span class="flag-c">C</span> <span class="rule">Style/RedundantReturn</span><span class="msg">: Redundant `return` detected</span></div>
-<div class="line reveal dim">&gt; return size += issues.size</div>
-<div class="line reveal caret">  ^------------------------^</div>
-<div class="line reveal">&nbsp;</div>
-<div class="line reveal ok">Finished in 389.45 milliseconds</div>
-<div class="line reveal summary"><b>107</b> inspected, <b>3</b> failures — run <span class="rule">ameba --fix</span> to autocorrect</div>
+    <div class="line">
+      <span class="prompt"><span class="sym">$</span> ameba</span>
+    </div>
+    <div class="line reveal dim">Inspecting 107 files</div>
+    <div class="line reveal">&nbsp;</div>
+    <div class="line reveal dim">
+      ...............F.....................FF..........
+    </div>
+    <div class="line reveal">&nbsp;</div>
+    <div class="line reveal">
+      <span class="path">src/ameba/formatter/flycheck_formatter.cr</span>
+      <span class="lineno">:6:37</span>
+    </div>
+    <div class="line reveal">
+      <span class="flag-w">W</span>&nbsp;
+      <span class="rule">Lint/UnusedArgument</span>
+      <span class="msg">: Unused argument `location`.</span>
+    </div>
+    <div class="line reveal dim">
+      &gt; source.issues.each do |issue, location|
+    </div>
+    <div class="line reveal caret">                                ^------^</div>
+    <div class="line reveal">&nbsp;</div>
+    <div class="line reveal">
+      <span class="path">src/ameba/formatter/base_formatter.cr</span>
+      <span class="lineno">:16:7</span>&nbsp;
+      <span class="tag">[Correctable]</span>
+    </div>
+    <div class="line reveal">
+      <span class="flag-c">C</span>&nbsp;
+      <span class="rule">Style/RedundantReturn</span>
+      <span class="msg">: Redundant `return` detected</span>
+    </div>
+    <div class="line reveal dim">&gt; return size += issues.size</div>
+    <div class="line reveal caret">  ^------------------------^</div>
+    <div class="line reveal">&nbsp;</div>
+    <div class="line reveal ok">Finished in 389.45 milliseconds</div>
+    <div class="line reveal summary">
+      <b>107</b> inspected, <b>3</b> failures — run&nbsp;
+      <span class="rule">ameba --fix</span> to autocorrect
+    </div>
   </div>
 </div>
 
@@ -132,16 +158,21 @@
   const REVEAL_STEP_MS = 90;
 
   const lines = document.querySelectorAll<HTMLElement>('#term-body .reveal');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduceMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
 
   if (reduceMotion) {
     lines.forEach((line) => (line.style.opacity = '1'));
   } else {
     lines.forEach((line, index) => {
-      setTimeout(() => {
-        line.style.transition = 'opacity 0.25s';
-        line.style.opacity = '1';
-      }, REVEAL_START_MS + index * REVEAL_STEP_MS);
+      setTimeout(
+        () => {
+          line.style.transition = 'opacity 0.25s';
+          line.style.opacity = '1';
+        },
+        REVEAL_START_MS + index * REVEAL_STEP_MS
+      );
     });
   }
 </script>

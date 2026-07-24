@@ -4,16 +4,24 @@ import { EDIT_BASE_URL } from '../consts';
 import { formatDate } from '../lib/date';
 
 interface Props {
+  slug: string;
   title: string;
   description: string;
   pubDate: Date;
   updatedDate?: Date;
   tags?: string[];
   category?: string;
-  slug: string;
 }
 
-const { title, description, pubDate, updatedDate, tags = [], category, slug } = Astro.props;
+const {
+  slug,
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  tags = [],
+  category,
+} = Astro.props;
 
 const editUrl = `${EDIT_BASE_URL}/${slug}.md`;
 ---
@@ -25,9 +33,23 @@ const editUrl = `${EDIT_BASE_URL}/${slug}.md`;
 
       <header class="post-header">
         <div class="post-meta">
-          {category && <span class="cat" data-pagefind-filter="category">{category}</span>}
-          <time datetime={pubDate.toISOString()}>{formatDate(pubDate, 'long')}</time>
-          {updatedDate && <span class="updated">Updated {formatDate(updatedDate, 'long')}</span>}
+          {
+            category && (
+              <span class="cat" data-pagefind-filter="category">
+                {category}
+              </span>
+            )
+          }
+          <time datetime={pubDate.toISOString()}>
+            {formatDate(pubDate, 'long')}
+          </time>
+          {
+            updatedDate && (
+              <span class="updated">
+                Updated {formatDate(updatedDate, 'long')}
+              </span>
+            )
+          }
         </div>
         <h1>{title}</h1>
       </header>

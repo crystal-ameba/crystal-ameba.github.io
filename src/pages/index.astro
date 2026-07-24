@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Terminal from '../components/Terminal.astro';
-import { DOCS_URL, GITHUB_URL } from '../consts';
+import { DOCS_URL, GITHUB_URL, HOMEPAGE_BLOG_POSTS_NO } from '../consts';
 import { getSortedPosts } from '../lib/posts';
 import { formatDate } from '../lib/date';
 
@@ -39,7 +39,8 @@ const stats = [
   { n: 'MIT', l: 'Open source license' },
 ];
 
-const posts = (await getSortedPosts()).slice(0, 3);
+const posts = await getSortedPosts();
+const latestPosts = posts.slice(0, HOMEPAGE_BLOG_POSTS_NO);
 ---
 
 <BaseLayout>
@@ -47,22 +48,38 @@ const posts = (await getSortedPosts()).slice(0, 3);
     <div class="hero-grid">
       <div class="hero-copy">
         <p class="eyebrow fade">Static code analysis · Crystal</p>
-        <img class="logo-mark fade d1" src="/ameba-logo.png" alt="Ameba logo" width="300" height="121" />
+
+        <img
+          class="logo-mark fade d1"
+          src="/ameba-logo.png"
+          alt="Ameba logo"
+          width="300"
+          height="121"
+        />
+
         <h1 class="fade d2">Keep your Crystal code clean.</h1>
         <p class="lede fade d2">
-          A fast, modular linter for Crystal — hundreds of rules, autocorrection and editor
-          support, shipped as a single binary.
+          A fast, modular linter for Crystal — hundreds of rules, autocorrection
+          and editor support, shipped as a single binary.
         </p>
 
         <div class="install fade d3">
           <div class="install-head">
             <span class="install-file">shard.yml</span>
-            <button class="copy-btn" id="copy-install" data-copy={SHARD_SNIPPET}>Copy</button>
+            <button
+              class="copy-btn"
+              id="copy-install"
+              data-copy={SHARD_SNIPPET}
+            >
+              Copy
+            </button>
           </div>
           <pre><code>{SHARD_SNIPPET}</code></pre>
         </div>
+
         <p class="install-note fade d3">
-          Then <code>shards install &amp;&amp; bin/ameba</code>. Also on Homebrew, Docker and from source.
+          Then <code>shards install &amp;&amp; bin/ameba</code>. Also on
+          Homebrew, Docker and from source.
         </p>
 
         <div class="cta-row fade d4">
@@ -81,15 +98,16 @@ const posts = (await getSortedPosts()).slice(0, 3);
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">Why ameba</p>
-        <h2>Built for the way Crystal developers work.</h2>
+        <h2>Built for the way Crystal developers work</h2>
       </div>
+
       <div class="grid">
         {
-          features.map((f) => (
+          features.map((feature) => (
             <div class="cell">
-              <p class="k">{f.kicker}</p>
-              <h3>{f.title}</h3>
-              <p set:html={f.body}></p>
+              <p class="k">{feature.kicker}</p>
+              <h3>{feature.title}</h3>
+              <p set:html={feature.body} />
             </div>
           ))
         }
@@ -100,10 +118,10 @@ const posts = (await getSortedPosts()).slice(0, 3);
   <section class="section">
     <div class="wrap stats">
       {
-        stats.map((s) => (
+        stats.map((stat) => (
           <div class="stat">
-            <div class="n">{s.n}</div>
-            <div class="l">{s.l}</div>
+            <div class="n">{stat.n}</div>
+            <div class="l">{stat.l}</div>
           </div>
         ))
       }
@@ -116,9 +134,10 @@ const posts = (await getSortedPosts()).slice(0, 3);
         <p class="eyebrow">Updates</p>
         <h2>From the blog</h2>
       </div>
+
       <div class="posts">
         {
-          posts.map((post) => (
+          latestPosts.map((post) => (
             <a class="post" href={`/blog/${post.id}`}>
               <span class="date">{formatDate(post.data.pubDate, 'short')}</span>
               <span class="t">{post.data.title}</span>
@@ -127,6 +146,7 @@ const posts = (await getSortedPosts()).slice(0, 3);
           ))
         }
       </div>
+
       <a class="all-posts" href="/blog">All posts →</a>
     </div>
   </section>
@@ -200,7 +220,9 @@ const posts = (await getSortedPosts()).slice(0, 3);
     cursor: pointer;
     font-family: var(--mono);
     font-size: 12px;
-    transition: color 0.15s, border-color 0.15s;
+    transition:
+      color 0.15s,
+      border-color 0.15s;
   }
   .copy-btn:hover {
     color: var(--ink);
@@ -336,7 +358,9 @@ const posts = (await getSortedPosts()).slice(0, 3);
   .post .arr {
     margin-left: auto;
     color: var(--muted);
-    transition: transform 0.18s, color 0.18s;
+    transition:
+      transform 0.18s,
+      color 0.18s;
   }
   .post:hover .arr {
     transform: translateX(4px);
@@ -378,11 +402,15 @@ const posts = (await getSortedPosts()).slice(0, 3);
   const button = document.getElementById('copy-install');
 
   button?.addEventListener('click', async () => {
-    const text = button.getAttribute('data-copy') ?? '';
+    const text = button.getAttribute('data-copy');
+    if (!text) return;
+
     try {
       await navigator.clipboard.writeText(text);
+
       const original = button.textContent;
       button.textContent = 'Copied';
+
       setTimeout(() => (button.textContent = original), COPIED_RESET_MS);
     } catch (e) {
       /* clipboard unavailable */

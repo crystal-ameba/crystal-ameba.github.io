@@ -9,16 +9,23 @@ import {
   CONTRIBUTORS_URL,
 } from '../consts';
 
-const project = [
-  { label: 'Documentation', href: DOCS_URL },
-  { label: 'Rules reference', href: RULES_REFERENCE_URL },
-  { label: 'Releases', href: GITHUB_RELEASES_URL },
-];
-
-const community = [
-  { label: 'GitHub', href: GITHUB_URL },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contributing', href: CONTRIBUTING_URL },
+const menus = [
+  {
+    label: 'Project',
+    links: [
+      { label: 'Documentation', href: DOCS_URL },
+      { label: 'Rules reference', href: RULES_REFERENCE_URL },
+      { label: 'Releases', href: GITHUB_RELEASES_URL },
+    ],
+  },
+  {
+    label: 'Community',
+    links: [
+      { label: 'GitHub', href: GITHUB_URL },
+      { label: 'Blog', href: '/blog' },
+      { label: 'Contributing', href: CONTRIBUTING_URL },
+    ],
+  },
 ];
 
 const year = new Date().getFullYear();
@@ -31,18 +38,27 @@ const year = new Date().getFullYear();
         <img src="/ameba-logo.png" alt="Ameba logo" width="54" height="22" />
         <p>{SITE_DESCRIPTION}</p>
       </div>
-      <div class="col">
-        <h4>Project</h4>
-        {project.map((l) => <a href={l.href}>{l.label}</a>)}
-      </div>
-      <div class="col">
-        <h4>Community</h4>
-        {community.map((l) => <a href={l.href}>{l.label}</a>)}
-      </div>
+
+      {
+        menus.map((menu) => (
+          <div class="col">
+            <h4>{menu.label}</h4>
+            {menu.links.map((link) => (
+              <a href={link.href}>{link.label}</a>
+            ))}
+          </div>
+        ))
+      }
     </div>
+
     <div class="legal">
-      <span>© {year} <a href={CONTRIBUTORS_URL}>Ameba contributors</a> · MIT licensed</span>
-      <span>Built with <a href="https://crystal-lang.org/">Crystal</a></span>
+      <span>
+        © {year}&nbsp;
+        <a href={CONTRIBUTORS_URL}>Ameba contributors</a> · MIT licensed
+      </span>
+      <span>
+        Built with <a href="https://crystal-lang.org/">Crystal</a>
+      </span>
     </div>
   </div>
 </footer>

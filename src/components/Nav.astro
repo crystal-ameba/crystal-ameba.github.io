@@ -9,7 +9,8 @@ const links = [
 ];
 
 const path = Astro.url.pathname;
-const isCurrent = (href: string) => href === '/blog' && path.startsWith('/blog');
+const isCurrent = (href: string) =>
+  href === '/blog' && path.startsWith('/blog');
 ---
 
 <header class="site-header">
@@ -17,6 +18,7 @@ const isCurrent = (href: string) => href === '/blog' && path.startsWith('/blog')
     <a class="brand" href="/" aria-label="Ameba home">
       <img src="/ameba-logo.png" alt="Ameba logo" width="49" height="20" />
     </a>
+
     <nav class="nav-links" aria-label="Primary">
       {
         links.map((link) => (
@@ -29,16 +31,37 @@ const isCurrent = (href: string) => href === '/blog' && path.startsWith('/blog')
           </a>
         ))
       }
+
       <button class="icon-btn" id="search-open" aria-label="Search blog">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
           <circle cx="11" cy="11" r="7"></circle>
           <path d="m20 20-4.1-4.1"></path>
         </svg>
       </button>
-      <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+
+      <button
+        class="icon-btn"
+        id="theme-toggle"
+        aria-label="Toggle dark mode"
+        title="Toggle theme"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
           <circle cx="12" cy="12" r="9"></circle>
-          <path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"></path>
+          <path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none">
+          </path>
         </svg>
       </button>
     </nav>

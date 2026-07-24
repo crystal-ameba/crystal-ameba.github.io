@@ -4,7 +4,13 @@
 // locally after at least one build.
 ---
 
-<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search blog posts">
+<div
+  class="search-overlay"
+  id="search-overlay"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Search blog posts"
+>
   <div class="search-panel">
     <div id="search-ui"></div>
     <div class="hint">
@@ -20,7 +26,9 @@
   let loaded = false;
 
   function loadPagefind() {
-    if (loaded || !overlay) return;
+    if (loaded || !overlay) {
+      return;
+    }
     loaded = true;
 
     const css = document.createElement('link');
@@ -31,7 +39,11 @@
     const script = document.createElement('script');
     script.src = '/pagefind/pagefind-ui.js';
     script.onload = () => {
-      new window.PagefindUI({ element: '#search-ui', showSubResults: true, showImages: false });
+      new window.PagefindUI({
+        element: '#search-ui',
+        showSubResults: true,
+        showImages: false,
+      });
       focusInput();
     };
     document.body.appendChild(script);
@@ -39,11 +51,15 @@
 
   function focusInput() {
     const input = overlay?.querySelector('input');
-    if (input instanceof HTMLInputElement) input.focus();
+    if (input instanceof HTMLInputElement) {
+      input.focus();
+    }
   }
 
   function open() {
-    if (!overlay) return;
+    if (!overlay) {
+      return;
+    }
     overlay.setAttribute('open', '');
     loadPagefind();
     setTimeout(focusInput, 60);
@@ -55,13 +71,19 @@
 
   openBtn?.addEventListener('click', open);
   overlay?.addEventListener('click', (event) => {
-    if (event.target === overlay) close();
+    if (event.target === overlay) {
+      close();
+    }
   });
 
   document.addEventListener('keydown', (event) => {
     const active = document.activeElement;
-    const typing = active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA');
-    if (event.key === 'Escape') close();
+    const typing =
+      active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA');
+
+    if (event.key === 'Escape') {
+      close();
+    }
     if (event.key === '/' && !typing) {
       event.preventDefault();
       open();

@@ -12,7 +12,10 @@ const posts = await getSortedPosts();
     <header class="blog-head">
       <p class="eyebrow">Blog</p>
       <h1>Release notes &amp; articles</h1>
-      <p class="sub">Updates from the Ameba project — new rules, releases, and how it works inside.</p>
+      <p class="sub">
+        Updates from the Ameba project — new rules, releases, and how it works
+        inside.
+      </p>
     </header>
 
     <div class="post-list">
@@ -20,8 +23,12 @@ const posts = await getSortedPosts();
         posts.map((post) => (
           <a class="entry" href={`/blog/${post.id}`}>
             <div class="entry-meta">
-              <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
-              {post.data.category && <span class="cat">{post.data.category}</span>}
+              <time datetime={post.data.pubDate.toISOString()}>
+                {formatDate(post.data.pubDate)}
+              </time>
+              {post.data.category && (
+                <span class="cat">{post.data.category}</span>
+              )}
             </div>
             <h2>{post.data.title}</h2>
             <p>{post.data.description}</p>

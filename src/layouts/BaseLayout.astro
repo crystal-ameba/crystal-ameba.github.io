@@ -12,7 +12,13 @@ interface Props {
   image?: string;
 }
 
-const { title, description = SITE_DESCRIPTION, ogType = 'website', image = '/og.png' } = Astro.props;
+const {
+  title,
+  description = SITE_DESCRIPTION,
+  ogType = 'website',
+  image = '/og.png',
+} = Astro.props;
+
 const pageTitle = title ? `${title} · ${SITE_NAME}` : SITE_TITLE;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
@@ -24,10 +30,11 @@ const ogImage = new URL(image, Astro.site);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+
     <title>{pageTitle}</title>
+
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta name="generator" content={Astro.generator} />
 
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={SITE_NAME} />
@@ -38,20 +45,31 @@ const ogImage = new URL(image, Astro.site);
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={SITE_DESCRIPTION} />
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={ogImage} />
 
-    <link rel="alternate" type="application/rss+xml" title={BLOG_TITLE} href="/rss.xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={BLOG_TITLE}
+      href="/rss.xml"
+    />
 
     <script is:inline>
       (function () {
+        let theme;
         try {
           var stored = localStorage.getItem('theme');
-          var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-          document.documentElement.setAttribute('data-theme', theme);
+          theme =
+            stored ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light');
         } catch (e) {
-          document.documentElement.setAttribute('data-theme', 'light');
+          theme = 'light';
         }
+        document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>
   </head>

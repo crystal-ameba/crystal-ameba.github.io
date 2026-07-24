@@ -14,3 +14,5 @@ export const RULES_REFERENCE_URL = DOCS_URL; // TODO
 
 export const EDIT_BASE_URL =
   'https://github.com/crystal-ameba/crystal-ameba.github.io/edit/master/src/content/blog';
+
+export const HOMEPAGE_BLOG_POSTS_NO = 3;
