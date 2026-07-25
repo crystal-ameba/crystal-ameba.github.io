@@ -72,7 +72,7 @@ during refactoring.
 
 ## New rules
 
-### [`Lint/AmbiguousAssignment`](/ameba/1.0.0/Ameba/Rule/Lint/AmbiguousAssignment.html)
+### [`Lint/AmbiguousAssignment`](/api/1.0.0/Ameba/Rule/Lint/AmbiguousAssignment.html)
 
 A tiny rule that checks for mistyped shorthand assignments.
 
@@ -104,7 +104,7 @@ x != y # or x = !y
 
 </div>
 
-### [`Lint/DebugCalls`](/ameba/1.0.0/Ameba/Rule/Lint/DebugCalls.html)
+### [`Lint/DebugCalls`](/api/1.0.0/Ameba/Rule/Lint/DebugCalls.html)
 
 A rule that disallows calls to debug-related methods.
 This is because we don't want debug calls accidentally being committed into our codebase.
@@ -115,9 +115,9 @@ pp! a # error: Possibly forgotten debug-related `pp!` call detected
 a = a + 1
 ```
 
-Check out the [API doc](/ameba/1.0.0/Ameba/Rule/Lint/DebugCalls.html) to see a full list of supported debug-related calls.
+Check out the [API doc](/api/1.0.0/Ameba/Rule/Lint/DebugCalls.html) to see a full list of supported debug-related calls.
 
-### [`Style/GuardClause`](/ameba/1.0.0/Ameba/Rule/Style/GuardClause.html)
+### [`Style/GuardClause`](/api/1.0.0/Ameba/Rule/Style/GuardClause.html)
 
 A rule that enforces a guard clause instead of wrapping the code inside
 a conditional expression.
@@ -192,4 +192,4 @@ Some explanation:
 * `Shared variable 'foo' is used in fiber` - the reported error message
 
 These new matchers are used internally and of course can be used by Ameba extensions.
-Check out the [doc](/ameba/1.0.0/Ameba/Spec/ExpectIssue.html) for more details.
+Check out the [doc](/api/1.0.0/Ameba/Spec/ExpectIssue.html) for more details.

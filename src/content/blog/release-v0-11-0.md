@@ -15,7 +15,7 @@ with **GitHub actions**.
 
 ## New rules
 
-### [`Lint/RedundantWithIndex`](/ameba/0.11.0/Ameba/Rule/Lint/RedundantWithIndex.html) and [`Lint/RedundantWithObject`](/ameba/0.11.0/Ameba/Rule/Lint/RedundantWithObject.html)
+### [`Lint/RedundantWithIndex`](/api/0.11.0/Ameba/Rule/Lint/RedundantWithIndex.html) and [`Lint/RedundantWithObject`](/api/0.11.0/Ameba/Rule/Lint/RedundantWithObject.html)
 
 Crystal has several handy methods to iterate over collection together with
 index/object:

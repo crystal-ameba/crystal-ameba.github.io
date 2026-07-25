@@ -30,7 +30,7 @@ deprecation warning while compiling the binary.
 
 ## New rules
 
-### [`Lint/BadDirective`](/ameba/0.13.0/Ameba/Rule/Lint/BadDirective.html)
+### [`Lint/BadDirective`](/api/0.13.0/Ameba/Rule/Lint/BadDirective.html)
 
 This is a new rule that reports the incorrect comment directive for Ameba.
 
@@ -45,7 +45,7 @@ end
 
 Now, such a comment directive above will be properly reported.
 
-### [`Style/IsANil`](/ameba/0.13.0/Ameba/Rule/Style/IsANil.html)
+### [`Style/IsANil`](/api/0.13.0/Ameba/Rule/Style/IsANil.html)
 
 Crystal has two ways for checking the `nil` equality: `.is_a?(Nil)` and `.nil?`.
 

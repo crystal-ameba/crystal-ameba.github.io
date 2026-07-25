@@ -19,7 +19,7 @@ if you need compatibility with Crystal `1.8.x` or below.
 
 ## New rules
 
-### [`Lint/Documentation`](/ameba/1.5.0/Ameba/Rule/Lint/Documentation.html)
+### [`Lint/Documentation`](/api/1.5.0/Ameba/Rule/Lint/Documentation.html)
 
 A rule that enforces documentation for public types: classes, modules, enums, methods, and macros.
 Since reopened classes are less common than modules, classes are checked by default while modules are not — you can adjust this via the `IgnoreClasses` and `IgnoreModules` configuration options.
@@ -44,7 +44,7 @@ Lint/Documentation:
   IgnoreMacroHooks: true
 ```
 
-### [`Performance/ExcessiveAllocations`](/ameba/1.5.0/Ameba/Rule/Performance/ExcessiveAllocations.html)
+### [`Performance/ExcessiveAllocations`](/api/1.5.0/Ameba/Rule/Performance/ExcessiveAllocations.html)
 
 A rule that flags excessive collection allocations that can be avoided by using `each_<member>` methods instead of allocating intermediary collections with `.each`.
 
@@ -88,7 +88,7 @@ Performance/ExcessiveAllocations:
 
 This rule also supports **autocorrection**.
 
-### [`Performance/MinMaxAfterMap`](/ameba/1.5.0/Ameba/Rule/Performance/MinMaxAfterMap.html)
+### [`Performance/MinMaxAfterMap`](/api/1.5.0/Ameba/Rule/Performance/MinMaxAfterMap.html)
 
 A rule that flags `min`/`max`/`minmax` calls following `map`, and suggests using dedicated `*_of` methods instead.
 

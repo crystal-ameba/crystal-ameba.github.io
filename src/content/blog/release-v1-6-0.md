@@ -15,7 +15,7 @@ to see a full scope of changes.
 
 This release brings the total number of rules to **77**.
 
-### [`Documentation/DocumentationAdmonition`](/ameba/1.6.0/Ameba/Rule/Documentation/DocumentationAdmonition.html)
+### [`Documentation/DocumentationAdmonition`](/api/1.6.0/Ameba/Rule/Documentation/DocumentationAdmonition.html)
 
 A rule that reports documentation admonitions like `TODO`, `FIXME`, and `BUG` in comments.
 Optionally checks whether a date associated with the admonition has already passed.
@@ -29,7 +29,7 @@ end
 
 The `Admonitions` and `Timezone` configuration properties let you customize which keywords to look for and how to parse dates.
 
-### [`Lint/Typos`](/ameba/1.6.0/Ameba/Rule/Lint/Typos.html)
+### [`Lint/Typos`](/api/1.6.0/Ameba/Rule/Lint/Typos.html)
 
 A rule that reports typos found in source files using the excellent [`typos`](https://github.com/crate-ci/typos) CLI tool. When only one correction is suggested, it can autocorrect the typo automatically.
 
@@ -40,7 +40,7 @@ Lint/Typos:
   FailOnError: false
 ```
 
-### [`Lint/SpecFilename`](/ameba/1.6.0/Ameba/Rule/Lint/SpecFilename.html)
+### [`Lint/SpecFilename`](/api/1.6.0/Ameba/Rule/Lint/SpecFilename.html)
 
 Enforces that spec filenames have the `_spec` suffix as recommended by the [Crystal testing guide](https://crystal-lang.org/reference/1.10/guides/testing.html#running-specs). Supports autocorrection by renaming the file.
 
@@ -50,7 +50,7 @@ $ ameba spec/my.cr
   Lint/SpecFilename: Spec filename should have `_spec` suffix: my_spec.cr, not my.cr
 ```
 
-### [`Naming/Filename`](/ameba/1.6.0/Ameba/Rule/Naming/Filename.html)
+### [`Naming/Filename`](/api/1.6.0/Ameba/Rule/Naming/Filename.html)
 
 A rule that enforces file names to be in underscored case (snake_case).
 
@@ -60,7 +60,7 @@ $ ameba src/MyClass.cr
   Naming/Filename: Filename should be underscore-cased: my_class.cr, not MyClass.cr
 ```
 
-### [`Naming/AccessorMethodName`](/ameba/1.6.0/Ameba/Rule/Naming/AccessorMethodName.html)
+### [`Naming/AccessorMethodName`](/api/1.6.0/Ameba/Rule/Naming/AccessorMethodName.html)
 
 Makes sure that accessor methods are named properly — favouring `user` / `user=` over `get_user` / `set_user`.
 
@@ -100,7 +100,7 @@ end
 
 </div>
 
-### [`Naming/AsciiIdentifiers`](/ameba/1.6.0/Ameba/Rule/Naming/AsciiIdentifiers.html)
+### [`Naming/AsciiIdentifiers`](/api/1.6.0/Ameba/Rule/Naming/AsciiIdentifiers.html)
 
 Disallows non-ASCII characters in identifiers such as class names, method names, variables, and symbol literals.
 
@@ -130,7 +130,7 @@ end
 
 </div>
 
-### [`Naming/RescuedExceptionsVariableName`](/ameba/1.6.0/Ameba/Rule/Naming/RescuedExceptionsVariableName.html)
+### [`Naming/RescuedExceptionsVariableName`](/api/1.6.0/Ameba/Rule/Naming/RescuedExceptionsVariableName.html)
 
 Makes sure that rescued exception variables use expected names (by default `e`, `ex`, or `exception`).
 
@@ -162,7 +162,7 @@ end
 
 </div>
 
-### [`Naming/BlockParameterName`](/ameba/1.6.0/Ameba/Rule/Naming/BlockParameterName.html)
+### [`Naming/BlockParameterName`](/api/1.6.0/Ameba/Rule/Naming/BlockParameterName.html)
 
 Reports non-descriptive block parameter names. By default, names shorter than 3 characters are flagged, with exceptions for common short names like `_`, `e`, `i`, `j`, `k`, `v`, `x`, `y`, and others.
 
@@ -194,7 +194,7 @@ end
 
 </div>
 
-### [`Naming/BinaryOperatorParameterName`](/ameba/1.6.0/Ameba/Rule/Naming/BinaryOperatorParameterName.html)
+### [`Naming/BinaryOperatorParameterName`](/api/1.6.0/Ameba/Rule/Naming/BinaryOperatorParameterName.html)
 
 Enforces that certain binary operator methods have their sole parameter named `other`.
 

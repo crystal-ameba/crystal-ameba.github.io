@@ -13,7 +13,7 @@ to see a full scope of changes.
 
 ## New rules
 
-### [`Lint/LiteralsComparison`](/ameba/1.3.0/Ameba/Rule/Lint/LiteralsComparison.html)
+### [`Lint/LiteralsComparison`](/api/1.3.0/Ameba/Rule/Lint/LiteralsComparison.html)
 
 A rule that detects comparisons between literal values — comparisons that
 always produce the same result and are likely unintended.
@@ -25,7 +25,7 @@ always produce the same result and are likely unintended.
 "foo" == 42      # => always false
 ```
 
-### [`Lint/NotNil`](/ameba/1.3.0/Ameba/Rule/Lint/NotNil.html)
+### [`Lint/NotNil`](/api/1.3.0/Ameba/Rule/Lint/NotNil.html)
 
 A rule that flags usages of `not_nil!` calls. The `not_nil!` method raises
 when the value is `nil`, so it's safer to use pattern matching or a
@@ -43,7 +43,7 @@ end
 
 Note: calls with an explicit argument (e.g. `not_nil!("foo")`) are not affected.
 
-### [`Lint/NotNilAfterNoBang`](/ameba/1.3.0/Ameba/Rule/Lint/NotNilAfterNoBang.html)
+### [`Lint/NotNilAfterNoBang`](/api/1.3.0/Ameba/Rule/Lint/NotNilAfterNoBang.html)
 
 A rule that detects `index` or `find` calls chained with `not_nil!`, and
 **autocorrects** them to use the bang variant (`index!` / `find!`).
@@ -81,7 +81,7 @@ making the subsequent `not_nil!` redundant.
 
 ### `Lint/EmptyExpression` enabled by default
 
-The [`Lint/EmptyExpression`](/ameba/1.3.0/Ameba/Rule/Lint/EmptyExpression.html)
+The [`Lint/EmptyExpression`](/api/1.3.0/Ameba/Rule/Lint/EmptyExpression.html)
 rule was previously disabled due to a false positive in Crystal's parser
 ([crystal#9857](https://github.com/crystal-lang/crystal/issues/9857)).
 That issue has since been fixed, so the rule is now enabled by default.

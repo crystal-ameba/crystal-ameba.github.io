@@ -35,7 +35,7 @@ Crystal version `0.33`.
 
 ## New rules
 
-### [`Style/RedundantNext`](/ameba/0.12.0/Ameba/Rule/Style/RedundantNext.html)
+### [`Style/RedundantNext`](/api/0.12.0/Ameba/Rule/Style/RedundantNext.html)
 
 Crystal has [`next`](https://crystal-lang.org/reference/syntax_and_semantics/next.html)
 keyword which can be used to go to the next iteration in a loop. However, it can
@@ -67,7 +67,7 @@ end
 In all three places above the `next` keyword is redundant and is reported by the
 new rule.
 
-### [`Lint/SharedVarInFiber`](/ameba/0.12.0/Ameba/Rule/Lint/SharedVarInFiber.html)
+### [`Lint/SharedVarInFiber`](/api/0.12.0/Ameba/Rule/Lint/SharedVarInFiber.html)
 
 To achieve [concurrency and parallelism](https://crystal-lang.org/reference/guides/concurrency.html#spawning-a-call)
 Crystal uses Fibers and Channels. There is a tricky behavior which happens when
@@ -115,7 +115,7 @@ second one.
 **There are also other techniques to solve the problem above which are
 [officially documented](https://crystal-lang.org/reference/guides/concurrency.html#spawning-a-call).**
 
-### [`Lint/EmptyLoop`](/ameba/0.12.0/Ameba/Rule/Lint/EmptyLoop.html)
+### [`Lint/EmptyLoop`](/api/0.12.0/Ameba/Rule/Lint/EmptyLoop.html)
 
 After some round of refactoring it can happen that the loop body becomes empty
 but for whatever reason such an empty loop is forgotten to be removed. A new
@@ -149,7 +149,7 @@ end
 loop { run }
 ```
 
-### [`Lint/RedundantStringCoercion`](/ameba/0.12.0/Ameba/Rule/Lint/RedundantStringCoercion.html)
+### [`Lint/RedundantStringCoercion`](/api/0.12.0/Ameba/Rule/Lint/RedundantStringCoercion.html)
 
 This is typical situation when a value is being converted to string using
 [`Object#to_s`](https://crystal-lang.org/api/0.33.0/Object.html#to_s:String-instance-method)

@@ -13,7 +13,7 @@ to see a full scope of changes.
 
 ## New rules
 
-### [`Lint/LiteralAssignmentsInExpressions`](/ameba/1.4.0/Ameba/Rule/Lint/LiteralAssignmentsInExpressions.html)
+### [`Lint/LiteralAssignmentsInExpressions`](/api/1.4.0/Ameba/Rule/Lint/LiteralAssignmentsInExpressions.html)
 
 A rule that detects literal assignments used in expressions — a common source of bugs when `==` was intended instead of `=`.
 
@@ -45,7 +45,7 @@ end
 
 </div>
 
-### [`Lint/UnusedBlockArgument`](/ameba/1.4.0/Ameba/Rule/Lint/UnusedBlockArgument.html)
+### [`Lint/UnusedBlockArgument`](/api/1.4.0/Ameba/Rule/Lint/UnusedBlockArgument.html)
 
 A dedicated rule for reporting unused block arguments. Previously this was partially covered by `Lint/UnusedArgument`, but now it gets its own rule with clearer messages and autocorrection support.
 
@@ -57,7 +57,7 @@ end
 
 Use `&_block` or the anonymous `&` to silence it.
 
-### [`Lint/MissingBlockArgument`](/ameba/1.4.0/Ameba/Rule/Lint/MissingBlockArgument.html)
+### [`Lint/MissingBlockArgument`](/api/1.4.0/Ameba/Rule/Lint/MissingBlockArgument.html)
 
 Reports yielding methods that lack an explicit block argument — making it harder for callers to pass a named block.
 
@@ -69,11 +69,11 @@ end
 
 Adding `&` (or `&block`) makes the block explicit and introspectable.
 
-### [`Lint/Formatting`](/ameba/1.4.0/Ameba/Rule/Lint/Formatting.html)
+### [`Lint/Formatting`](/api/1.4.0/Ameba/Rule/Lint/Formatting.html)
 
 Integrates `crystal tool format` checks directly as an Ameba rule. You can now replace your separate `crystal tool format --check` CI step with an Ameba rule, keeping all linting unified.
 
-### [`Style/ParenthesesAroundCondition`](/ameba/1.4.0/Ameba/Rule/Style/ParenthesesAroundCondition.html)
+### [`Style/ParenthesesAroundCondition`](/api/1.4.0/Ameba/Rule/Style/ParenthesesAroundCondition.html)
 
 Renamed from the former `Style/RedundantParentheses` with a more flexible behavior. This rule enforces consistent use of parentheses around conditions in `if`/`unless`/`case`/`while`/`until`. It replaces the old `ExcludeAssignments` option with `AllowSafeAssignment` — when set, assignments in conditions are expected to be wrapped in parentheses.
 
@@ -105,7 +105,7 @@ end
 
 </div>
 
-### [`Style/QueryBoolMethods`](/ameba/1.4.0/Ameba/Rule/Style/QueryBoolMethods.html)
+### [`Style/QueryBoolMethods`](/api/1.4.0/Ameba/Rule/Style/QueryBoolMethods.html)
 
 Reports boolean properties defined with `property` or `getter` instead of their `?`-suffixed variants.
 

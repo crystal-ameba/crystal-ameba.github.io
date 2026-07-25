@@ -32,10 +32,10 @@ Let's take a look at the high-level picture of Ameba's module architecture.
 
 Of course, the first step of static code analysis is a loading of that source code.
 It does not matter whether it is a file, a steam or just a regular string, Ameba
-is capable to read that and create a new [`Source`](/ameba/0.10.0/Ameba/Source.html)
+is capable to read that and create a new [`Source`](/api/0.10.0/Ameba/Source.html)
 abstraction. Such internal representation of source code is very convenient
 to operate on it. For example, it is possible to attach an
-[`Issue`](/ameba/0.10.0/Ameba/Issue.html) to this source.
+[`Issue`](/api/0.10.0/Ameba/Issue.html) to this source.
 
 `Source` also can be created programmatically:
 
@@ -65,7 +65,7 @@ List of AST nodes is a quite convenient representation of a source code to decom
 It is widely used by Ameba internally to do a static analysis.
 
 As you might have noticed, a `Source` responds to
-[`#ast`](/ameba/0.10.0/Ameba/Source.html#ast-instance-method) method,
+[`#ast`](/api/0.10.0/Ameba/Source.html#ast-instance-method) method,
 which returns a list of AST nodes for that source:
 
 ```crystal
@@ -88,7 +88,7 @@ Next, nodes are iterated by rules.
 ## Rules
 
 Rule is a basic abstraction that iterates over that or other representation of source code and
-report issues if such are detected. All rules inherit from [`Rule::Base`](/ameba/0.10.0/Ameba/Rule/Base.html).
+report issues if such are detected. All rules inherit from [`Rule::Base`](/api/0.10.0/Ameba/Rule/Base.html).
 
 Most rules *visit* AST nodes. There is a couple of different *visitors* which pass needed nodes
 to the handler. Let's say there is a rule that disallows calling `puts` in a code.
@@ -111,7 +111,7 @@ end
 ```
 
 There are two different `test` method. The first one, which accepts a source is a main
-entry point to the rule. It returns the [`AST::NodeVisitor`](/ameba/0.10.0/Ameba/AST/NodeVisitor.html)
+entry point to the rule. It returns the [`AST::NodeVisitor`](/api/0.10.0/Ameba/AST/NodeVisitor.html)
 which will visit AST nodes and pass only needed ones to the second `test` method (handler).
 
 In a handler we just explore the node properties and add issues to the source code
@@ -145,10 +145,10 @@ Now the source holds an issue. It's a time to report it.
 
 Formatters are used to format the output reported by Ameba.
 
-For example, [`ExplainFormatter`](/ameba/0.10.0/Ameba/Formatter/ExplainFormatter.html)
+For example, [`ExplainFormatter`](/api/0.10.0/Ameba/Formatter/ExplainFormatter.html)
 is designed to show the detailed explanation of the issue in the source
 at a specific location.
-Another one is [`JSONFormatter`](/ameba/0.10.0/Ameba/Formatter/JSONFormatter.html)
+Another one is [`JSONFormatter`](/api/0.10.0/Ameba/Formatter/JSONFormatter.html)
 which formats to JSON. Let's give it a try:
 
 ```crystal
