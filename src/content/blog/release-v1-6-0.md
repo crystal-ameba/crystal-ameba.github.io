@@ -262,10 +262,6 @@ This change makes the rule list formatted and nicely colored for better visual g
 
 The `Lint/NotNilAfterNoBang` rule now also reports calls to `#match` ([#423](https://github.com/crystal-ameba/ameba/pull/423)).
 
-### Improved `Naming/AsciiIdentifiers`
-
-The rule now additionally reports non-ASCII characters in symbol literals ([#424](https://github.com/crystal-ameba/ameba/pull/424)).
-
 ## Bug fixes
 
 - Fixed `Lint/LiteralsComparison` false positive with dynamic literals ([#417](https://github.com/crystal-ameba/ameba/pull/417)).
