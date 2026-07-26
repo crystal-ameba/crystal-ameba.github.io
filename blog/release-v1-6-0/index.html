@@ -2,13 +2,17 @@
       (function () {
         let theme;
         try {
-          var stored = localStorage.getItem('theme');
+          // get theme from local storage
+          theme = localStorage.getItem('theme');
+
+          // fallback to system preference
           theme =
-            stored ||
+            theme ||
             (window.matchMedia('(prefers-color-scheme: dark)').matches
               ? 'dark'
               : 'light');
         } catch (e) {
+          // fallback to light theme
           theme = 'light';
         }
         document.documentElement.setAttribute('data-theme', theme);
@@ -152,8 +156,6 @@ Optionally checks whether a date associated with the admonition has already pass
 <p><img src="/gallery/posts/release-v1-6-0/describe-rule-output.png" alt=""></p>
 <h3 id="enhanced-lintnotnilafternobang">Enhanced <code>Lint/NotNilAfterNoBang</code></h3>
 <p>The <code>Lint/NotNilAfterNoBang</code> rule now also reports calls to <code>#match</code> (<a href="https://github.com/crystal-ameba/ameba/pull/423">#423</a>).</p>
-<h3 id="improved-namingasciiidentifiers">Improved <code>Naming/AsciiIdentifiers</code></h3>
-<p>The rule now additionally reports non-ASCII characters in symbol literals (<a href="https://github.com/crystal-ameba/ameba/pull/424">#424</a>).</p>
 <h2 id="bug-fixes">Bug fixes</h2>
 <ul>
 <li>Fixed <code>Lint/LiteralsComparison</code> false positive with dynamic literals (<a href="https://github.com/crystal-ameba/ameba/pull/417">#417</a>).</li>
