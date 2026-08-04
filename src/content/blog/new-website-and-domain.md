@@ -32,4 +32,4 @@ API documentation URLs are now versioned (`crystal-ameba.org/api/<version>`) and
 If you have any feedback or ideas for the website, feel free to [open an issue](https://github.com/crystal-ameba/crystal-ameba.github.io/issues/new) or reach out on the [Crystal community channels](https://crystal-lang.org/community).
 
 Cheers, \
-@Sija
+[@Sija](https://github.com/Sija)
