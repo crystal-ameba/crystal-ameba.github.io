@@ -12,7 +12,7 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.3",
-    "astro": "^7.1.4"
+    "astro": "^7.1.6"
   },
   "devDependencies": {
     "astro-pagefind": "^2.0.1"
