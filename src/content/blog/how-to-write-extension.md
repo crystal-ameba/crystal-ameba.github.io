@@ -7,10 +7,8 @@ tags:
   - extension
 ---
 
-It was [announced recently](https://github.com/crystal-ameba/ameba/pull/112) that Ameba
-is going to be extendable.
-That means any developer can create his own extension and use together
-with Ameba's engine.
+It was [announced recently](https://github.com/crystal-ameba/ameba/pull/112) that Ameba is going to be extendable.
+That means any developer can create his own extension and use together with Ameba's engine.
 
 Here we will be following through the steps on how to create such an extension and use it.
 
@@ -32,7 +30,7 @@ name: ameba-docs
 version: 0.1.0
 
 authors:
-  - Vitalii Elenhaupt <velenhaupt@gmail.com>
+  - Your name <your@email.com>
 
 development_dependencies:
   ameba:
@@ -79,10 +77,10 @@ end
 
 A couple of things are defined here:
 
-1. `properties` defines a dsl for configurable rule properties. We only have a rule description.
-2. `MSG` defines a constant for the error message to be reported.
+1. `properties` defines a [DSL](https://en.wikipedia.org/wiki/Domain-specific_language) for configurable rule properties. We only have a rule description.
+2. `MSG` defines a string constant for the error message to be reported.
 3. `def test(source)` is an entry point of the rule. Here the method accepts a source file and
-passes it to the node visitor, which allows us to filter the `ClassDef` nodes in the method below.
+passes it to the node visitor, which allows us to filter the `Crystal::ClassDef` nodes in the method below.
 4. `def test(source, node : Crystal::ClassDef)` is a method which does an actual job. The implementation is pretty self explained: it filters out node, which have public visibility and do not have (or have empty) docs.
 
 The extension is pretty much done. Let's try to use it.

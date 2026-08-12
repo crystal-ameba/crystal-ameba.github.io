@@ -25,9 +25,9 @@ The site is built with [Astro](https://astro.build) and is designed to be a cent
 - **Clearer documentation** — In the future, organized rule references and configuration guides will be available as well.
 - **Open source** — The website itself is [open on GitHub](https://github.com/crystal-ameba/crystal-ameba.github.io), so contributions are welcome.
 
-This move also comes with a new domain — `crystal-ameba.org` — which we hope will be easier to remember and share.
+This move also comes with a new domain: `crystal-ameba.org` — which we hope will be easier to remember and share.
 
-API documentation URLs are now versioned (`crystal-ameba.org/api/<version>`) and have changed the address from `crystal-ameba.github.io/ameba` to `crystal-ameba.org/api/master`.
+API documentation URLs have changed the address from `crystal-ameba.github.io/ameba` to `crystal-ameba.org/api/master` and are now versioned (`crystal-ameba.org/api/<version>`).
 
 If you have any feedback or ideas for the website, feel free to [open an issue](https://github.com/crystal-ameba/crystal-ameba.github.io/issues/new) or reach out on the [Crystal community channels](https://crystal-lang.org/community).
 
