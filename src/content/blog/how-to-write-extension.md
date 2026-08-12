@@ -128,7 +128,7 @@ $ bin/ameba
 
 The results are displayed below. `crystal-docs` extension in action:
 
-![](/gallery/posts/how-to-write-extension/crystal-docs-ext.png)
+![Ameba's run output](/gallery/posts/how-to-write-extension/crystal-docs-ext.png)
 
 ## Wrap up
 

@@ -15,7 +15,7 @@ modules, which will help to understand how it works internally.
 We will cover everything needed starting from source code
 loading and finishing by showing results of static analysis.
 
-![](/gallery/posts/internals/ameba-modules.png)
+![Ameba's modules chart](/gallery/posts/internals/ameba-modules.png)
 
 Ameba and similar command-line applications for static analysis are
 required to be highly configurable.
