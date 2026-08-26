@@ -25,8 +25,6 @@ Binaries for Linux, macOS, and Windows are being built in CI upon release ([#789
 
 This release contains a fair number of breaking changes. Here's what to watch out for:
 
-All of the breaking changes are documented in the [migration guide](https://github.com/crystal-ameba/ameba/wiki/Migration-guide).
-
 ### Removed auto-compilation (`bin/ameba`)
 
 Ameba no longer builds a `bin/ameba` binary automatically on `shards install/update` — the `postinstall` script has been dropped. The recommended way to run Ameba going forward is via the [GitHub Action](https://github.com/crystal-ameba/github-action), which uses a precompiled binary (~1s per run) instead of building from source (~1+ min). Alternatively, add an `ameba` target to your `shard.yml` and run `shards build ameba`.
@@ -70,6 +68,8 @@ Documentation URLs now include the version. If you link to Ameba documentation, 
 - [`Lint/SpecFilename`](/api/1.7.0/Ameba/Rule/Lint/SpecFilename.html) — `IgnoredDirs` and `IgnoredFilenames` options were replaced with `IgnoredPaths`
 - [`Performance/AnyInsteadOfEmpty`](/api/1.7.0/Ameba/Rule/Performance/AnyInsteadOfEmpty.html) — this rule has been deprecated
 - Ameba now raises on invalid file paths instead of silently skipping them
+
+All of the breaking changes are documented in the [migration guide](https://github.com/crystal-ameba/ameba/wiki/Migration-guide).
 
 ## 37 new rules
 
