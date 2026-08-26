@@ -27,7 +27,6 @@
 <p>Binaries for Linux, macOS, and Windows are being built in CI upon release (<a href="https://github.com/crystal-ameba/ameba/issues/789">#789</a>).</p>
 <h2 id="breaking-changes-️">Breaking changes ⚠️</h2>
 <p>This release contains a fair number of breaking changes. Here’s what to watch out for:</p>
-<p>All of the breaking changes are documented in the <a href="https://github.com/crystal-ameba/ameba/wiki/Migration-guide">migration guide</a>.</p>
 <h3 id="removed-auto-compilation-binameba">Removed auto-compilation (<code>bin/ameba</code>)</h3>
 <p>Ameba no longer builds a <code>bin/ameba</code> binary automatically on <code>shards install/update</code> — the <code>postinstall</code> script has been dropped. The recommended way to run Ameba going forward is via the <a href="https://github.com/crystal-ameba/github-action">GitHub Action</a>, which uses a precompiled binary (~1s per run) instead of building from source (~1+ min). Alternatively, add an <code>ameba</code> target to your <code>shard.yml</code> and run <code>shards build ameba</code>.</p>
 <p>The <code>bin/ameba.cr</code> executable is no longer copied into your project’s <code>bin/</code> directory either — use <code>lib/ameba/bin/ameba.cr</code> directly or copy it over for local modification if needed.</p>
@@ -56,6 +55,7 @@
 <li><a href="/api/1.7.0/Ameba/Rule/Performance/AnyInsteadOfEmpty.html"><code>Performance/AnyInsteadOfEmpty</code></a> — this rule has been deprecated</li>
 <li>Ameba now raises on invalid file paths instead of silently skipping them</li>
 </ul>
+<p>All of the breaking changes are documented in the <a href="https://github.com/crystal-ameba/ameba/wiki/Migration-guide">migration guide</a>.</p>
 <h2 id="37-new-rules">37 new rules</h2>
 <p>This release adds the largest batch of new rules ever.</p>
 <h3 id="lint">Lint</h3>
