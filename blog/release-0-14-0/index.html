@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><title>Ameba 0.14.0 has been released · Ameba</title><meta name="description" content="Check out the release notes to see a full scope of changes. Here we will go through the most important changes."><link rel="canonical" href="https://crystal-ameba.org/blog/release-0-14-0/"><meta property="og:type" content="article"><meta property="og:site_name" content="Ameba"><meta property="og:title" content="Ameba 0.14.0 has been released · Ameba"><meta property="og:description" content="Check out the release notes to see a full scope of changes. Here we will go through the most important changes."><meta property="og:url" content="https://crystal-ameba.org/blog/release-0-14-0/"><meta property="og:image" content="https://crystal-ameba.org/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="A static code analysis tool for the Crystal programming language."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://crystal-ameba.org/og.png"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="Ameba blog" href="/rss.xml"><script>
+      (function () {
+        let theme;
+        try {
+          // get theme from local storage
+          theme = localStorage.getItem('theme');
+
+          // fallback to system preference
+          theme =
+            theme ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light');
+        } catch (e) {
+          // fallback to light theme
+          theme = 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script><link rel="stylesheet" href="/_astro/BaseLayout.CRylrVG7.css"><style>.post-page[data-astro-cid-tldeq5d5]{padding:56px 0 40px}.back[data-astro-cid-tldeq5d5]{font-family:var(--mono);color:var(--muted);font-size:13px;text-decoration:none}.back[data-astro-cid-tldeq5d5]:before{content:"← ";display:inline}.back[data-astro-cid-tldeq5d5]:hover{color:var(--ink)}.post-header[data-astro-cid-tldeq5d5]{max-width:var(--reading);margin:28px auto 40px}.post-meta[data-astro-cid-tldeq5d5]{font-family:var(--mono);color:var(--muted);flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:18px;font-size:12.5px;display:flex}.post-meta[data-astro-cid-tldeq5d5] .cat[data-astro-cid-tldeq5d5]{text-transform:uppercase;letter-spacing:.1em;border:1px solid var(--line);border-radius:999px;padding:3px 10px}.post-header[data-astro-cid-tldeq5d5] h1[data-astro-cid-tldeq5d5]{letter-spacing:-.02em;text-wrap:balance;margin:0;font-size:clamp(28px,4.5vw,42px);line-height:1.1}.post-foot[data-astro-cid-tldeq5d5]{max-width:var(--reading);border-top:1px solid var(--line);flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;margin:48px auto 0;padding-top:24px;display:flex}.tags[data-astro-cid-tldeq5d5]{flex-wrap:wrap;gap:8px;display:flex}.tag[data-astro-cid-tldeq5d5]{font-family:var(--mono);color:var(--muted);font-size:13px}.edit[data-astro-cid-tldeq5d5]{font-family:var(--mono);color:var(--muted);font-size:13px;text-decoration:none}.edit[data-astro-cid-tldeq5d5]:after{content:" ↗";display:inline}.edit[data-astro-cid-tldeq5d5]:hover{color:var(--ink)}
+</style></head><body><header class="site-header" data-astro-cid-wpvy4v7s><div class="wrap nav" data-astro-cid-wpvy4v7s><a class="brand" href="/" aria-label="Ameba home" data-astro-cid-wpvy4v7s><img src="/ameba-logo.png" alt="Ameba logo" width="49" height="20" data-astro-cid-wpvy4v7s></a><nav class="nav-links" aria-label="Primary" data-astro-cid-wpvy4v7s><a href="/#features" class="hide-sm" data-astro-cid-wpvy4v7s>Features</a><a href="https://crystal-ameba.org/api/" class="ext" data-astro-cid-wpvy4v7s>Docs</a><a href="/blog" aria-current="page" data-astro-cid-wpvy4v7s>Blog</a><a href="https://github.com/crystal-ameba/ameba" class="ext" data-astro-cid-wpvy4v7s>GitHub</a><button class="icon-btn" id="search-open" aria-label="Search blog" data-astro-cid-wpvy4v7s><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" data-astro-cid-wpvy4v7s><circle cx="11" cy="11" r="7" data-astro-cid-wpvy4v7s></circle><path d="m20 20-4.1-4.1" data-astro-cid-wpvy4v7s></path></svg></button><button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme" data-astro-cid-wpvy4v7s><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" data-astro-cid-wpvy4v7s><circle cx="12" cy="12" r="9" data-astro-cid-wpvy4v7s></circle><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none" data-astro-cid-wpvy4v7s></path></svg></button></nav></div></header><script type="module">var e=document.documentElement;document.getElementById(`theme-toggle`)?.addEventListener(`click`,()=>{let t=e.getAttribute(`data-theme`)===`dark`?`light`:`dark`;e.setAttribute(`data-theme`,t);try{localStorage.setItem(`theme`,t)}catch{}});</script><main><article class="post-page" data-pagefind-body data-astro-cid-tldeq5d5><div class="wrap" data-astro-cid-tldeq5d5><a class="back" href="/blog" data-astro-cid-tldeq5d5>All posts</a><header class="post-header" data-astro-cid-tldeq5d5><div class="post-meta" data-astro-cid-tldeq5d5><span class="cat" data-pagefind-filter="category" data-astro-cid-tldeq5d5>Release announcement</span><time datetime="2021-02-12T12:54:30.000Z" data-astro-cid-tldeq5d5>February 12, 2021</time></div><h1 data-astro-cid-tldeq5d5>Ameba 0.14.0 has been released</h1></header><div class="prose" data-astro-cid-tldeq5d5><p>Check out the <a href="https://github.com/crystal-ameba/ameba/releases/tag/v0.14.0">release notes</a>
+to see a full scope of changes. Here we will go through the most important changes.</p>
+<h2 id="new-lint-rules">New <code>Lint</code> rules</h2>
+<h3 id="lintduplicatedrequire"><a href="/api/0.14.0/Ameba/Rule/Lint/DuplicatedRequire.html"><code>Lint/DuplicatedRequire</code></a></h3>
+<p>Duplicated requires in the source file do not have too much effect on the running program,
+however it creates a mess. This rule reports such cases.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#F97583">require</span><span style="color:#9ECBFF"> "./thing"</span></span>
+<span class="line"><span style="color:#F97583">require</span><span style="color:#9ECBFF"> "./stuff"</span></span>
+<span class="line"><span style="color:#F97583">require</span><span style="color:#9ECBFF"> "./thing"</span><span style="color:#6A737D"> # duplicated require</span></span></code></pre>
+<h3 id="lintspecfocus"><a href="/api/0.14.0/Ameba/Rule/Lint/SpecFocus.html"><code>Lint/SpecFocus</code></a></h3>
+<p>In specs <code>focus: true</code> is mainly used to focus on a spec item locally during development.
+However, if such change is committed, it silently runs only focused spec on all other
+environments, which is undesired.</p>
+<p>This rule reports if specs are focused.</p>
+<p>For example, this is considered invalid:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#F97583">it</span><span style="color:#9ECBFF"> "works"</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">focus:</span><span style="color:#79B8FF"> true</span><span style="color:#F97583"> do</span></span>
+<span class="line"><span style="color:#6A737D">  # ...</span></span>
+<span class="line"><span style="color:#F97583">end</span></span></code></pre>
+<h2 id="new-performance-rules">New <code>Performance</code> rules</h2>
+<h3 id="performanceanyinsteadofempty"><a href="/api/0.14.0/Ameba/Rule/Performance/AnyInsteadOfEmpty.html"><code>Performance/AnyInsteadOfEmpty</code></a></h3>
+<p>Using <code>Enumerable#any?</code> instead of <code>Enumerable#empty?</code> might lead to an unexpected results
+(like <code>[nil, false].any? # =&gt; false</code>). In some cases it also might be less efficient,
+since it iterates until the block will return a <em>truthy</em> value, instead of just checking
+if there’s at least one value present.</p>
+<p>Now this is considered bad:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">[</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">].any?</span></span></code></pre>
+<p>and it should be written as this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#F97583">!</span><span style="color:#E1E4E8">[</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">].empty?</span></span></code></pre>
+<h3 id="performancechainedcallwithnobang"><a href="/api/0.14.0/Ameba/Rule/Performance/ChainedCallWithNoBang.html"><code>Performance/ChainedCallWithNoBang</code></a></h3>
+<p>This rule is used to identify usage of chained calls not utilizing the bang method variants.
+This is a nice way to find all the places to reduce unnecessary collection allocations.</p>
+<p>For example, this is considered inefficient:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">names </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> %w[Alice Bob]</span></span>
+<span class="line"><span style="color:#E1E4E8">chars </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> names</span></span>
+<span class="line"><span style="color:#E1E4E8">  .</span><span style="color:#B392F0">flat_map</span><span style="color:#E1E4E8">(&amp;.chars)</span></span>
+<span class="line"><span style="color:#E1E4E8">  .uniq</span></span>
+<span class="line"><span style="color:#E1E4E8">  .sort</span></span></code></pre>
+<p>And can be written as this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">names </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> %w[Alice Bob]</span></span>
+<span class="line"><span style="color:#E1E4E8">chars </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> names</span></span>
+<span class="line"><span style="color:#E1E4E8">  .</span><span style="color:#B392F0">flat_map</span><span style="color:#E1E4E8">(&amp;.chars)</span></span>
+<span class="line"><span style="color:#E1E4E8">  .uniq!</span></span>
+<span class="line"><span style="color:#E1E4E8">  .sort!</span></span></code></pre>
+<p>There is a configuration property that allows to add/remove the method call names
+to take into account during the check:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">Performance/ChainedCallWithNoBang</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  CallNames</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">uniq</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">sort</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">sort_by</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">shuffle</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">reverse</span></span></code></pre>
+<h3 id="performancecompactaftermap"><a href="/api/0.14.0/Ameba/Rule/Performance/CompactAfterMap.html"><code>Performance/CompactAfterMap</code></a></h3>
+<p>This rule is used to identify usage of <code>compact</code> calls that follow <code>map</code>.
+Such cases can be improved using <code>compact_map</code>.</p>
+<p>For example, this is considered inefficient:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#9ECBFF">%w[Alice Bob]</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(&amp;.</span><span style="color:#B392F0">match</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">^A.</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">)).compact</span></span></code></pre>
+<p>And can be written as this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#9ECBFF">%w[Alice Bob]</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">compact_map</span><span style="color:#E1E4E8">(&amp;.</span><span style="color:#B392F0">match</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">^A.</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">))</span></span></code></pre>
+<h3 id="performanceflattenaftermap"><a href="/api/0.14.0/Ameba/Rule/Performance/FlattenAfterMap.html"><code>Performance/FlattenAfterMap</code></a></h3>
+<p>There is a close counterpart of a previous example: <code>flatten</code> after <code>map</code> and <code>flat_map</code>.
+So there is another rule to which is used to identify this usecase.</p>
+<p>For example, this is considered inefficient:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#9ECBFF">%w[Alice Bob]</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(&amp;.chars).flatten</span></span></code></pre>
+<p>And can be written as this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#9ECBFF">%w[Alice Bob]</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">flat_map</span><span style="color:#E1E4E8">(&amp;.chars)</span></span></code></pre>
+<h3 id="performancemapinsteadofblock"><a href="/api/0.14.0/Ameba/Rule/Performance/MapInsteadOfBlock.html"><code>Performance/MapInsteadOfBlock</code></a></h3>
+<p>Another performance rule which is used to identify usage of <code>join/sum/product</code> calls
+that follow <code>map</code>.</p>
+<p>For example, this is considered inefficient:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">..</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(&amp;.to_s).</span><span style="color:#B392F0">join</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'.'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">..</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(&amp;.</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">)).sum</span></span></code></pre>
+<p>And can be written as this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">..</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">join</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'.'</span><span style="color:#E1E4E8">, &amp;.to_s)</span></span>
+<span class="line"><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">..</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">sum</span><span style="color:#E1E4E8">(&amp;.</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">))</span></span></code></pre>
+<h2 id="new-style-rules">New <code>Style</code> rules</h2>
+<h3 id="styleisafilter"><a href="/api/0.14.0/Ameba/Rule/Style/IsAFilter.html"><code>Style/IsAFilter</code></a></h3>
+<p>This rule is used to identify usage of <code>is_a?/nil?</code> calls within filters.
+It helps to avoid the boilerplate in filters and improve the readability.</p>
+<p>For example, this is considered invalid:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">matches.</span><span style="color:#B392F0">any?</span><span style="color:#E1E4E8">(&amp;.</span><span style="color:#B392F0">is_a?</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">Regex</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">MatchData</span><span style="color:#E1E4E8">))</span></span></code></pre>
+<p>And it should be written as this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">matches.</span><span style="color:#B392F0">any?</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">Regex</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">MatchData</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<p>And of course there is a configuration property that allow to change
+the list of filter name to inspect:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">Style/IsAFilter</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  FilterNames</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">select</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">reject</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">any?</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">all?</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">none?</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">one?</span></span></code></pre>
+<h3 id="styleverboseblock"><a href="/api/0.14.0/Ameba/Rule/Style/VerboseBlock.html"><code>Style/VerboseBlock</code></a></h3>
+<p>As you might know some blocks in Crystal can have a shorter and much nicer form.
+This rule is used to identify usage of single expression blocks with
+argument as a receiver, that can be collapsed into such a short form.</p>
+<p>For example, this is considered invalid:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">..</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">).any? { |i| i.odd? }</span></span></code></pre>
+<p>And it should be written as this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">..</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">any?</span><span style="color:#E1E4E8">(&amp;.odd?)</span></span></code></pre>
+<p>There is a bag of configuration properties, which are not yet documented,
+but you can give it a shot:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">Style/VerboseBlock</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  ExcludeMultipleLineBlocks</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#85E89D">  ExcludeCallsWithBlocks</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<span class="line"><span style="color:#85E89D">  ExcludePrefixOperators</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#85E89D">  ExcludeOperators</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<span class="line"><span style="color:#85E89D">  ExcludeSetters</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<span class="line"><span style="color:#85E89D">  MaxLineLength</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">~</span></span>
+<span class="line"><span style="color:#85E89D">  MaxLength</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">50</span><span style="color:#6A737D"> # use ~ to disable</span></span></code></pre>
+</div><footer class="post-foot" data-astro-cid-tldeq5d5><div class="tags" data-astro-cid-tldeq5d5><span class="tag" data-astro-cid-tldeq5d5>#releases</span></div><a class="edit" href="https://github.com/crystal-ameba/crystal-ameba.github.io/edit/master/src/content/blog/release-0-14-0.md" data-astro-cid-tldeq5d5>Edit this page on GitHub</a></footer></div></article></main><footer class="site-footer"><div class="wrap"><div class="foot"><div class="col brand-col"><img src="/ameba-logo.png" alt="Ameba logo" width="54" height="22"><p>A static code analysis tool for the Crystal programming language.</p></div><div class="col"><h4>Project</h4><a href="https://crystal-ameba.org/api/">Documentation</a><a href="https://crystal-ameba.org/api/">Rules reference</a><a href="https://github.com/crystal-ameba/ameba/releases">Releases</a></div><div class="col"><h4>Community</h4><a href="https://github.com/crystal-ameba/ameba">GitHub</a><a href="/blog">Blog</a><a href="https://github.com/crystal-ameba/ameba/blob/master/CONTRIBUTING.md">Contributing</a></div></div><div class="legal"><span>© 2026&nbsp;<a href="https://github.com/crystal-ameba/ameba/graphs/contributors?all=1">Ameba contributors</a> · MIT licensed</span><span>Built with <a href="https://crystal-lang.org/">Crystal</a></span></div></div></footer><div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search blog posts"><div class="search-panel"><div id="search-ui"></div><div class="hint"><span>Search the blog</span><span>Esc to close</span></div></div></div><script type="module">var e=document.getElementById(`search-overlay`),t=document.getElementById(`search-open`),n=!1;function r(){if(n||!e)return;n=!0;let t=document.createElement(`link`);t.rel=`stylesheet`,t.href=`/pagefind/pagefind-ui.css`,document.head.appendChild(t);let r=document.createElement(`script`);r.src=`/pagefind/pagefind-ui.js`,r.onload=()=>{new window.PagefindUI({element:`#search-ui`,showSubResults:!0,showImages:!1}),i()},document.body.appendChild(r)}function i(){let t=e?.querySelector(`input`);t instanceof HTMLInputElement&&t.focus()}function a(){e&&(e.setAttribute(`open`,``),r(),setTimeout(i,60))}function o(){e?.removeAttribute(`open`)}t?.addEventListener(`click`,a),e?.addEventListener(`click`,t=>{t.target===e&&o()}),document.addEventListener(`keydown`,e=>{let t=document.activeElement,n=t&&(t.tagName===`INPUT`||t.tagName===`TEXTAREA`);e.key===`Escape`&&o(),e.key===`/`&&!n&&(e.preventDefault(),a())});</script></body></html>

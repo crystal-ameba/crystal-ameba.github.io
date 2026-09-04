@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><title>Ameba 1.5.0 has been released · Ameba</title><meta name="description" content="This release brings 3 new rules, Crystal 1.9 compatibility, several breaking changes and various improvements."><link rel="canonical" href="https://crystal-ameba.org/blog/release-1-5-0/"><meta property="og:type" content="article"><meta property="og:site_name" content="Ameba"><meta property="og:title" content="Ameba 1.5.0 has been released · Ameba"><meta property="og:description" content="This release brings 3 new rules, Crystal 1.9 compatibility, several breaking changes and various improvements."><meta property="og:url" content="https://crystal-ameba.org/blog/release-1-5-0/"><meta property="og:image" content="https://crystal-ameba.org/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="A static code analysis tool for the Crystal programming language."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://crystal-ameba.org/og.png"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="Ameba blog" href="/rss.xml"><script>
+      (function () {
+        let theme;
+        try {
+          // get theme from local storage
+          theme = localStorage.getItem('theme');
+
+          // fallback to system preference
+          theme =
+            theme ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light');
+        } catch (e) {
+          // fallback to light theme
+          theme = 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script><link rel="stylesheet" href="/_astro/BaseLayout.CRylrVG7.css"><style>.post-page[data-astro-cid-tldeq5d5]{padding:56px 0 40px}.back[data-astro-cid-tldeq5d5]{font-family:var(--mono);color:var(--muted);font-size:13px;text-decoration:none}.back[data-astro-cid-tldeq5d5]:before{content:"← ";display:inline}.back[data-astro-cid-tldeq5d5]:hover{color:var(--ink)}.post-header[data-astro-cid-tldeq5d5]{max-width:var(--reading);margin:28px auto 40px}.post-meta[data-astro-cid-tldeq5d5]{font-family:var(--mono);color:var(--muted);flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:18px;font-size:12.5px;display:flex}.post-meta[data-astro-cid-tldeq5d5] .cat[data-astro-cid-tldeq5d5]{text-transform:uppercase;letter-spacing:.1em;border:1px solid var(--line);border-radius:999px;padding:3px 10px}.post-header[data-astro-cid-tldeq5d5] h1[data-astro-cid-tldeq5d5]{letter-spacing:-.02em;text-wrap:balance;margin:0;font-size:clamp(28px,4.5vw,42px);line-height:1.1}.post-foot[data-astro-cid-tldeq5d5]{max-width:var(--reading);border-top:1px solid var(--line);flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;margin:48px auto 0;padding-top:24px;display:flex}.tags[data-astro-cid-tldeq5d5]{flex-wrap:wrap;gap:8px;display:flex}.tag[data-astro-cid-tldeq5d5]{font-family:var(--mono);color:var(--muted);font-size:13px}.edit[data-astro-cid-tldeq5d5]{font-family:var(--mono);color:var(--muted);font-size:13px;text-decoration:none}.edit[data-astro-cid-tldeq5d5]:after{content:" ↗";display:inline}.edit[data-astro-cid-tldeq5d5]:hover{color:var(--ink)}
+</style></head><body><header class="site-header" data-astro-cid-wpvy4v7s><div class="wrap nav" data-astro-cid-wpvy4v7s><a class="brand" href="/" aria-label="Ameba home" data-astro-cid-wpvy4v7s><img src="/ameba-logo.png" alt="Ameba logo" width="49" height="20" data-astro-cid-wpvy4v7s></a><nav class="nav-links" aria-label="Primary" data-astro-cid-wpvy4v7s><a href="/#features" class="hide-sm" data-astro-cid-wpvy4v7s>Features</a><a href="https://crystal-ameba.org/api/" class="ext" data-astro-cid-wpvy4v7s>Docs</a><a href="/blog" aria-current="page" data-astro-cid-wpvy4v7s>Blog</a><a href="https://github.com/crystal-ameba/ameba" class="ext" data-astro-cid-wpvy4v7s>GitHub</a><button class="icon-btn" id="search-open" aria-label="Search blog" data-astro-cid-wpvy4v7s><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" data-astro-cid-wpvy4v7s><circle cx="11" cy="11" r="7" data-astro-cid-wpvy4v7s></circle><path d="m20 20-4.1-4.1" data-astro-cid-wpvy4v7s></path></svg></button><button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme" data-astro-cid-wpvy4v7s><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" data-astro-cid-wpvy4v7s><circle cx="12" cy="12" r="9" data-astro-cid-wpvy4v7s></circle><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none" data-astro-cid-wpvy4v7s></path></svg></button></nav></div></header><script type="module">var e=document.documentElement;document.getElementById(`theme-toggle`)?.addEventListener(`click`,()=>{let t=e.getAttribute(`data-theme`)===`dark`?`light`:`dark`;e.setAttribute(`data-theme`,t);try{localStorage.setItem(`theme`,t)}catch{}});</script><main><article class="post-page" data-pagefind-body data-astro-cid-tldeq5d5><div class="wrap" data-astro-cid-tldeq5d5><a class="back" href="/blog" data-astro-cid-tldeq5d5>All posts</a><header class="post-header" data-astro-cid-tldeq5d5><div class="post-meta" data-astro-cid-tldeq5d5><span class="cat" data-pagefind-filter="category" data-astro-cid-tldeq5d5>Release announcement</span><time datetime="2023-07-28T19:49:59.000Z" data-astro-cid-tldeq5d5>July 28, 2023</time></div><h1 data-astro-cid-tldeq5d5>Ameba 1.5.0 has been released</h1></header><div class="prose" data-astro-cid-tldeq5d5><p>This release brings 3 new rules, Crystal 1.9 compatibility, several breaking changes and various improvements.
+Check out the <a href="https://github.com/crystal-ameba/ameba/releases/tag/v1.5.0">release notes</a>
+to see a full scope of changes.</p>
+<h2 id="crystal-compatibility">Crystal compatibility</h2>
+<p>This release introduces <strong>Crystal 1.9</strong> compatibility and <strong>drops support for Crystal &lt; 1.9</strong>.
+Use the latest Ameba bugfix release <a href="https://github.com/crystal-ameba/ameba/releases/tag/v1.4.3">1.4.3</a>
+if you need compatibility with Crystal <code>1.8.x</code> or below.</p>
+<h2 id="new-rules">New rules</h2>
+<h3 id="lintdocumentation"><a href="/api/1.5.0/Ameba/Rule/Lint/Documentation.html"><code>Lint/Documentation</code></a></h3>
+<p>A rule that enforces documentation for public types: classes, modules, enums, methods, and macros.
+Since reopened classes are less common than modules, classes are checked by default while modules are not — you can adjust this via the <code>IgnoreClasses</code> and <code>IgnoreModules</code> configuration options.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> Foo</span></span>
+<span class="line"><span style="color:#F97583">  def</span><span style="color:#B392F0"> bar</span><span style="color:#6A737D"> # error: Missing documentation</span></span>
+<span class="line"><span style="color:#F97583">  end</span></span>
+<span class="line"><span style="color:#F97583">end</span></span></code></pre>
+<p>This rule is <strong>disabled by default</strong> and will produce an issue for every public type without a doc comment:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">Lint/Documentation</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  Enabled</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#6A737D"> # enable to opt-in</span></span>
+<span class="line"><span style="color:#85E89D">  IgnoreClasses</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<span class="line"><span style="color:#85E89D">  IgnoreModules</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#85E89D">  IgnoreEnums</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<span class="line"><span style="color:#85E89D">  IgnoreDefs</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#85E89D">  IgnoreMacros</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<span class="line"><span style="color:#85E89D">  IgnoreMacroHooks</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span></code></pre>
+<h3 id="performanceexcessiveallocations"><a href="/api/1.5.0/Ameba/Rule/Performance/ExcessiveAllocations.html"><code>Performance/ExcessiveAllocations</code></a></h3>
+<p>A rule that flags excessive collection allocations that can be avoided by using <code>each_&lt;member&gt;</code> methods instead of allocating intermediary collections with <code>.each</code>.</p>
+<div class="compare">
+<div class="example bad">
+<p>Bad</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#9ECBFF">"Alice"</span><span style="color:#E1E4E8">.chars.each { |c| </span><span style="color:#79B8FF">puts</span><span style="color:#E1E4E8"> c }</span></span>
+<span class="line"><span style="color:#9ECBFF">"Alice</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">Bob"</span><span style="color:#E1E4E8">.lines.each { |l| </span><span style="color:#79B8FF">puts</span><span style="color:#E1E4E8"> l }</span></span></code></pre>
+</div>
+<div class="example good">
+<p>Good</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#9ECBFF">"Alice"</span><span style="color:#E1E4E8">.each_char { |c| </span><span style="color:#79B8FF">puts</span><span style="color:#E1E4E8"> c }</span></span>
+<span class="line"><span style="color:#9ECBFF">"Alice</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">Bob"</span><span style="color:#E1E4E8">.each_line { |l| </span><span style="color:#79B8FF">puts</span><span style="color:#E1E4E8"> l }</span></span></code></pre>
+</div>
+</div>
+<p>The set of checked collection methods is configurable:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">Performance/ExcessiveAllocations</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  Enabled</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#85E89D">  CallNames</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    codepoints</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">each_codepoint</span></span>
+<span class="line"><span style="color:#85E89D">    graphemes</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">each_grapheme</span></span>
+<span class="line"><span style="color:#85E89D">    chars</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">each_char</span></span>
+<span class="line"><span style="color:#85E89D">    lines</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">each_line</span></span></code></pre>
+<p>This rule also supports <strong>autocorrection</strong>.</p>
+<h3 id="performanceminmaxaftermap"><a href="/api/1.5.0/Ameba/Rule/Performance/MinMaxAfterMap.html"><code>Performance/MinMaxAfterMap</code></a></h3>
+<p>A rule that flags <code>min</code>/<code>max</code>/<code>minmax</code> calls following <code>map</code>, and suggests using dedicated <code>*_of</code> methods instead.</p>
+<div class="compare">
+<div class="example bad">
+<p>Bad</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#9ECBFF">%w[Alice Bob]</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(&amp;.size).min</span></span>
+<span class="line"><span style="color:#9ECBFF">%w[Alice Bob]</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(&amp;.size).max</span></span>
+<span class="line"><span style="color:#9ECBFF">%w[Alice Bob]</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(&amp;.size).minmax</span></span></code></pre>
+</div>
+<div class="example good">
+<p>Good</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#9ECBFF">%w[Alice Bob]</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">min_of</span><span style="color:#E1E4E8">(&amp;.size)</span></span>
+<span class="line"><span style="color:#9ECBFF">%w[Alice Bob]</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">max_of</span><span style="color:#E1E4E8">(&amp;.size)</span></span>
+<span class="line"><span style="color:#9ECBFF">%w[Alice Bob]</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">minmax_of</span><span style="color:#E1E4E8">(&amp;.size)</span></span></code></pre>
+</div>
+</div>
+<p>This rule also supports <strong>autocorrection</strong>.</p>
+<h2 id="breaking-changes">Breaking changes</h2>
+<ul>
+<li><strong><code>Lint/NotNilAfterNoBang</code></strong> now also reports calls to <code>#rindex</code> in addition to <code>#index</code> (<a href="https://github.com/crystal-ameba/ameba/pull/323">#323</a>).</li>
+<li><strong>Invalid config file paths</strong> now raise an error instead of being silently ignored (<a href="https://github.com/crystal-ameba/ameba/pull/393">#393</a>).</li>
+<li><strong>Empty severity values</strong> in YAML configuration now raise an error instead of being silently accepted (<a href="https://github.com/crystal-ameba/ameba/pull/373">#373</a>).</li>
+<li><strong><code>Style/VerboseBlock</code></strong> rule was fixed to work correctly with binary operations like <code>a + b</code> inside blocks (<a href="https://github.com/crystal-ameba/ameba/pull/384">#384</a>).</li>
+</ul>
+<h2 id="other-improvements">Other improvements</h2>
+<ul>
+<li><strong>Portable postinstall</strong>: The postinstall script now uses <code>shards build</code> directly instead of <code>make build</code>, improving portability across platforms including <strong>Windows</strong> (<a href="https://github.com/crystal-ameba/ameba/pull/391">#391</a>).</li>
+<li><strong>Dockerfile</strong> updated to support <code>pcre2</code> engine, and a smoke check (<code>ameba -v</code>) was added to verify the binary works at build time (<a href="https://github.com/crystal-ameba/ameba/pull/369">#369</a>).</li>
+<li><strong><code>AST::NodeVisitor::Category</code></strong> was introduced to simplify the rule codebase (<a href="https://github.com/crystal-ameba/ameba/pull/378">#378</a>).</li>
+<li>Several internal tweaks and refactors (<a href="https://github.com/crystal-ameba/ameba/pull/379">#379</a>).</li>
+</ul>
+</div><footer class="post-foot" data-astro-cid-tldeq5d5><div class="tags" data-astro-cid-tldeq5d5><span class="tag" data-astro-cid-tldeq5d5>#releases</span></div><a class="edit" href="https://github.com/crystal-ameba/crystal-ameba.github.io/edit/master/src/content/blog/release-1-5-0.md" data-astro-cid-tldeq5d5>Edit this page on GitHub</a></footer></div></article></main><footer class="site-footer"><div class="wrap"><div class="foot"><div class="col brand-col"><img src="/ameba-logo.png" alt="Ameba logo" width="54" height="22"><p>A static code analysis tool for the Crystal programming language.</p></div><div class="col"><h4>Project</h4><a href="https://crystal-ameba.org/api/">Documentation</a><a href="https://crystal-ameba.org/api/">Rules reference</a><a href="https://github.com/crystal-ameba/ameba/releases">Releases</a></div><div class="col"><h4>Community</h4><a href="https://github.com/crystal-ameba/ameba">GitHub</a><a href="/blog">Blog</a><a href="https://github.com/crystal-ameba/ameba/blob/master/CONTRIBUTING.md">Contributing</a></div></div><div class="legal"><span>© 2026&nbsp;<a href="https://github.com/crystal-ameba/ameba/graphs/contributors?all=1">Ameba contributors</a> · MIT licensed</span><span>Built with <a href="https://crystal-lang.org/">Crystal</a></span></div></div></footer><div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search blog posts"><div class="search-panel"><div id="search-ui"></div><div class="hint"><span>Search the blog</span><span>Esc to close</span></div></div></div><script type="module">var e=document.getElementById(`search-overlay`),t=document.getElementById(`search-open`),n=!1;function r(){if(n||!e)return;n=!0;let t=document.createElement(`link`);t.rel=`stylesheet`,t.href=`/pagefind/pagefind-ui.css`,document.head.appendChild(t);let r=document.createElement(`script`);r.src=`/pagefind/pagefind-ui.js`,r.onload=()=>{new window.PagefindUI({element:`#search-ui`,showSubResults:!0,showImages:!1}),i()},document.body.appendChild(r)}function i(){let t=e?.querySelector(`input`);t instanceof HTMLInputElement&&t.focus()}function a(){e&&(e.setAttribute(`open`,``),r(),setTimeout(i,60))}function o(){e?.removeAttribute(`open`)}t?.addEventListener(`click`,a),e?.addEventListener(`click`,t=>{t.target===e&&o()}),document.addEventListener(`keydown`,e=>{let t=document.activeElement,n=t&&(t.tagName===`INPUT`||t.tagName===`TEXTAREA`);e.key===`Escape`&&o(),e.key===`/`&&!n&&(e.preventDefault(),a())});</script></body></html>

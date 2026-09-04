@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><title>Ameba 1.0.0 has been released · Ameba</title><meta name="description" content="This release includes a long-waiting autocorrection feature, new rules and several improvements. Check out the release notes to see a full scope of changes."><link rel="canonical" href="https://crystal-ameba.org/blog/release-1-0-0/"><meta property="og:type" content="article"><meta property="og:site_name" content="Ameba"><meta property="og:title" content="Ameba 1.0.0 has been released · Ameba"><meta property="og:description" content="This release includes a long-waiting autocorrection feature, new rules and several improvements. Check out the release notes to see a full scope of changes."><meta property="og:url" content="https://crystal-ameba.org/blog/release-1-0-0/"><meta property="og:image" content="https://crystal-ameba.org/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="A static code analysis tool for the Crystal programming language."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://crystal-ameba.org/og.png"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="Ameba blog" href="/rss.xml"><script>
+      (function () {
+        let theme;
+        try {
+          // get theme from local storage
+          theme = localStorage.getItem('theme');
+
+          // fallback to system preference
+          theme =
+            theme ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light');
+        } catch (e) {
+          // fallback to light theme
+          theme = 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script><link rel="stylesheet" href="/_astro/BaseLayout.CRylrVG7.css"><style>.post-page[data-astro-cid-tldeq5d5]{padding:56px 0 40px}.back[data-astro-cid-tldeq5d5]{font-family:var(--mono);color:var(--muted);font-size:13px;text-decoration:none}.back[data-astro-cid-tldeq5d5]:before{content:"← ";display:inline}.back[data-astro-cid-tldeq5d5]:hover{color:var(--ink)}.post-header[data-astro-cid-tldeq5d5]{max-width:var(--reading);margin:28px auto 40px}.post-meta[data-astro-cid-tldeq5d5]{font-family:var(--mono);color:var(--muted);flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:18px;font-size:12.5px;display:flex}.post-meta[data-astro-cid-tldeq5d5] .cat[data-astro-cid-tldeq5d5]{text-transform:uppercase;letter-spacing:.1em;border:1px solid var(--line);border-radius:999px;padding:3px 10px}.post-header[data-astro-cid-tldeq5d5] h1[data-astro-cid-tldeq5d5]{letter-spacing:-.02em;text-wrap:balance;margin:0;font-size:clamp(28px,4.5vw,42px);line-height:1.1}.post-foot[data-astro-cid-tldeq5d5]{max-width:var(--reading);border-top:1px solid var(--line);flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;margin:48px auto 0;padding-top:24px;display:flex}.tags[data-astro-cid-tldeq5d5]{flex-wrap:wrap;gap:8px;display:flex}.tag[data-astro-cid-tldeq5d5]{font-family:var(--mono);color:var(--muted);font-size:13px}.edit[data-astro-cid-tldeq5d5]{font-family:var(--mono);color:var(--muted);font-size:13px;text-decoration:none}.edit[data-astro-cid-tldeq5d5]:after{content:" ↗";display:inline}.edit[data-astro-cid-tldeq5d5]:hover{color:var(--ink)}
+</style></head><body><header class="site-header" data-astro-cid-wpvy4v7s><div class="wrap nav" data-astro-cid-wpvy4v7s><a class="brand" href="/" aria-label="Ameba home" data-astro-cid-wpvy4v7s><img src="/ameba-logo.png" alt="Ameba logo" width="49" height="20" data-astro-cid-wpvy4v7s></a><nav class="nav-links" aria-label="Primary" data-astro-cid-wpvy4v7s><a href="/#features" class="hide-sm" data-astro-cid-wpvy4v7s>Features</a><a href="https://crystal-ameba.org/api/" class="ext" data-astro-cid-wpvy4v7s>Docs</a><a href="/blog" aria-current="page" data-astro-cid-wpvy4v7s>Blog</a><a href="https://github.com/crystal-ameba/ameba" class="ext" data-astro-cid-wpvy4v7s>GitHub</a><button class="icon-btn" id="search-open" aria-label="Search blog" data-astro-cid-wpvy4v7s><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" data-astro-cid-wpvy4v7s><circle cx="11" cy="11" r="7" data-astro-cid-wpvy4v7s></circle><path d="m20 20-4.1-4.1" data-astro-cid-wpvy4v7s></path></svg></button><button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme" data-astro-cid-wpvy4v7s><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" data-astro-cid-wpvy4v7s><circle cx="12" cy="12" r="9" data-astro-cid-wpvy4v7s></circle><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none" data-astro-cid-wpvy4v7s></path></svg></button></nav></div></header><script type="module">var e=document.documentElement;document.getElementById(`theme-toggle`)?.addEventListener(`click`,()=>{let t=e.getAttribute(`data-theme`)===`dark`?`light`:`dark`;e.setAttribute(`data-theme`,t);try{localStorage.setItem(`theme`,t)}catch{}});</script><main><article class="post-page" data-pagefind-body data-astro-cid-tldeq5d5><div class="wrap" data-astro-cid-tldeq5d5><a class="back" href="/blog" data-astro-cid-tldeq5d5>All posts</a><header class="post-header" data-astro-cid-tldeq5d5><div class="post-meta" data-astro-cid-tldeq5d5><span class="cat" data-pagefind-filter="category" data-astro-cid-tldeq5d5>Release announcement</span><time datetime="2021-10-04T12:54:30.000Z" data-astro-cid-tldeq5d5>October 4, 2021</time></div><h1 data-astro-cid-tldeq5d5>Ameba 1.0.0 has been released</h1></header><div class="prose" data-astro-cid-tldeq5d5><p>This release includes a long-waiting autocorrection feature, new rules and several improvements.
+Check out the <a href="https://github.com/crystal-ameba/ameba/releases/tag/v1.0.0">release notes</a>
+to see a full scope of changes.</p>
+<h2 id="crystal-compatibility">Crystal compatibility</h2>
+<p>This release introduces <a href="https://crystal-lang.org/2022/04/06/1.4.0-released.html">Crystal 1.4</a> compatibility and <strong>breaks compatibility with previous Crystal versions</strong>.
+Use the latest Ameba bugfix release <a href="https://github.com/crystal-ameba/ameba/releases/tag/v0.14.4">0.14.4</a>
+if you need compatibility with Crystal <code>1.3.x</code> or below.</p>
+<h2 id="autocorrection">Autocorrection</h2>
+<p>Thanks to the community, there is a huge step forward implementing autocorrection for Ameba.
+The feature was originally developed in <a href="https://github.com/crystal-ameba/ameba/pull/248">#248</a> and afterwards improved in several cycles.</p>
+<p>Now if Ameba reports an issue which can be corrected, it adds a <code>[Correctable]</code> notice:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> ameba</span><span style="color:#79B8FF"> --only</span><span style="color:#9ECBFF"> Style/RedundantBegin</span><span style="color:#9ECBFF"> src/file_utils.cr</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">src/file_utils.cr:428:5</span><span style="color:#E1E4E8"> [Correctable]</span></span>
+<span class="line"><span style="color:#E1E4E8">[C] Style/RedundantBegin: Redundant </span><span style="color:#9ECBFF">`</span><span style="color:#B392F0">begin</span><span style="color:#9ECBFF">`</span><span style="color:#B392F0"> block</span><span style="color:#9ECBFF"> detected</span></span>
+<span class="line"><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> begin</span></span>
+<span class="line"><span style="color:#B392F0">  ^---^</span></span></code></pre>
+<p>meaning, if you append a new <code>--fix</code> command-line flag to the command it will automatically
+correct the issue adding another notice <code>[Corrected]</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">ameba</span><span style="color:#79B8FF"> --only</span><span style="color:#9ECBFF"> Style/RedundantBegin</span><span style="color:#9ECBFF"> src/file_utils.cr</span><span style="color:#79B8FF"> --fix</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">src/file_utils.cr:428:5</span><span style="color:#E1E4E8"> [Corrected]</span></span>
+<span class="line"><span style="color:#E1E4E8">[C] Style/RedundantBegin: Redundant </span><span style="color:#9ECBFF">`</span><span style="color:#B392F0">begin</span><span style="color:#9ECBFF">`</span><span style="color:#B392F0"> block</span><span style="color:#9ECBFF"> detected</span></span>
+<span class="line"><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> begin</span></span>
+<span class="line"><span style="color:#B392F0">  ^---^</span></span></code></pre>
+<p>using a git diff we can quickly check that Ameba removed a reported redundant begin block
+and used the exception handler as part of a method:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="diff"><code><span class="line"><span style="color:#79B8FF">diff --git a/src/file_utils.cr b/src/file_utils.cr</span></span>
+<span class="line"><span style="color:#E1E4E8">index e82e3c1e1..d416ed05b 100644</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>-- a/src/file_utils.cr</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>++ b/src/file_utils.cr</span></span>
+<span class="line"><span style="color:#B392F0;font-weight:bold">@@ -425,10 +425,8 @@</span><span style="color:#E1E4E8"> module FileUtils</span></span>
+<span class="line"><span style="color:#E1E4E8">   # FileUtils.rm_rf("non_existent_file")</span></span>
+<span class="line"><span style="color:#E1E4E8">   # ```</span></span>
+<span class="line"><span style="color:#E1E4E8">   def rm_rf(path : Path | String) : Nil</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>    begin</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>      rm_r(path)</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>    rescue File::Error</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>    end</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>    rm_r(path)</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>  rescue File::Error</span></span>
+<span class="line"><span style="color:#E1E4E8">   end</span></span></code></pre>
+<p>Note: not all rules support autocorrection yet, but if you see a <code>[Correctable]</code>
+flag on a reported issue, do not hesitate to autocorrect it in order to save some time
+during refactoring.</p>
+<h2 id="new-rules">New rules</h2>
+<h3 id="lintambiguousassignment"><a href="/api/1.0.0/Ameba/Rule/Lint/AmbiguousAssignment.html"><code>Lint/AmbiguousAssignment</code></a></h3>
+<p>A tiny rule that checks for mistyped shorthand assignments.</p>
+<div class="compare">
+<div class="example bad">
+<p>Bad</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">x </span><span style="color:#F97583">=-</span><span style="color:#E1E4E8"> y</span></span>
+<span class="line"><span style="color:#E1E4E8">x </span><span style="color:#F97583">=+</span><span style="color:#E1E4E8"> y</span></span>
+<span class="line"><span style="color:#E1E4E8">x </span><span style="color:#F97583">=</span><span style="color:#E1E4E8">! y</span></span></code></pre>
+</div>
+<div class="example good">
+<p>Good</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">x </span><span style="color:#F97583">-=</span><span style="color:#E1E4E8"> y </span><span style="color:#6A737D"># or x = -y</span></span>
+<span class="line"><span style="color:#E1E4E8">x </span><span style="color:#F97583">+=</span><span style="color:#E1E4E8"> y </span><span style="color:#6A737D"># or x = +y</span></span>
+<span class="line"><span style="color:#E1E4E8">x </span><span style="color:#F97583">!=</span><span style="color:#E1E4E8"> y </span><span style="color:#6A737D"># or x = !y</span></span></code></pre>
+</div>
+</div>
+<h3 id="lintdebugcalls"><a href="/api/1.0.0/Ameba/Rule/Lint/DebugCalls.html"><code>Lint/DebugCalls</code></a></h3>
+<p>A rule that disallows calls to debug-related methods.
+This is because we don’t want debug calls accidentally being committed into our codebase.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#E1E4E8">a </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 2</span></span>
+<span class="line"><span style="color:#E1E4E8">pp! a </span><span style="color:#6A737D"># error: Possibly forgotten debug-related `pp!` call detected</span></span>
+<span class="line"><span style="color:#E1E4E8">a </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> a </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 1</span></span></code></pre>
+<p>Check out the <a href="/api/1.0.0/Ameba/Rule/Lint/DebugCalls.html">API doc</a> to see a full list of supported debug-related calls.</p>
+<h3 id="styleguardclause"><a href="/api/1.0.0/Ameba/Rule/Style/GuardClause.html"><code>Style/GuardClause</code></a></h3>
+<p>A rule that enforces a guard clause instead of wrapping the code inside
+a conditional expression.</p>
+<div class="compare">
+<div class="example bad">
+<p>Bad</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> test</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> something</span></span>
+<span class="line"><span style="color:#E1E4E8">    work</span></span>
+<span class="line"><span style="color:#F97583">  end</span></span>
+<span class="line"><span style="color:#F97583">end</span></span></code></pre>
+</div>
+<div class="example good">
+<p>Good</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> test</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> unless</span><span style="color:#E1E4E8"> something</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">  work</span></span>
+<span class="line"><span style="color:#F97583">end</span></span></code></pre>
+</div>
+</div>
+<h2 id="new-spec-matchers">New spec matchers</h2>
+<p>Ameba has a high code coverage which was obviously achieved by a big amount of tests.
+However, most of the rule specs were too imperative and it led to code duplication
+and some readability issues.</p>
+<p>In this release, new spec matchers for rule tests <a href="https://github.com/crystal-ameba/ameba/pull/245">were introduced</a>.
+This new declarative approach allows to easily track all the reported issues in specs.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="crystal"><code><span class="line"><span style="color:#F97583">it</span><span style="color:#9ECBFF"> "reports multiple shared variables in spawn"</span><span style="color:#F97583"> do</span></span>
+<span class="line"><span style="color:#E1E4E8">  expect_issue subject, </span><span style="color:#9ECBFF">&lt;&lt;-CRYSTAL</span></span>
+<span class="line"><span style="color:#E1E4E8">    foo</span><span style="color:#9ECBFF">, </span><span style="color:#E1E4E8">bar</span><span style="color:#9ECBFF">, </span><span style="color:#E1E4E8">baz</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#9ECBFF">, </span><span style="color:#79B8FF">0</span><span style="color:#9ECBFF">, </span><span style="color:#79B8FF">0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    while</span><span style="color:#E1E4E8"> foo</span><span style="color:#F97583"> &lt;</span><span style="color:#79B8FF"> 10</span></span>
+<span class="line"><span style="color:#E1E4E8">      baz</span><span style="color:#F97583"> +=</span><span style="color:#79B8FF"> 1</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">      spawn</span><span style="color:#F97583"> do</span></span>
+<span class="line"><span style="color:#79B8FF">        puts</span><span style="color:#9ECBFF"> foo</span></span>
+<span class="line"><span style="color:#6A737D">           # ^^^ error: Shared variable `foo` is used in fiber</span></span>
+<span class="line"><span style="color:#79B8FF">        puts</span><span style="color:#E1E4E8"> foo</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8"> bar</span><span style="color:#F97583"> +</span><span style="color:#9ECBFF"> baz</span></span>
+<span class="line"><span style="color:#6A737D">           # ^^^ error: Shared variable `foo` is used in fiber</span></span>
+<span class="line"><span style="color:#6A737D">                       # ^^^ error: Shared variable `baz` is used in fiber</span></span>
+<span class="line"><span style="color:#F97583">      end</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">      foo</span><span style="color:#F97583"> +=</span><span style="color:#79B8FF"> 1</span></span>
+<span class="line"><span style="color:#F97583">    end</span></span>
+<span class="line"><span style="color:#9ECBFF">    CRYSTAL</span></span>
+<span class="line"><span style="color:#F97583">end</span></span></code></pre>
+<p>Some explanation:</p>
+<ul>
+<li><code>^^^</code> - tracks location of the reported node</li>
+<li><code>error</code> - error message annotation marker</li>
+<li><code>Shared variable 'foo' is used in fiber</code> - the reported error message</li>
+</ul>
+<p>These new matchers are used internally and of course can be used by Ameba extensions.
+Check out the <a href="/api/1.0.0/Ameba/Spec/ExpectIssue.html">doc</a> for more details.</p>
+</div><footer class="post-foot" data-astro-cid-tldeq5d5><div class="tags" data-astro-cid-tldeq5d5><span class="tag" data-astro-cid-tldeq5d5>#releases</span></div><a class="edit" href="https://github.com/crystal-ameba/crystal-ameba.github.io/edit/master/src/content/blog/release-1-0-0.md" data-astro-cid-tldeq5d5>Edit this page on GitHub</a></footer></div></article></main><footer class="site-footer"><div class="wrap"><div class="foot"><div class="col brand-col"><img src="/ameba-logo.png" alt="Ameba logo" width="54" height="22"><p>A static code analysis tool for the Crystal programming language.</p></div><div class="col"><h4>Project</h4><a href="https://crystal-ameba.org/api/">Documentation</a><a href="https://crystal-ameba.org/api/">Rules reference</a><a href="https://github.com/crystal-ameba/ameba/releases">Releases</a></div><div class="col"><h4>Community</h4><a href="https://github.com/crystal-ameba/ameba">GitHub</a><a href="/blog">Blog</a><a href="https://github.com/crystal-ameba/ameba/blob/master/CONTRIBUTING.md">Contributing</a></div></div><div class="legal"><span>© 2026&nbsp;<a href="https://github.com/crystal-ameba/ameba/graphs/contributors?all=1">Ameba contributors</a> · MIT licensed</span><span>Built with <a href="https://crystal-lang.org/">Crystal</a></span></div></div></footer><div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search blog posts"><div class="search-panel"><div id="search-ui"></div><div class="hint"><span>Search the blog</span><span>Esc to close</span></div></div></div><script type="module">var e=document.getElementById(`search-overlay`),t=document.getElementById(`search-open`),n=!1;function r(){if(n||!e)return;n=!0;let t=document.createElement(`link`);t.rel=`stylesheet`,t.href=`/pagefind/pagefind-ui.css`,document.head.appendChild(t);let r=document.createElement(`script`);r.src=`/pagefind/pagefind-ui.js`,r.onload=()=>{new window.PagefindUI({element:`#search-ui`,showSubResults:!0,showImages:!1}),i()},document.body.appendChild(r)}function i(){let t=e?.querySelector(`input`);t instanceof HTMLInputElement&&t.focus()}function a(){e&&(e.setAttribute(`open`,``),r(),setTimeout(i,60))}function o(){e?.removeAttribute(`open`)}t?.addEventListener(`click`,a),e?.addEventListener(`click`,t=>{t.target===e&&o()}),document.addEventListener(`keydown`,e=>{let t=document.activeElement,n=t&&(t.tagName===`INPUT`||t.tagName===`TEXTAREA`);e.key===`Escape`&&o(),e.key===`/`&&!n&&(e.preventDefault(),a())});</script></body></html>
